@@ -4,6 +4,7 @@ const Static = require('koa-static');
 const path = require('path');
 const session = require('koa-session');
 const views =require('koa-views')
+const compress = require('koa-compress');
 
 const InitManager = require('./app/core/init');
 const catchError = require('./app/middlewares/exception');
@@ -44,6 +45,12 @@ app.use(catchError);
 
 // 系统日志
 app.use(accessLogger());
+
+// 设置gzip
+app.use(compress({
+  threshold: 2048,
+  flush: require('zlib').Z_SYNC_FLUSH
+}))
 
 // 配置session
 app.keys = ['some secret hurr'];
