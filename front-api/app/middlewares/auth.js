@@ -8,9 +8,9 @@ const User = require('../dao/User')
 const baseUrl = '/api/' + version
 // api 白名单
 const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
- `${baseUrl}/wx/*`,
+ `${baseUrl}/wx/*`,"/favicon.ico",
 //  页面路由白名单
- '/intro',"/","/style/*"] 
+ '/intro',"/","/style/*","/m/*"] 
 
 // 校验有 /* 的白名单
 const checkWhiteList = function (ctx, list) {
