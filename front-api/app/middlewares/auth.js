@@ -6,8 +6,11 @@ const { handleTree } = require('../utils/common');
 const Generic = require('../dao/Generic');
 const User = require('../dao/User')
 const baseUrl = '/api/' + version
-
-const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`, `${baseUrl}/wx/*`,'/intro',"/"] // api 白名单
+// api 白名单
+const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
+ `${baseUrl}/wx/*`,
+//  页面路由白名单
+ '/intro',"/","/lib/*","/css/*","/img/*","/js/*"] 
 
 // 校验有 /* 的白名单
 const checkWhiteList = function (ctx, list) {
