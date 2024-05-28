@@ -81,16 +81,16 @@ app.use(views('views',{
 InitManager.initCore(app);
 
 // https 服务器
-const https = require('https');//node内置https server
-const fs = require('fs');
-const options = {
-  key: fs.readFileSync("./yjyj.website.key", "utf8"),
-  cert: fs.readFileSync("./yjyj.website_bundle.crt", "utf8")
-};
-https.createServer(options, app.callback()).listen(443, () => {
-  console.log('https server is running 9999...');
-});
-
-// app.listen(3000, () => {
-// 	console.log('server is running 3000...');
+// const https = require('https');//node内置https server
+// const fs = require('fs');
+// const options = {
+//   key: fs.readFileSync("./yjyj.website.key", "utf8"),
+//   cert: fs.readFileSync("./yjyj.website_bundle.crt", "utf8")
+// };
+// https.createServer(options, app.callback()).listen(443, () => {
+//   console.log('https server is running 9999...');
 // });
+
+app.listen(3000, () => {
+	console.log('server is running 3000...');
+});

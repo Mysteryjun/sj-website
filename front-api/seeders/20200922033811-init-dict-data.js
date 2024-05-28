@@ -13,32 +13,6 @@ module.exports = {
     */
     await queryInterface.bulkInsert('dict_datas', [
       {
-        "dictSort": 1,
-        "dictLabel": "流行歌曲",
-        "dictValue": "1",
-        "dictType": "music_song_type",
-        "cssClass": null,
-        "listClass": null,
-        "isDefault": "Y",
-        "status": "0",
-        "remark": "流行歌曲",
-        createdAt: new Date(),
-        createdBy: 'admin'
-      },
-      {
-        "dictSort": 2,
-        "dictLabel": "古典歌曲",
-        "dictValue": "2",
-        "dictType": "music_song_type",
-        "cssClass": null,
-        "listClass": null,
-        "isDefault": "Y",
-        "status": "0",
-        "remark": "古典歌曲",
-        createdAt: new Date(),
-        createdBy: 'admin'
-      },
-      {
         "dictSort": 2,
         "dictLabel": "公告",
         "dictValue": "2",

@@ -13,10 +13,12 @@ router.get('/system/notice', async (ctx, next) => {
   let v = new Validator(ctx)
   v.check(checkLists)
   let noticeTitle = ctx.query.noticeTitle ? ctx.query.noticeTitle : ''
+  let noticeType = ctx.query.noticeType ? ctx.query.noticeType : ''
   let pageNum = ctx.query.pageNum ? ctx.query.pageNum : 1
   let pageSize = ctx.query.pageSize ? ctx.query.pageSize : 10
   let query = {
     noticeTitle,
+    noticeType,
     pageNum,
     pageSize
   }

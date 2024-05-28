@@ -1,15 +1,23 @@
 <template>
-  <div class="home">
-    home
+  <div class="app-container">   
+    <div class="home">
+      欢迎，{{ userInfo.user.userName }}
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      value: true
+      
     }
-  }
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo',
+    ])
+  },
 }
 </script>

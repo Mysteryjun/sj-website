@@ -11,15 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('dict_types', [   
-      {
-        "dictName":"歌曲类型",
-        "dictType":"music_song_type",
-        "status":"0",
-        "remark":"歌曲类型",
-        createdAt: new Date(),
-        createdBy: 'admin'
-      },
+    await queryInterface.bulkInsert('dict_types', [
       {
         "dictName":"公告类型",
         "dictType":"sys_notice_type",

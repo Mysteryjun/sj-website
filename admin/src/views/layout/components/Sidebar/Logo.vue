@@ -26,7 +26,7 @@ export default {
   },
   data () {
     return {
-      title: '理化生实验操作考试管理系统',
+      title: '后台管理系统',
       logo: logoImg
     }
   }

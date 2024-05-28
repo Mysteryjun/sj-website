@@ -10,9 +10,4 @@ export default {
   Dict: () => import('@/views/system/dict'),
   Dept: () => import('@/views/system/dept'),
   Test: () => import('@/views/login'),
-
-  // 音乐管理
-  Song: () => import('@/views/music/song'),
-  SongSheet: () => import('@/views/music/songSheet'),
-  SongSheetDetail: () => import('@/views/music/songSheetDetail')
 }

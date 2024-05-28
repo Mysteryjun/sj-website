@@ -1,7 +1,5 @@
 <template>
   <section class="app-main">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view :key="key" />
@@ -11,19 +9,10 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
-import { mapGetters } from 'vuex'
+
 export default {
   name: 'AppMain',
-  components: {
-    Breadcrumb,
-    Hamburger
-  },
   computed: {
-    ...mapGetters([
-      'sidebar'
-    ]),
     cachedViews () {
       console.log(this.$store.state.tagsView)
       return this.$store.state.tagsView.cachedViews

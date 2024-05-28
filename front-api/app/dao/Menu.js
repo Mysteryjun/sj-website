@@ -14,7 +14,8 @@ class Menu {
         }
       }
     })
-    let menuIds = [...new Set(lists.map(item => item.menuId))]
+    let menuIds = lists.map(item => item.menuId).sort((a,b)=>a-b)
+    console.log('menuIds',menuIds)
     return await Models['Menu'].findAndCountAll({
       where: {
         id: {

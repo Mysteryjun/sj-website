@@ -68,8 +68,6 @@ CREATE TABLE `dict_datas`  (
 -- ----------------------------
 -- Records of dict_datas
 -- ----------------------------
-INSERT INTO `dict_datas` VALUES (1, 1, '流行歌曲', '1', 'music_song_type', NULL, NULL, 'Y', '0', '流行歌曲', '2020-11-06 15:43:15', 'admin', NULL, NULL);
-INSERT INTO `dict_datas` VALUES (2, 2, '古典歌曲', '2', 'music_song_type', NULL, NULL, 'Y', '0', '古典歌曲', '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `dict_datas` VALUES (3, 2, '公告', '2', 'sys_notice_type', NULL, NULL, 'Y', '0', '公告', '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `dict_datas` VALUES (4, 1, '通知', '1', 'sys_notice_type', NULL, NULL, 'Y', '0', '通知', '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `dict_datas` VALUES (5, 1, '正常', '0', 'sys_notice_status', NULL, NULL, 'Y', '0', '正常', '2020-11-06 15:43:15', 'admin', NULL, NULL);
@@ -101,7 +99,6 @@ CREATE TABLE `dict_types`  (
 -- ----------------------------
 -- Records of dict_types
 -- ----------------------------
-INSERT INTO `dict_types` VALUES (1, '歌曲类型', 'music_song_type', '0', '歌曲类型', '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `dict_types` VALUES (2, '公告类型', 'sys_notice_type', '0', '公告类型', '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `dict_types` VALUES (3, '类型数据', 'sys_notice_status', '0', '类型数据', '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `dict_types` VALUES (4, '显示状态', 'sys_show_hide', '0', '显示状态', '2020-11-06 15:43:15', 'admin', NULL, NULL);
@@ -178,10 +175,6 @@ INSERT INTO `menus` VALUES (43, 3, '修改密码', NULL, NULL, NULL, '1', 'F', '
 INSERT INTO `menus` VALUES (44, 3, '修改用户状态', NULL, NULL, NULL, '1', 'F', '0', 6, '0', 'system:user:updateStatus', NULL, '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `menus` VALUES (45, 3, '上传图片', NULL, NULL, NULL, '1', 'F', '0', 7, '0', 'system:user:uploadImg', NULL, '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
 INSERT INTO `menus` VALUES (46, 4, '修改状态', NULL, NULL, NULL, '1', 'F', '0', 5, '0', 'system:role:updateStatus', NULL, '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
-INSERT INTO `menus` VALUES (47, 0, '音乐管理', '/music', 'Layout', 'Layout', '1', 'M', '0', 2, '0', NULL, 'music', '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
-INSERT INTO `menus` VALUES (48, 47, '歌曲管理', 'song', 'Song', 'Song', '1', 'C', '0', 1, '0', NULL, NULL, '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
-INSERT INTO `menus` VALUES (49, 47, '歌单管理', 'songSheet', 'SongSheet', 'SongSheet', '1', 'C', '0', 2, '0', NULL, NULL, '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
-INSERT INTO `menus` VALUES (50, 47, '歌单详情', 'songSheetDetail/:id(\\d+)', 'SongSheetDetail', 'SongSheetDetail', '1', 'C', '1', 3, '0', NULL, NULL, '0', NULL, '2020-11-06 15:43:15', 'admin', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for notices
@@ -315,83 +308,7 @@ INSERT INTO `sequelizemeta` VALUES ('20200831061747-create-dict-type.js');
 INSERT INTO `sequelizemeta` VALUES ('20200831061901-create-notice.js');
 INSERT INTO `sequelizemeta` VALUES ('20200831061953-create-role-menu.js');
 INSERT INTO `sequelizemeta` VALUES ('20200831062016-create-user-role.js');
-INSERT INTO `sequelizemeta` VALUES ('20201019070010-create-song.js');
-INSERT INTO `sequelizemeta` VALUES ('20201020031509-create-song-sheet.js');
-INSERT INTO `sequelizemeta` VALUES ('20201020032136-create-song-sheet-song.js');
 INSERT INTO `sequelizemeta` VALUES ('20201113083154-init-users.js');
-
--- ----------------------------
--- Table structure for song_sheets
--- ----------------------------
-DROP TABLE IF EXISTS `song_sheets`;
-CREATE TABLE `song_sheets`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '歌单',
-  `poster_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '封面图url',
-  `hot` int(11) NULL DEFAULT 0 COMMENT '热度',
-  `comments` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '简介',
-  `createdAt` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `createdBy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `updatedAt` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `updatedBy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of song_sheets
--- ----------------------------
-INSERT INTO `song_sheets` VALUES (1, '1', '偷偷', '/upload/160464886625692.png', 0, '风格的', '2020-11-06 15:47:46', 'admin', '2020-11-06 15:47:46', NULL);
-INSERT INTO `song_sheets` VALUES (2, '1', 'fg', '/upload/16152607367972123.jpg', 0, NULL, '2021-03-09 11:32:16', 'admin', '2021-03-09 11:32:16', NULL);
-
--- ----------------------------
--- Table structure for songs
--- ----------------------------
-DROP TABLE IF EXISTS `songs`;
-CREATE TABLE `songs`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '歌名',
-  `singer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '歌手',
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '音乐链接',
-  `poster_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '封面图url',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所属类型',
-  `lyric` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '歌词',
-  `hot` int(11) NULL DEFAULT 0 COMMENT '热度',
-  `createdAt` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `createdBy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `updatedAt` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `updatedBy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of songs
--- ----------------------------
-INSERT INTO `songs` VALUES (1, '1', 'tds', 'ds', '/upload/16046488386435670.mp3', '/upload/16046488385974218.jpg', '1', '<p>fdsf </p>', 1, '2020-11-06 15:47:18', 'admin', '2020-12-23 15:17:08', NULL);
-INSERT INTO `songs` VALUES (2, '1', 'f得分', '发生的', '/upload/16046488548166468.mp3', '/upload/16046488547623102.jpg', '2', '<p>梵蒂冈</p>', 2, '2020-11-06 15:47:34', 'admin', '2020-12-23 15:17:10', NULL);
-INSERT INTO `songs` VALUES (3, '1', '改成', '但是', '/upload/16046494562843837.mp3', '/upload/16046494562278822.png', '1', '<p>梵蒂冈</p>', 2, '2020-11-06 15:57:36', 'admin', '2020-12-23 15:17:13', NULL);
-
--- ----------------------------
--- Table structure for songsheet_songs
--- ----------------------------
-DROP TABLE IF EXISTS `songsheet_songs`;
-CREATE TABLE `songsheet_songs`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `songSheetId` int(11) NOT NULL COMMENT '歌单id',
-  `songId` int(11) NOT NULL COMMENT '歌曲id',
-  `createdAt` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `createdBy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `updatedAt` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `updatedBy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of songsheet_songs
--- ----------------------------
-INSERT INTO `songsheet_songs` VALUES (3, 1, 2, '2020-11-06 16:07:37', NULL, '2020-11-06 16:07:37', NULL);
-INSERT INTO `songsheet_songs` VALUES (5, 1, 3, '2020-11-06 16:07:37', NULL, '2020-11-06 16:07:37', NULL);
 
 -- ----------------------------
 -- Table structure for user_roles

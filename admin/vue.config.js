@@ -68,14 +68,14 @@ module.exports = {
     port: 8888,
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: 'http://127.0.0.1:9999',
+        target: 'http://127.0.0.1:3000',
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: '/api/v1'
         }
       },
       '/img_url': {
-        target: 'http://127.0.0.1:9999',
+        target: 'http://127.0.0.1:3000',
         changeOrigin: true,
         pathRewrite: {
           '^/img_url': ''

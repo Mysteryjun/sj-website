@@ -27,6 +27,7 @@ const permission = {
       return new Promise(resolve => {
         // 向后端请求路由数据
         getRouters().then(res => {
+          console.log('res.data.rows',res.data.rows)
           const accessedRoutes = filterAsyncRouter(res.data.rows).routes
           const accessedMenus = filterAsyncRouter(res.data.rows).menus
           accessedRoutes.push({ path: '*', redirect: '/404', hidden: true })
@@ -66,6 +67,7 @@ function filterAsyncRouter (asyncRouterMap) {
         icon: list.icon
       }
     }
+    console.log('list',list);
     if (list.parentId !== 0) {
       routesObj[list.parentId].children.push(obj)
     } else {

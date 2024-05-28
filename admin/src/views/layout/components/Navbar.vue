@@ -1,7 +1,8 @@
 <template>
   <div class="navbar">
 <!--    <h3 class="title">校端理化生实验管理系统</h3>-->
-    <h3 class="title">后台管理系统</h3>
+    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" ></breadcrumb>
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
@@ -25,7 +26,7 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img v-if="userInfo" :src="userInfo.user.avatar ? baseImgUrl + userInfo.user.avatar : ''" class="user-avatar">
+          <div class="user-avatar">{{userInfo.user.userName[0].toUpperCase()  }}</div>
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -48,12 +49,16 @@
 import { mapGetters } from 'vuex'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
+import Breadcrumb from '@/components/Breadcrumb'
+import Hamburger from '@/components/Hamburger'
 
 export default {
   inject: ['reload'],
   components: {
     Screenfull,
-    SizeSelect
+    SizeSelect,
+    Breadcrumb,
+    Hamburger
   },
   computed: {
     ...mapGetters([
@@ -72,6 +77,9 @@ export default {
         })
       }
     }
+  },
+  mounted () {
+    console.log('this.userInfo', this.userInfo)
   },
   methods: {
     // // 刷新
@@ -177,7 +185,12 @@ export default {
           cursor: pointer;
           width: 40px;
           height: 40px;
+          line-height: 40px;
+          text-align: center;
           border-radius: 10px;
+          border:1px solid teal;
+          background: teal;
+          color:#fff;
         }
 
         .el-icon-caret-bottom {

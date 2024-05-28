@@ -63,15 +63,7 @@
           @click="handleDelete"
           v-has-permi="['system:role:delete']"
         >删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-        >导出</el-button>
-      </el-col>
+      </el-col>      
     </el-row>
     <el-table v-loading="$store.state.app.loading" :data="roleList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
@@ -196,7 +188,7 @@
 </template>
 
 <script>
-import { listRole, getRole, delRole, addRole, updateRole, exportRole, changeRoleStatus } from '@/api/system/role'
+import { listRole, getRole, delRole, addRole, updateRole, changeRoleStatus } from '@/api/system/role'
 import { getRouters } from '@/api/system/menu'
 
 export default {
@@ -443,20 +435,7 @@ export default {
         this.getList()
         this.$httpResponse('删除成功')
       }).catch(function () {})
-    },
-    /** 导出按钮操作 */
-    handleExport () {
-      const queryParams = this.queryParams
-      this.$confirm('是否确认导出所有角色数据项?', '警告', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(function () {
-        return exportRole(queryParams)
-      }).then(res => {
-        this.download(res.msg)
-      }).catch(function () {})
-    }
+    }    
   }
 }
 </script>
