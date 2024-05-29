@@ -6,8 +6,11 @@ const { handleTree } = require('../utils/common');
 const Generic = require('../dao/Generic');
 const User = require('../dao/User')
 const baseUrl = '/api/' + version
-
-const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`] // api 白名单
+// api 白名单
+const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
+ `${baseUrl}/wx/*`,"/favicon.ico",
+//  页面路由白名单
+ '/intro',"/","/style/*","/m/*"] 
 
 // 校验有 /* 的白名单
 const checkWhiteList = function (ctx, list) {
@@ -25,6 +28,7 @@ const checkWhiteList = function (ctx, list) {
 // 校验token
 const checkToken = () => {
   return async (ctx, next) => {
+    console.log(ctx)
     parentWhiteLists = whiteList.filter(item => item.lastIndexOf('/*') !== -1)
     whiteLists = whiteList.filter(item => item.lastIndexOf('/*') === -1)
     // 不在白名单的路由
