@@ -10,7 +10,7 @@ const baseUrl = '/api/' + version
 const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
  `${baseUrl}/wx/*`,"/favicon.ico",
 //  页面路由白名单
- '/intro',"/","/style/*","/m/*"] 
+ "/","/style/*","/home/*"] 
 
 // 校验有 /* 的白名单
 const checkWhiteList = function (ctx, list) {

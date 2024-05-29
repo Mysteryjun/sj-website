@@ -1,0 +1,439 @@
+/* 常用样式 */
+*{ margin:0px; padding:0px; }
+body{ font-family: Microsoft YaHei; font-size: 14px; background-color: #fff; min-width: 1200px; }
+a{ text-decoration: none; display: inline-block; }
+ul{ list-style: none; }
+img{ border:none; display: block; }
+input{outline: none;}
+.blank{ clear: both; }
+.fll{ float: left !important; }
+.flr{ float: right !important; }
+.main-content{ width: 1200px; margin:0 auto;overflow: hidden; }
+.mart-10 { margin-top: 10px !important; }
+.mart-16 { margin-top: 16px !important; }
+.cl-ff5500{ color:#ff5500 !important; }
+.cl-e94709{ color:#e94709 !important; }
+.cl-2c{ color:#2c2c2c !important; }
+.cl-9fa0a0{ color:#9fa0a0 !important; }
+.text-rt{ text-align: right !important; }
+/* top-bar */
+.top-bar{ height: 10px;background-color: #3ec8e2; }
+/* main-nav */
+.main-nav{ width: 100%; height: 76px;margin:10px 0px; }
+.logo{ width: 270px; height: 76px; background: url(/style/images/logo.png) no-repeat;  }
+.nav{list-style: none;overflow: hidden;}
+.nav li{ float: right; width: 80px;  text-align: center; line-height: 76px; font-size: 18px; margin-left: 20px; }
+.nav li a{ color:#000; transition:all 0.2s linear; -webkit-transition:all 0.2s linear; -o-transition:all 0.2s linear; -moz-transition:all 0.2s linear; }
+.nav li.active a,.nav li:hover a{ color:#3ec8e2; }
+/* homeBanner */
+.homeBanner{ position: relative; width: 100%; overflow: hidden; height: 520px; }
+.homeBanner .x-callbacks li{ width:100%;height: 520px; relative; left: 50%; margin-left: -50%;background-repeat: no-repeat;
+	background-position: center;background-size: 100%; }
+.x-callbacks { position: relative; list-style: none; overflow: hidden; width: 100%; }
+.x-callbacks li { position: absolute; width: 100%; left: 0; top: 0; }
+.x-callbacks_nav { position: absolute; -webkit-tap-highlight-color: rgba(0,0,0,0); top: 50%; z-index: 3; overflow: hidden; 
+				text-decoration: none; display: none; opacity: 1; filter: alpha(opacity=100); -moz-opacity: 1; height: 89px; 
+				width: 35px; margin-top: -44px; _margin-top: -44px; cursor: pointer; }
+.x-callbacks_nav.x-callbacks1_nav.prev{ left: 10px; background: url(../images/arrow-left.png) no-repeat; }
+.x-callbacks_nav.x-callbacks1_nav.next{ right:10px; background: url(../images/arrow-right.png) no-repeat; }
+.x-callbacks_tabs.x-callbacks1_tabs { position: relative; z-index: 100; top: -35px; text-align: center; }
+.x-callbacks_tabs.x-callbacks1_tabs li { width: 16px; height: 16px; background-size: 100% 100%; display: inline-block; margin-left: 20px; position: relative; zoom: 1; }
+.x-callbacks_tabs.x-callbacks1_tabs li a { display: inline-block; width: 16px; height: 16px; border-radius: 10px; background: url(../images/banner-newico.png); 
+							position: absolute; left: 0; z-index: 1000; color: rgba(100,200,300,0); color: transparent; zoom: 1; }
+.x-callbacks_tabs.x-callbacks1_tabs li.x-callbacks_here a { background: url(../images/banner-ico.png); }
+
+/* advantage */
+.advantage{ width: 100%;}
+.advantage ul li{ width:300px; float: left;margin: 24px 0px;text-align: center; }
+.advantage-icon{ width: 48px; height: 48px;display: block;margin: 0px auto; }
+
+@-webkit-keyframes sonarEffect {
+	0% {
+		opacity: 0.3;
+	}
+
+	40% {
+		opacity: 0.5;
+		box-shadow: 0 0 0 2px rgba(20,105,189,0.1),0 0 10px 10px #a4cff2,0 0 0 10px rgba(20,105,189,0.5);
+	}
+
+	100% {
+		box-shadow: 0 0 0 2px rgba(20,105,189,0.1),0 0 10px 10px #a4cff2,0 0 0 10px rgba(20,105,189,0.5);
+		-webkit-transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+@-moz-keyframes sonarEffect {
+	0% {
+		opacity: 0.3;
+	}
+
+	40% {
+		opacity: 0.5;
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1),0 0 10px 10px #a4cff2,0 0 0 10px rgba(255,255,255,0.5);
+	}
+
+	100% {
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1),0 0 10px 10px #a4cff2,0 0 0 10px rgba(255,255,255,0.5);
+		-moz-transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+@keyframes sonarEffect {
+	0% {
+		opacity: 0.3;
+	}
+
+	40% {
+		opacity: 0.5;
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1),0 0 10px 10px #a4cff2,0 0 0 10px rgba(255,255,255,0.5);
+	}
+
+	100% {
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1),0 0 10px 10px #a4cff2,0 0 0 10px rgba(255,255,255,0.5);
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+.strength-icon{ background: url(/style/images/appointment.png) no-repeat; background-size: cover; }
+.wealthy-icon{ background: url(/style/images/outpatient.png) no-repeat; background-size: cover; }
+.product-icon{ background: url(/style/images/chs.png) no-repeat; background-size: cover;}
+.safety-icon{ background: url(/style/images/checkup.png) no-repeat;background-size: cover;}
+.advantage-tips{margin-top: 12px; }
+.advantage-title{ font-size: 18px; line-height: 40px; color:#2c2c2c; }
+.description{ font-size: 14px; line-height: 20px; color:#9fa0a0; }
+/* platform */
+.platform{ width: 100%; background: #f0f2f7; padding-top: 20px; padding-bottom: 23px; }
+/* newFriends */
+.newFriends{ background-color: #fff; border-radius: 5px; height: 190px; cursor: pointer; border:1px solid #fff; }
+.newFriends:hover{ box-shadow: 0px 2px 20px -5px #ff6a00; border-color: #ff6a00; }
+.newFriends-icon{ width: 436px; height: 161px; margin-left: 24px; background: url(../images/newFriends-icon.png) no-repeat; margin-right: 32px; }
+.newFriends-enjoy{ width:492px; height: 120px; border-left: 1px solid #d5d5d5; margin-top: 36px; text-align: center; }
+.newFriends-enjoy li{ width: 164px; float: left; }
+.newFriends-enjoy-num{ font-size: 32px; line-height: 74px; color:#e94709; }
+.newFriends-enjoy-tip{ font-size: 18px; line-height: 38px; color:#9fa0a0; }
+.newFriends-enjoy-btn{ width: 196px; height: 40px; font-size:18px; line-height: 40px; text-align: center; color:#fff; background: #e94709; margin-top: 84px; border-radius: 20px; }
+/* recommend */
+.recommend{ height: 460px; overflow: hidden; }
+.recommend-tips{ overflow: auto; }
+.projectTitle{ color:#2c2c2c; font-size: 24px; line-height: 36px; margin-top: 12px; text-indent: 18px; position: relative; }
+.projectIcon{ width: 3px; height: 28px; background-color: #ff6a00; display: inline-block; position: absolute; left: 0px; top:5px; }
+.recommend-details{ height: 402px; width: 1300px}
+.recommend-project{ width: 304px; height: 358px; padding:20px 24px 22px 24px; margin-right: 69px; float: left; background-color: #fff; 
+				border-radius: 5px; border: 1px solid #fff; cursor: pointer; }
+.recommend-project:hover{ box-shadow: 0px 2px 20px -5px #ff6a00; border-color: #ff6a00; }
+.recTitle{ height: 32px; overflow: auto; }
+.rec-logo{ width: 27px; height: 27px; color:#fff; font-size:18px; line-height: 27px; text-align: center; border-radius: 3px; margin-top: 2px; float: left; }
+.rec-title{ font-size: 18px; line-height: 32px; color:#2c2c2c; float: left; margin-left: 12px; }
+.recBids{ width: 304px; height: 129px; border-bottom: 1px solid #d5d5d5; text-align: center; }
+.rec-bidDetails{ width: 50%; float: left; margin-top:25px; }
+.rec-bidNum{ font-size: 32px; line-height:48px; color:#e94709; }
+.rec-bidTips{ font-size: 18px; line-height: 38px; color:#9fa0a0; }
+.recBids1{ width: 304px; height: 142px; padding-top: 16px; }
+.rec-bidDetails1{ width: 100%; overflow: auto; }
+.rec-bidRate{ width: 245px; height: 6px; background-color: #c9caca; margin-top: 25px; border-radius: 3px; position: relative; }
+.rec-curRate{ width: 35%; display: inline-block; position: absolute; left: 0px; top:0px; height: 6px; border-radius: 3px; background-color: #e94709; }
+.rec-bidRateNum{ font-size: 18px; line-height: 36px; color:#2c2c2c; margin-top: 8px; }
+.rec-btn{ width: 304px; height: 40px; font-size: 18px; line-height: 40px; text-align: center; color:#fff; background-color: #e94709; border-radius: 20px; }
+/* news */
+.newsContainer{ width: 100%; background-color: #fff; height: 275px; border-radius: 5px; padding-top: 20px; }
+.newsDetail{ width: 552px; height:117px; margin:0 24px 21px 24px; float: left; }
+.newsDetail a {display: block;}
+.news-images{ float: left; width: 175px; height: 117px; margin-right: 16px; }
+.news-images img{ width: 100%; height: 100%; transition: 1s; -moz-transition: 1s; -webkit-transition: 1s;-o-transition: 1s; transform: scale(0.95);
+				-moz-transform: scale(0.95); -webkit-transform: scale(0.95);-o-transform: scale(0.95); }
+.newsDetail:hover .news-images img{  transform: scale(1.1);-moz-transform: scale(1.1); -webkit-transform: scale(1.1);
+				-o-transform: scale(1.1); }
+.news-summary{ float: left; width:361px; }
+.news-title{ font-size: 18px; line-height: 32px; color:#e94709; white-space: nowrap; 
+	overflow: hidden;
+	text-overflow: ellipsis; }
+.news-content{ font-size: 14px; line-height: 24px; color:#9fa0a0; margin-top: 12px;display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	line-clamp: 3;
+	-webkit-line-clamp: 3;  }
+/* partner */
+.partner-container{ width: 1162px; background-color: #fff; height: 258px; border-radius: 5px; padding:19px 19px; }
+.partner-detail{ width: 128px; height: 127px; border: 1px solid #d5d5d5; float: left; cursor: pointer; }
+.partner-detail a img{ transition: 1s; -moz-transition: 1s; -webkit-transition: 1s;-o-transition: 1s; transform: scale(0.95);
+				-moz-transform: scale(0.95); -webkit-transform: scale(0.95);-o-transform: scale(0.95); }
+.partner-detail a:hover img{ transform: scale(1.1);-moz-transform: scale(1.1); -webkit-transform: scale(1.1);
+				-o-transform: scale(1.1); }
+.bdl{ border-left: none; }
+.bdt{ border-top: none; }
+/* footer */
+.siteRelated{ width: 100%; height:198px; background-color: #e2e4ea; }
+.downApp{ width: 97px; margin-top: 27px; cursor: pointer; margin-right: 41px; }
+.downAppIcon{ width: 97px; height: 96px; background: url(../images/downAppIcon.png) no-repeat; }
+.downAppTip{ font-size:16px; line-height:40px; color:#2c2c2c; text-align: center; }
+.customer{ width: 315px; margin-top: 35px; }
+.tel{ font-size: 30px; line-height: 42px; color:#e94709; }
+.service{ font-size: 16px; line-height: 24px; color:#2c2c2c; }
+.siteMap{ width: 440px; margin-top: 77px; }
+.siteMap ul{ width: 100%; }
+.siteMap ul li{ width: 110px; float: left; }
+.siteMap ul li a{ font-size: 16px; line-height: 24px; color:#2c2c2c; 
+			transition:all 0.2s linear; -webkit-transition:all 0.2s linear; -o-transition:all 0.2s linear; 
+			-moz-transition:all 0.2s linear;}
+.siteMap ul li a:hover{color:#e94709;}
+.weChat{ width: 95px; margin-left: 23px; margin-top: 28px; }
+.weChatIcon{ width: 95px; height: 95px; }
+.weChatDetail{ font-size: 16px; line-height: 32px; color:#2c2c2c; text-align: center; }
+/* copyright */
+.copyright{ width: 100%; height:60px; background-color: #7b7c81; }
+.copyright-info{ font-size: 14px; line-height: 60px; color:#fff; }
+.certification{ width: 130px; height: 40px; border-radius: 3px; background-color: #fff; margin-top: 10px; margin-left: 20px; }
+/* 信息披露 */
+.letSpace{ letter-spacing: 1.5px; }
+.infoContainer{ width: 100%; background: #f0f2f7; padding: 20px 0px; }
+.info-nav{ padding: 18px 0px 60px 0px; float: left; width: 200px; background-color: #fff; border-radius: 3px; }
+.info-nav li{ text-indent: 50px; position: relative; cursor: pointer; margin-bottom: 16px;}
+.info-nav li a{ display: block; position: relative; }
+.info-nav a i{ width: 6px; height: 32px; background-color: #fff; position: absolute; left: 0px; top:0px; display: inline-block; }
+.info-nav li .infoChild{ font-size: 18px; line-height: 32px; color:#242933; }
+.info-nav li .infoIntro:hover a,.info-nav li:hover .infoChild ,.info-nav .current  .infoChild,.info-nav .cur  .infoChild { color:#fff; background-color: #ff7733; }
+.info-nav .cur a i,.info-nav .current a i{ background-color: #ff5500; }
+.info-nav .current .infoIntro a i{ background-color: #fff; }
+.info-nav li .infoIntro:hover  a i,.info-nav li:hover  a i,.info-nav .current .active a i{ background-color: #ff5500; }
+.info-nav li:nth-child(1).current .infoChild,.info-nav li:nth-child(2).current .infoChild { background-color: #fff; color:#242933; }
+.info-nav li:nth-child(1).current .infoChild i,.info-nav li:nth-child(2).current .infoChild i { background-color: #fff; }
+.infoIntro{ display: none; margin-bottom: 16px;}
+.info-nav .current .infoIntro{ display: block; }
+.infoIntro a{ font-size: 16px; color:#9fa0a0; line-height: 32px; }
+.info-nav .active a { background-color: #ff7733; color:#fff; }
+.info-arrow{ width: 6px; height: 10px; background: url(../images/img/aboutUsArrow.png) no-repeat; display: inline-block; position: absolute; right:55px; top:11px; }
+.info-nav .current .info-arrow{ transform:rotate(90deg); }
+
+.safeContent{ float: right; width:932px; padding:24px; height: auto; background-color: #fff; border-radius: 3px; }
+.infoTitle{ width: 100%; font-size: 18px; color:#242933; line-height: 40px; border-bottom: 1px solid #c9caca; }
+.infoContent{ font-size: 14px; line-height: 30px; color:#9fa0a0; }
+.info-content dl dt { font-size: 16px; color: #ff5500; line-height: 30px; margin: 10px 0px 5px 0px; position: relative; }
+
+.info-content dl dt i{ width: 4px; height: 4px; background-color: #ff5500; position: absolute; left: -18px; top:13px; border-radius: 3px; }
+.info-content dl dd{ font-size: 14px; line-height: 30px; color:#9fa0a0; }
+.platformIntro{ width: 310px; margin:35px auto; text-align: center; }
+.platformIntro i{ width: 6px; height: 6px; background-color: #ff5500; float: left; border-radius: 3px; position: absolute; left: 85px; top:18px; }
+.platformIntro .introName{ font-size:16px; line-height: 40px; color:#ff5500; position: relative; }
+.groupIntro,.coreTeam,.mainProducts,.safeIntro{ padding:18px 19px; }
+.chairmanSpeech{ padding:18px 19px 134px 19px; position: relative; }
+.chairman{ width: 339px; height: 335px; background: url(../images/chairman.png) no-repeat; position: absolute; bottom:0px; right:20px; }
+.managerIntro{ padding:45px 22px 147px 22px; }
+
+#column1,#column2{ width:263px; height:350px; float:left; position:relative; overflow: auto; }
+.remark{ width:100px; z-index: 20; float: left; margin-top: 55px; }
+.remark li{ position: relative; color:#9fa0a0; }
+.sql{ width: 6px; height: 6px; display: inline-block; position: absolute; left:-12px; top:8px; }
+.moneyDepository{ padding:18px 19px; }
+.depositoryTitle{ text-align: center; color:#ff5500; font-size: 16px; line-height: 40px; }
+.moneyDepository p{ font-size: 14px; line-height: 30px; color:#9fa0a0; }
+
+.safeIntroTitle{ font-size: 16px; color: #ff5500; line-height: 30px; margin: 10px 0px 5px 0px; position: relative; }
+.safeIntroTitle i{ width: 4px; height: 4px; background-color: #ff5500; position: absolute; left: -18px; top:13px; border-radius: 3px; }
+.investSafety{ overflow: auto; }
+.investSafety li{ width: 403px; float: left; padding-right: 0px; margin-right: 59px; }
+.investSafety li.even{float: right;margin-right: 0px;}
+.investSafety li img{ display: inline-block; margin:0px 0px 0px 12px; }
+.safeIntroContent{ font-size: 14px; line-height: 30px; color:#9fa0a0; }
+.infoSafetyTitle{ margin: 50px 0px 5px 0px; }
+.infoSafetyContent{ width: 410px; padding: 30px 20px 70px 40px; }
+.infoSafetyContent .safeIntroTitle{ margin: 0px; }
+.wechatFonts{ font-size: 12px; color: #b3b3b3; text-indent: 87px; }
+.safeIntrodataBg{float: left;margin-top: 20px;margin-left: 14px;}
+
+/* 我要投资 */
+.investBanner{height: 150px; overflow: hidden; }
+.investAds{ width: 1200px; height: 150px; border-radius: 3px; overflow: hidden; float: left; background-color: #fff;}
+.filterBids{ width: 100%; height: 40px; background-color: #fff; margin:10px 0px; border-radius: 3px;  overflow: hidden;}
+.fliterSelect{width: 90px;height: 20px;line-height: 20px;text-align: center;margin-left: 5px;}
+.filterBidType{ color:#2c2c2c; font-size: 14px; line-height: 40px; float: left; margin-left: 24px;}
+.totalBids{float: right;font-size: 14px; line-height: 40px;margin-right: 24px;}
+.totalCoupon{float: right;font-size: 14px; line-height: 40px;margin-right: 24px;position: relative;}
+.couponIcon {width: 26px;height: 19px;display: inline-block;background: url(../images/img/couponIcon.png) no-repeat;top: 11px;
+    position: absolute;left: -32px;}
+.bid-Container{margin-bottom: 10px;}
+.bidDetails{padding: 20px 24px;background-color: #fff;width: 1150px;height: 128px;border-radius: 3px;border: 1px solid #fff;}
+.bid-Container:hover .bidDetails{ box-shadow: 0px 2px 20px -5px #ff6a00; border-color: #ff6a00;}
+.bidDetails ul li{overflow: hidden;}
+.bid-logo{width: 28px;height: 28px;border-radius: 14px;background-color: #413e88;font-size: 18px;line-height: 27px;text-align: center;float: left;color:#fff;}
+.bid-title{font-size: 18px;line-height: 28px;color:#2c2c2c;float: left;margin-left: 12px;}
+.bid-eventTitle{color:#f1002f;float: left;margin-left: 20px;position: relative;border: 1px solid #f43359;height: 20px;
+	text-indent: 28px;padding-right: 10px;border-radius: 3px;margin-top: 2px;}
+.eventIcon{width: 15px;height: 17px;display: block;position: absolute;left: 7px;top:1px;background: url(../images/img/eventIcon.png) no-repeat;}
+.bid-subTitle{font-size: 14px;line-height: 28px;color:#727171;margin-left: 10px;float: left;}
+.bid-addApr{float: left;margin-top:2px;background-color: #f11e47;border-radius: 3px;text-align: center;line-height: 22px;padding: 0px 10px;color:#fff;}
+.aprArrow{width: 7px;height: 22px;float: left;background: url(../images/img/aprArrow.png) no-repeat;margin-left: 12px;margin-top: 2px;}
+.vip-mark{width: 68px;height: 20px;border: 1px solid #fdc455;color:#fdc455;border-radius: 3px;text-align: center;line-height: 20px;float: left;margin-top: 2px;margin-left: 20px;}
+.initAmount{font-size: 16px;line-height: 28px;float: right;color:#9fa0a0;}
+.bid-property{float: left;width: 190px;text-align: center;}
+.bid-property1{float: left;width: 234px;text-align: center;}
+.bid-property2{float: left;width: 260px;margin-left: 46px;}
+.bid-property3{float: right;width: 196px;}
+.bid-propertyNum{font-size: 28px;color:#e94709;line-height: 62px;margin-top: 7px;}
+.bid-propertyTip{font-size: 18px;line-height: 26px;color:#9fa0a0;}
+.fz-18{font-size: 18px;}
+.fz-14{font-size: 14px;}
+.bid-schedule{width: 260px;height: 30px;line-height: 30px;color:#2c2c2c;margin-top: 33px;overflow: hidden;}
+.bid-progress{width: 206px;height: 6px;background-color: #c9caca;border-radius: 3px;position: relative;float: left;margin-top: 12px;}
+.bid-bar{width: 35%;height: 6px;background-color: #e94709;position: absolute;left: 0px;top:0px;border-radius: 3px;}
+.bid-scheduleNum{float: right;font-size: 18px;}
+.investBtn{width: 196px;height: 40px;line-height: 40px;text-align: center;color:#fff;background-color: #e94709;float: right;border-radius: 20px;font-size: 18px;margin-top: 45px;}
+/* 信息披露 我要投资 分页 */
+.first-arrow-ico{background: url(../images/img/first-arrow-ico.png);background-repeat:no-repeat;display:inline-block;width:20px;height:20px;margin:5px;}
+.prev-arrow-ico{background: url(../images/img/prev-arrow-ico.png);background-repeat:no-repeat;display:inline-block;width:20px;height:20px;margin:5px;}
+.next-arrow-ico{background: url(../images/img/next-arrow-ico.png);background-repeat:no-repeat;display:inline-block;width:20px;height:20px;margin:5px;}
+.last-arrow-ico{background: url(../images/img/last-arrow-ico.png);background-repeat:no-repeat;display:inline-block;width:20px;height:20px;margin:5px;}
+.pagination {margin-top: 20px;}
+.pagination ul {display: inline-block;*display: inline; margin-bottom: 0; margin-left: 0; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; *zoom: 1;    margin-left: 12px}
+.pagination ul>li { display: inline-block;*display: inline;*zoom:1;margin-right: 10px !important;}
+.pagination ul>li>a,.pagination ul>li>span { float: left; width: 30px; line-height: 30px; text-decoration: none; background-color: #fff; border: 1px solid #c9caca; border-radius: 4px;color:#c9caca;text-align: center;}
+.pagination ul>li>a:hover,.pagination ul>li>a:focus,.pagination ul>.active>a,.pagination ul>.active>span { background-color: #3e3379;color:#fff;border-color: #3e3379;}
+.pagination ul>.active>a,.pagination ul>.active>span { color: #fff; cursor: default;border-color: #3e3379;}
+.pagination ul>.disabled>span,.pagination ul>.disabled>a,.pagination ul>.disabled>a:hover,.pagination ul>.disabled>a:focus { color: #999; cursor: default; background-color: transparent}
+.pagination ul>li:first-child>a,.pagination ul>li:first-child>span { border-left-width: 1px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topleft: 4px
+}
+.pagination ul>li:last-child>a,.pagination ul>li:last-child>span { -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; -moz-border-radius-topright: 4px; -moz-border-radius-bottomright: 4px
+}
+input[type="checkbox"]{float: left;margin-top: 12px;}
+.pagination-centered { text-align: center}
+
+
+/*信息披露-运营数据*/
+.report-title.mart-top-35{margin-top: 35px;}
+.report-title{width:100%;line-height: 40px;font-size:16px;color:#ff6a00;text-align: center;margin-left: -10px;display: none;}
+.report-title .circle{width: 4px;height: 4px;border-radius: 4px;background: #ff9500;position: absolute;margin: 18px 0 0 0;}
+.report-title span{display:inline-block;width:80px;position:relative;}
+.report-money{width:100%;position: relative;height:70px;display: none;}
+.report-money-left,.report-money-right,.report-money-center{position:absolute;left:50%;width:250px;text-align: center;line-height:30px;color: #8a8f99;font-size: 18px;}
+.report-money-left{margin-left: -250px;}
+.report-money-right{margin-left: 0px;}
+.report-money-center{margin-left: -125px;}
+.info-content .clear{clear:both;}
+.row-grid-3,.row-grid-2{width:100%;position:relative;display:none;}
+.row-grid-mask{position:absolute;width:100%;height:100%;margin-top: 10px;z-index: 9999;}
+.row-grid-3 .column{width:33%;float:left;text-align: center;z-index:10;height:auto;overflow:visible;}
+.row-grid-3 .column .column-con{margin-left:28px;margin-top: -15px;*margin-top: -15px;}
+.column-title{color:#ff6a00;margin-left: -10px}
+.nameList p{line-height:20px;text-align: left;margin-left: 70px;}
+.nameList span{color:#8a8f99}
+.nameList i{width: 4px;height: 4px;background: #ff9500;position: absolute;margin: 8px 0 0px -10px}
+#dataline{text-align: left;color:#8a8f99;margin-left: 15px;font-size:14px;line-height: 40px;height:40px;width:100%;font-size: 14px;display:block !important;clear:both;padding-top: 40px;}
+
+/*信息披露-新闻动态*/
+.infoContent ul{margin-top: 30px;min-height: 700px;}
+.infoContent ul li{width:750px;position: relative;padding-right: 0px;cursor: pointer;}
+.infoContent ul li .circle{width: 4px;height: 4px;border-radius: 4px;background: #ff9500;position: absolute;margin: 8px 0 0 0;}
+.infoContent ul li img{width:128px;height:80px;margin-left:20px;margin-right: 10px;}
+.infoContent ul li .infoCon-left,.infoContent ul li .infoCon-right{float:left;}
+.infoContent ul li .infoCon-right{width:590px;}
+.infoContent ul li .infoCon-more{clear: both;margin-left: 20px;line-height: 40px;color: #ff6a00;cursor: pointer;width:80px;}
+.infoContent ul li .infoCon-right-data{position:absolute;right:5px;top:0px;}
+.infoContent ul li .infoCon-right-title{font-size: 16px;color: #ff6a00;}
+.infoContent ul li .infoCon-right-con{line-height: 26px;height: 52px;overflow: hidden;}
+.infoContent ul li.infoCon-bottom-line{border-bottom: dashed 1px #e2e3e3;width:730px;height: 1px;margin-top: 0px;margin-left: 20px;}
+.infoContent #pagination li{width:30px !important;text-align: center;height: 30px;}
+.infoContent #pagination{height:60px !important;min-height:40px;clear: both;margin: 0 auto;left:50%;position:relative;}
+.info-content #info-content-all{height:670px;min-height:670px;}
+#info-content-all.platformNotice .infoCon-right{width:730px;margin-left: 15px;}
+#info-content-all.platformNotice li .circle{margin-top: 13px;*margin-top: 13px;}
+/* 投资详情 */
+.investBidContainer{overflow: hidden;}
+.bidDetail-left{width: 652px;height: 296px;float: left;background-color: #fff;border-radius: 3px;padding: 24px;}
+.bidDetail-left ul li{overflow: hidden;}
+.bidAttributes{width: 33.3%;float: left;height: 100px;text-align: center;}
+.bid-propertyNum1{font-size: 28px;color:#e94709;line-height: 58px;margin-top: 7px;}
+.bid-propertyTip1{font-size: 18px;line-height: 26px;color:#9fa0a0;}
+.bidRelated{height: 28px;line-height: 28px;font-size: 14px;color:#9fa0a0;float: left;border-radius: 15px;
+			border:1px solid #c9caca;margin-top: 30px;margin-left: 10px;text-align: center;}
+.bidRelated1{width: 173px;margin-left: 60px;}
+.bidRelated2{width: 121px;}
+.bidRelated3{width: 93px;}
+.bidRelated4{width: 113px;}
+.bidAttr{width: 537px;margin-left: 60px;}
+.bidProgress{width: 537px;height: 6px;background-color: #c9caca; border-radius: 3px;position: relative;margin-top: 50px;}
+.bidBar{width: 35%;height: 6px;background-color: #e94709;position: absolute;left: 0px;top: 0px;border-radius: 3px;}
+.rest-amount{float: left;font-size: 18px;color:#9fa0a0;margin-top: 15px;line-height: 28px;}
+.bidProgressNum{float: right;font-size: 18px;color:#2c2c2c;margin-top: 15px;line-height: 28px;}
+.bidDetail-right{width: 490px;height: 322px;float: right;background-color: #fff;border-radius: 3px;padding-top: 22px;}
+.countdownBox{padding-right: 24px;height: 30px;background-color: #ff7733;overflow: hidden;}
+.countdown{font-size: 14px;line-height: 30px;float: right;color:#fff;position: relative;text-indent: 24px;}
+.countdownIcon{width: 18px;height: 18px;background: url(../images/img/countdown.png) no-repeat;position: absolute;left: 0px;top:6px;}
+.investIncome{padding:0px 24px;font-size: 18px;line-height: 34px;overflow: hidden;margin-top: 34px;}
+.investIncomeBox{float: left;width: 33.3%;text-align: center;color:#9fa0a0;}
+.investProcessBox{margin-left: 86px;}
+.investNumberOption{width: 314px;height: 38px;border:1px solid #d5d5d5;margin-top: 18px;border-radius: 20px;float: left;}
+.minus{width: 31px;height: 25px;float: left;margin-left: 18px;margin-top: 7px;background: url(../images/img/minus.png) no-repeat;
+		cursor: pointer;border-right: 1px solid #d5d5d5;}
+.investAmount{width: 214px;height: 38px;border:none;line-height: 38px;float: left;text-align: center;outline: none;color:#c9caca;font-size: 16px;}
+.plus{width: 31px;height: 25px;float: left;margin-top: 7px;background: url(../images/img/plus.png) no-repeat;
+		cursor: pointer;border-left: 1px solid #d5d5d5;}
+.couponOption{margin: 13px 0px 0px 10px;width: 54px;height: 44px;float: left;position: relative;cursor: pointer;}
+.couponOptionTitle{position: absolute;left: 0px;top:28px;font-size: 12px;line-height: 18px;color:#9fa0a0;}
+.couponOptionTitle1{position: absolute;left: 0px;top:28px;font-size: 12px;line-height: 18px;color:#e94709;}
+.couponOptionInfo{height:34px;position: absolute;right: 48px;top: -14px;color:#e94709;z-index: 666;display: none;}
+.investOption{position: relative;}
+.coupLeftBg{width: 2px;height: 34px;display: inline-block;background: url(../images/img/coupLeftBg.png) no-repeat;float: left;}
+.coupcenterBg{height: 34px;display: inline-block;background: url(../images/img/coupCenterBg.png) repeat-x;float: left;line-height: 28px;padding-left: 7px;}
+.coupRightBg{width: 12px;height: 34px;display: inline-block;background: url(../images/img/coupRightBg.png) no-repeat;float: left;}
+.couponOptionIcon{width: 30px;height: 20px;position: absolute;left: 2px;top:7px;background: url(../images/img/couponOptionIcon.png) no-repeat;}
+.couponOptionIcon1{width: 30px;height: 20px;position: absolute;left: 2px;top:7px;background: url(../images/img/couponOptionIcon-on.png) no-repeat;}
+.couponOptionItips{width: 18px;height: 18px;position: absolute;right: 0px;top:0px;background: url(../images/img/itips.png) no-repeat;}
+.availableAmount{width: 278px;margin-left: 16px;float: left;font-size: 14px;line-height: 18px;margin-top: 5px;color:#9fa0a0;overflow: hidden;}
+.rechargeButton{margin-top:5px;margin-left: 32px;line-height: 18px;float: left;}
+.rechargeButton a{text-decoration: underline;color:#120e6a;}
+.vipPassword{width: 316px;height: 32px;border:none;border-bottom: 1px solid #d5d5d5;outline: none;text-align: center;line-height: 32px;}
+.investButton{width: 316px;height: 40px;font-size: 18px;line-height: 40px;background-color: #e94709;color:#fff;border-radius: 20px;
+			text-align: center;margin-top: 8px;cursor: pointer;}
+.cpsAds{height: 115px;border-radius: 3px;overflow: hidden;background-color: #fff;margin:10px 0;background: url(../images/cpsAds.png) no-repeat;cursor: pointer;}
+.investBills{padding: 10px 24px 0px 24px;background-color: #fff;border-radius: 3px;margin:10px 0px;}
+.investBills table{width: 100%;text-align: center;border-collapse: collapse;}
+.investBills th{font-size: 16px;line-height: 34px;font-weight: normal;color:#9fa0a0;border:none;}
+.investBills td{font-size: 14px;line-height: 34px;color:#2c2c2c;border:none;}
+.investBills tr{border-bottom: 1px solid #d5d5d5;}
+.investBills tr:first-child,.investBills tr:last-child{border-bottom: none;}
+
+.investDescription{background-color: #fff;border-radius: 3px;min-height: 525px;}
+.investDescriptionNav{padding-top: 18px;width: 1200px;height:35px;}
+.investDescriptionNav li{float: left;width: 300px;font-size: 18px;line-height: 34px;color:#2c2c2c;text-align: center;cursor: pointer;position: relative;}
+.investDescriptionNav li.active{border-bottom: 2px solid #e94709;}
+.descriptionContainer{padding: 10px 24px 0px 24px;border-top: 1px solid #d5d5d5;}
+.descriptionItem dt{padding-left: 15px;position: relative;font-size: 18px;line-height: 30px;margin-top: 20px;color:#9fa0a0;}
+.descriptionItem dt i{width: 4px;height: 4px;border-radius: 2px;background-color: #db4244;position: absolute;left: 0px;top:13px;}
+.descriptionItem dd{padding-left: 15px;font-size: 14px;line-height: 24px;color:#2c2c2c;}
+
+/* 帮助中心 */
+.searchBox{width: 362px;height: 36px;margin:0 auto;padding-top: 24px;overflow: hidden;}
+.searchCOntainer{width:264px;height: 34px;border:1px solid #d5d5d5;text-indent: 18px;float: left;line-height: 34px;}
+input.searchCOntainer[placeholder], [placeholder], *[placeholder] {color:#9fa0a0 !important;}
+.searchBtn{width: 75px;height: 26px;border:1px solid #e94709;float: right;text-align: center;line-height: 26px;
+			color:#e94709;margin-top: 4px;border-radius: 14px;cursor: pointer;}
+.helpCenterItems{overflow: hidden;}
+.helpCenterItem{width: 288px;height: 211px;float: left;padding-top: 65px;text-align: center;cursor: pointer;}
+.helpCenterItemIcon{width: 118px;height: 118px;margin: 0px auto; }
+.hcItermCustody{background: url(../images/hcItermCustody.png) no-repeat;}
+.hcItermAccount{background: url(../images/hcItermAccount.png) no-repeat;}
+.hcItermInvest{background: url(../images/hcItermInvest.png) no-repeat;}
+.hcItermFunds{background: url(../images/hcItermFunds.png) no-repeat;}
+.hcItermChest{background: url(../images/hcItermChest.png) no-repeat;}
+.helpCenterItemTips{font-size: 18px;line-height: 48px;color:#2c2c2c;}
+.helpCenterItemDetails{font-size: 14px;line-height: 18px;color:#9fa0a0;}
+
+.helpContentDetail{padding-bottom: 5px;border-bottom: 1px dashed #d5d5d5;}
+.helpContentDetail:last-child{border-bottom: none;}
+.helpContentTitle{margin-top: 10px;font-size: 16px;line-height: 26px;color:#2c2c2c;}
+.helpContent{font-size: 14px;line-height: 24px;color:#9fa0a0;}
+
+/* 弹框 */
+.alertWindows{position: fixed;width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);top:0px;left: 0px;}
+.alertWindow{width: 572px;border-top: 10px solid #716ea6;position: absolute;top:120px;left: 50%;margin-left: -285px;
+		background-color: #fff;border-radius: 5px;}
+.alertMsg{margin-top: 40px;margin-bottom:10px;font-size: 16px;line-height: 24px;color:#2c2c2c;padding: 0px 30px;}
+.alertBtn{width: 196px;height: 40px;background-color: #e94709;border-radius: 20px;line-height: 40px;text-align: center;font-size: 18px;
+			color:#fff;cursor: pointer;margin: 30px auto;display: none;}
+.alertBtnContainer{width: 410px;height: 40px;overflow: hidden;display: none;margin: 30px auto;}
+.alertLbtn{float: left;width: 195px;height: 40px;background-color: #e94709;border-radius: 20px;line-height: 40px;
+			text-align: center;font-size: 18px;color:#fff;cursor: pointer;}
+.alertRbtn{float: right;width: 193px;height: 38px;background-color: #fff;border:1px solid #e94709;border-radius: 20px;line-height: 38px;
+			text-align: center;font-size: 18px;color:#e94709;cursor: pointer;}
