@@ -43,7 +43,7 @@ router.post('/login', async (ctx, next) => {
       userName: user.get('userName')
     },
     secret,
-    { expiresIn: '0.5h' }
+    { expiresIn: '7d' }
   )
   ctx.session.token = token
   ctx.body = global.success(0, {token})
