@@ -10,13 +10,12 @@ module.exports = {
     // 打包时不生成.map文件
     productionSourceMap: false,
     chainWebpack: config => {
-        console.log(config);
         // 配置静态资源图片
         config.module.rules.delete('images');
         // 清除svg默认的处理方式
         config.module.rules.delete('svg');
         config.plugin('html').tap(args => {
-            args[0].title = '后台管理系统1';
+            args[0].title = '后台管理系统';
             return args;
         });
     },

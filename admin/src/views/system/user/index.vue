@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">    
+  <div class="app-container">
     <el-form ref="queryForm" :model="queryParams" :inline="true" label-width="68px">
       <el-form-item label="用户名" prop="userName">
         <el-input

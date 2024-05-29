@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">   
+  <div class="app-container">
     <div class="home">
       欢迎，{{ userInfo.user.userName }}
     </div>
@@ -11,13 +11,13 @@ import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      
+
     }
   },
   computed: {
     ...mapGetters([
-      'userInfo',
+      'userInfo'
     ])
-  },
+  }
 }
 </script>

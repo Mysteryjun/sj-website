@@ -7,9 +7,6 @@
             <span>个人信息</span>
           </div>
           <div>
-            <!-- <div class="text-center">
-              <userAvatar :user="user" />
-            </div> -->
             <ul class="list-group list-group-striped">
               <li class="list-group-item">
                 <span>
@@ -77,7 +74,6 @@
 </template>
 
 <script>
-import userAvatar from './userAvatar'
 import userInfo from './userInfo'
 import resetPwd from './resetPwd'
 import { getUser } from '@/api/system/user'
@@ -85,7 +81,7 @@ import { allDepartment } from '@/api/system/dept'
 
 export default {
   name: 'Profile',
-  components: { userAvatar, userInfo, resetPwd },
+  components: { userInfo, resetPwd },
   data () {
     return {
       user: {},

@@ -63,7 +63,7 @@
           @click="handleDelete"
           v-has-permi="['system:role:delete']"
         >删除</el-button>
-      </el-col>      
+      </el-col>
     </el-row>
     <el-table v-loading="$store.state.app.loading" :data="roleList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
@@ -435,7 +435,7 @@ export default {
         this.getList()
         this.$httpResponse('删除成功')
       }).catch(function () {})
-    }    
+    }
   }
 }
 </script>
