@@ -138,6 +138,15 @@ input{outline: none;}
 .rec-bidRateNum{ font-size: 18px; line-height: 36px; color:#2c2c2c; margin-top: 8px; }
 .rec-btn{ width: 304px; height: 40px; font-size: 18px; line-height: 40px; text-align: center; color:#fff; background-color: #e94709; border-radius: 20px; }
 /* news */
+.recommend-more a {
+    height: 58px;
+    font-size: 16px;
+    line-height: 58px;
+    color: #9fa0a0;
+}
+.recommend-more a:hover {
+    color: #3ec8e2;
+}
 .newsContainer{ width: 100%; background-color: #fff; height: 275px; border-radius: 5px; padding-top: 20px; }
 .newsDetail{ width: 552px; height:117px; margin:0 24px 21px 24px; float: left; }
 .newsDetail a {display: block;}
