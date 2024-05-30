@@ -43,7 +43,7 @@ input{outline: none;}
 .x-callbacks_tabs.x-callbacks1_tabs li.x-callbacks_here a { background: url(../images/banner-ico.png); }
 
 /* advantage */
-.advantage{ width: 100%;}
+.advantage{ width: 100%; background-color: #3ec8e2;}
 .advantage ul li{ width:300px; float: left;margin: 24px 0px;text-align: center; }
 .advantage-icon{ width: 48px; height: 48px;display: block;margin: 0px auto; }
 
@@ -97,46 +97,20 @@ input{outline: none;}
 		opacity: 0;
 	}
 }
-.strength-icon{ background: url(/style/images/appointment.png) no-repeat; background-size: cover; }
-.wealthy-icon{ background: url(/style/images/outpatient.png) no-repeat; background-size: cover; }
-.product-icon{ background: url(/style/images/chs.png) no-repeat; background-size: cover;}
-.safety-icon{ background: url(/style/images/checkup.png) no-repeat;background-size: cover;}
+.advance1-icon{ background: url(/style/images/advance1.png) no-repeat; background-size: cover; }
+.advance2-icon{ background: url(/style/images/advance2.png) no-repeat; background-size: cover; }
+.advance3-icon{ background: url(/style/images/advance3.png) no-repeat; background-size: cover;}
+.advance4-icon{ background: url(/style/images/advance4.png) no-repeat;background-size: cover;}
 .advantage-tips{margin-top: 12px; }
-.advantage-title{ font-size: 18px; line-height: 40px; color:#2c2c2c; }
-.description{ font-size: 14px; line-height: 20px; color:#9fa0a0; }
+.advantage-title{ font-size: 18px; line-height: 40px; color:#fff; }
 /* platform */
-.platform{ width: 100%; background: #f0f2f7; padding-top: 20px; padding-bottom: 23px; }
-/* newFriends */
-.newFriends{ background-color: #fff; border-radius: 5px; height: 190px; cursor: pointer; border:1px solid #fff; }
-.newFriends:hover{ box-shadow: 0px 2px 20px -5px #ff6a00; border-color: #ff6a00; }
-.newFriends-icon{ width: 436px; height: 161px; margin-left: 24px; background: url(../images/newFriends-icon.png) no-repeat; margin-right: 32px; }
-.newFriends-enjoy{ width:492px; height: 120px; border-left: 1px solid #d5d5d5; margin-top: 36px; text-align: center; }
-.newFriends-enjoy li{ width: 164px; float: left; }
-.newFriends-enjoy-num{ font-size: 32px; line-height: 74px; color:#e94709; }
-.newFriends-enjoy-tip{ font-size: 18px; line-height: 38px; color:#9fa0a0; }
-.newFriends-enjoy-btn{ width: 196px; height: 40px; font-size:18px; line-height: 40px; text-align: center; color:#fff; background: #e94709; margin-top: 84px; border-radius: 20px; }
+.platform{ width: 100%; padding-top: 20px; padding-bottom: 23px; }
+
 /* recommend */
 .recommend{ height: 460px; overflow: hidden; }
 .recommend-tips{ overflow: auto; }
 .projectTitle{ color:#2c2c2c; font-size: 24px; line-height: 36px; margin-top: 12px; text-indent: 18px; position: relative; }
 .projectIcon{ width: 3px; height: 28px; background-color: #ff6a00; display: inline-block; position: absolute; left: 0px; top:5px; }
-.recommend-details{ height: 402px; width: 1300px}
-.recommend-project{ width: 304px; height: 358px; padding:20px 24px 22px 24px; margin-right: 69px; float: left; background-color: #fff; 
-				border-radius: 5px; border: 1px solid #fff; cursor: pointer; }
-.recommend-project:hover{ box-shadow: 0px 2px 20px -5px #ff6a00; border-color: #ff6a00; }
-.recTitle{ height: 32px; overflow: auto; }
-.rec-logo{ width: 27px; height: 27px; color:#fff; font-size:18px; line-height: 27px; text-align: center; border-radius: 3px; margin-top: 2px; float: left; }
-.rec-title{ font-size: 18px; line-height: 32px; color:#2c2c2c; float: left; margin-left: 12px; }
-.recBids{ width: 304px; height: 129px; border-bottom: 1px solid #d5d5d5; text-align: center; }
-.rec-bidDetails{ width: 50%; float: left; margin-top:25px; }
-.rec-bidNum{ font-size: 32px; line-height:48px; color:#e94709; }
-.rec-bidTips{ font-size: 18px; line-height: 38px; color:#9fa0a0; }
-.recBids1{ width: 304px; height: 142px; padding-top: 16px; }
-.rec-bidDetails1{ width: 100%; overflow: auto; }
-.rec-bidRate{ width: 245px; height: 6px; background-color: #c9caca; margin-top: 25px; border-radius: 3px; position: relative; }
-.rec-curRate{ width: 35%; display: inline-block; position: absolute; left: 0px; top:0px; height: 6px; border-radius: 3px; background-color: #e94709; }
-.rec-bidRateNum{ font-size: 18px; line-height: 36px; color:#2c2c2c; margin-top: 8px; }
-.rec-btn{ width: 304px; height: 40px; font-size: 18px; line-height: 40px; text-align: center; color:#fff; background-color: #e94709; border-radius: 20px; }
 /* news */
 .recommend-more a {
     height: 58px;
@@ -147,15 +121,15 @@ input{outline: none;}
 .recommend-more a:hover {
     color: #3ec8e2;
 }
-.newsContainer{ width: 100%; background-color: #fff; height: 275px; border-radius: 5px; padding-top: 20px; }
-.newsDetail{ width: 552px; height:117px; margin:0 24px 21px 24px; float: left; }
+.newsContainer{ width: 100%;border: 1px solid #d5d5d5; height: 275px; border-radius: 5px; padding-top: 20px; box-sizing: border-box;}
+.newsDetail{ width: 550px; height:117px; margin:0 24px 21px 24px; float: left; }
 .newsDetail a {display: block;}
-.news-images{ float: left; width: 175px; height: 117px; margin-right: 16px; }
+.news-images{ float: left; width: 80px; height: 60px; margin-right: 16px;background-color: #3ec8e2; }
 .news-images img{ width: 100%; height: 100%; transition: 1s; -moz-transition: 1s; -webkit-transition: 1s;-o-transition: 1s; transform: scale(0.95);
 				-moz-transform: scale(0.95); -webkit-transform: scale(0.95);-o-transform: scale(0.95); }
 .newsDetail:hover .news-images img{  transform: scale(1.1);-moz-transform: scale(1.1); -webkit-transform: scale(1.1);
 				-o-transform: scale(1.1); }
-.news-summary{ float: left; width:361px; }
+.news-summary{ float: left; width:450px; }
 .news-title{ font-size: 18px; line-height: 32px; color:#e94709; white-space: nowrap; 
 	overflow: hidden;
 	text-overflow: ellipsis; }

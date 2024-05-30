@@ -1,38 +1,37 @@
-
 <%- include('components/header', {title:title,active:'index'}); %>
 <!-- banner -->
 <!-- banner -->
 <div class="homeBanner x-callbacks_container">
     <ul id="slider">
-        <li class="banner1" style='background-image: url("/style/images/banner1.jpg");'></li>
-        <li class="banner2" style='background-image: url("/style/images/banner2.jpg");'></li>
-        <li class="banner3" style='background-image: url("/style/images/banner3.jpg");'></li>
-    </ul> 
+        <li class="banner1" style="background-image: url('/style/images/banner1.jpg')"></li>
+        <li class="banner2" style="background-image: url('/style/images/banner2.jpg')"></li>
+        <li class="banner3" style="background-image: url('/style/images/banner3.jpg')"></li>
+    </ul>
 </div>
 <!-- 我们的优势 -->
 <div class="advantage">
     <div class="main-content">
         <ul>
             <li>
-                <span class="advantage-icon strength-icon"></span>
+                <span class="advantage-icon advance1-icon"></span>
                 <div class="advantage-tips">
                     <div class="advantage-title">预约服务</div>
                 </div>
             </li>
             <li>
-                <span class="advantage-icon product-icon"></span>
+                <span class="advantage-icon advance2-icon"></span>
                 <div class="advantage-tips">
                     <div class="advantage-title">门诊就医</div>
                 </div>
             </li>
             <li>
-                <span class="advantage-icon safety-icon"></span>
+                <span class="advantage-icon advance3-icon"></span>
                 <div class="advantage-tips">
                     <div class="advantage-title">医保信息</div>
                 </div>
             </li>
             <li>
-                <span class="advantage-icon wealthy-icon"></span>
+                <span class="advantage-icon advance4-icon"></span>
                 <div class="advantage-tips">
                     <div class="advantage-title">健康体检</div>
                 </div>
@@ -43,88 +42,86 @@
 </div>
 <!-- 平台详情 -->
 <div class="platform">
-    
     <!-- 招标公告 -->
     <div class="news main-content">
         <div class="recommend-tips">
-            <div class="projectTitle fll"><span class="projectIcon"></span>平台公告</div>
+            <div class="projectTitle fll">
+                <span class="projectIcon"></span>
+                招标公告
+            </div>
             <div class="recommend-more flr"><a href="/home/notice">更多></a></div>
         </div>
         <div class="newsContainer">
             <% roleList.forEach(function(item) { %>
-                <div class="newsDetail">
-                    <a href="">
-                        <span class="news-images"><img src="../images/news-image1.JPEG" width="100%" alt="" /></span>
-                        <div class="news-summary">
-                            <div class="news-title"><%= item.noticeTitle %></div>
-                            <div class="news-content"><%- item.noticeContent %></div>
-                        </div>
-                    </a>
-                </div>
-              <% }) %>
+            <div class="newsDetail">
+                <a href="">
+                    <span class="news-images">
+                        <img src="/style/images/bid.png" width="100%" alt="招标公告" />
+                    </span>
+                    <div class="news-summary">
+                        <div class="news-title"><%= item.noticeTitle %></div>
+                        <div class="news-content"><%- item.noticeContent %></div>
+                    </div>
+                </a>
+            </div>
+            <% }) %>
         </div>
         <div class="blank"></div>
     </div>
 </div>
 
-
-
-
-
 <script type="text/javascript" src="/style/js/responsiveslides.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {		
-		// Slideshow 
-    	$("#slider").responsiveSlides({
-    	  auto: true,
-    	  pager: false,
-    	  nav: true,
-    	  speed: 500,
-    	  timeout:4000,
-    	  pager: true, 
-    	  pause:true,     //鼠标悬停
-    	  pauseControls: true,
-    	  prevText: "",   
-    	  nextText: "",      
-    	  namespace: "x-callbacks"
-    	});  
-    	$(".x-callbacks_container").on("mouseenter",function(){    		
-    	    $(".x-callbacks_nav").show();   	    
-    	    
-    	});
-    	$(".x-callbacks_container").on("mouseleave",function(){     
-    	      $(".x-callbacks_nav").hide();      
-    	});
-    	// 公告轮播
-    	var option = {
-			"interval" : 2000,  //轮换时间
-			"animatetime" : 600, //过渡时间
-			"movestep" : -40  //高度
-		};
-    	var carousel = $(".carousel");
-    	var ul = $(".carousel ul");
-    	$(".carousel ul").children().eq(0).clone().appendTo(".carousel ul");
-    	var lengthall = $(".carousel ul li").length;
-    	var timer = setInterval(noticeAnimate,option.interval);
-    	var idx = 0;
-    	//鼠标进入停止定时器
-    	carousel.mouseenter(function(){
- 			clearInterval(timer);
- 		});
- 		//鼠标离开重新启动定时器
- 		carousel.mouseleave(function(){
- 			timer = setInterval(noticeAnimate,option.interval);
- 		});
-    	function noticeAnimate(){
-    		idx++;
-			ul.animate({"top": idx * option.movestep} , option.animatetime , function(){
-				if(idx > lengthall  - 2){
-					idx = 0;
-					$(this).css("top",0);
-				}
-			});    		
-    	}
-    	
-	})
+    $(document).ready(function () {
+        // Slideshow
+        $('#slider').responsiveSlides({
+            auto: true,
+            pager: false,
+            nav: true,
+            speed: 500,
+            timeout: 4000,
+            pager: true,
+            pause: true, //鼠标悬停
+            pauseControls: true,
+            prevText: '',
+            nextText: '',
+            namespace: 'x-callbacks',
+        });
+        $('.x-callbacks_container').on('mouseenter', function () {
+            $('.x-callbacks_nav').show();
+        });
+        $('.x-callbacks_container').on('mouseleave', function () {
+            $('.x-callbacks_nav').hide();
+        });
+        // 公告轮播
+        var option = {
+            interval: 2000, //轮换时间
+            animatetime: 600, //过渡时间
+            movestep: -40, //高度
+        };
+        var carousel = $('.carousel');
+        var ul = $('.carousel ul');
+        $('.carousel ul').children().eq(0).clone().appendTo('.carousel ul');
+        var lengthall = $('.carousel ul li').length;
+        var timer = setInterval(noticeAnimate, option.interval);
+        var idx = 0;
+        //鼠标进入停止定时器
+        carousel.mouseenter(function () {
+            clearInterval(timer);
+        });
+        //鼠标离开重新启动定时器
+        carousel.mouseleave(function () {
+            timer = setInterval(noticeAnimate, option.interval);
+        });
+        function noticeAnimate() {
+            idx++;
+            ul.animate({ top: idx * option.movestep }, option.animatetime, function () {
+                if (idx > lengthall - 2) {
+                    idx = 0;
+                    $(this).css('top', 0);
+                }
+            });
+        }
+    });
 </script>
 <%- include("components/footer") -%>
