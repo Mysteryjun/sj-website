@@ -10,12 +10,16 @@
 	<div class="top-bar"></div>
 	<!-- 导航 -->
 	<div class="main-nav">
-		<div class="main-content">
-			<div class="logo fll"></div>
+		<div class="main-content clearfix">
+			<div class="logo fll">
+				<a href="/">
+					<img src="/style/images/logo.png" alt="logo">
+				</a>
+			</div>
 			<ul class="nav flr">
 				<li class="<%= active=='about'?'active':'' %>"><a href="/home/about">联系我们</a></li>
-				<li class="<%= active=='publicity'?'active':'' %>"><a href="/home/publicity">招标公示</a></li>
-				<li class="<%= active=='notice'?'active':'' %>"><a href="/home/notice">招标公告</a></li>
+				<li class="<%= active=='publicity'?'active':'' %>"><a href="/home/publicity">院务公开</a></li>
+				<li class="<%= active=='notice'?'active':'' %>"><a href="/home/notice">通知公告</a></li>
 				<li class="<%= active=='intro'?'active':'' %>"><a href="/home/intro">医院概况</a></li>
 				<li class="<%= active=='index'?'active':'' %>"><a href="/">首页</a></li>
 			</ul>

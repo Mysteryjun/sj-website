@@ -1,6 +1,5 @@
 <%- include('components/header', {title:title,active:'index'}); %>
 <!-- banner -->
-<!-- banner -->
 <div class="homeBanner x-callbacks_container">
     <ul id="slider">
         <li class="banner1" style="background-image: url('/style/images/banner1.jpg')"></li>
@@ -10,7 +9,7 @@
 </div>
 <!-- 我们的优势 -->
 <div class="advantage">
-    <div class="main-content">
+    <div class="main-content clearfix">
         <ul>
             <li>
                 <span class="advantage-icon advance2-icon"></span>
@@ -44,14 +43,14 @@
 <div class="platform">
     <!-- 招标公告 -->
     <div class="news main-content">
-        <div class="recommend-tips">
+        <div class="recommend-tips clearfix">
             <div class="projectTitle fll">
                 <span class="projectIcon"></span>
-                招标公告
+                通知公告
             </div>
             <div class="recommend-more flr"><a href="/home/notice">更多></a></div>
         </div>
-        <div class="newsContainer">
+        <div class="newsContainer clearfix">
             <% roleList.forEach(function(item) { %>
             <div class="newsDetail">
                 <a href="">
@@ -59,8 +58,11 @@
                         <img src="/style/images/bid.png" width="100%" alt="招标公告" />
                     </span>
                     <div class="news-summary">
-                        <div class="news-title"><%= item.noticeTitle %></div>
-                        <div class="news-content"><%- item.noticeContent %></div>
+                        <div class="clearfix">
+                            <div class="news-title fll"><%= item.noticeTitle %></div>
+                            <div class="news-time flr"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
+                        </div>                        
+                        <div class="news-content"><%- item.remark %></div>
                     </div>
                 </a>
             </div>

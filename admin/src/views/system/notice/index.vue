@@ -113,14 +113,14 @@
 
     <!-- 添加或修改公告对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="780px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="公告标题" prop="noticeTitle">
               <el-input v-model="form.noticeTitle" placeholder="请输入公告标题" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="公告类型" prop="noticeType">
               <el-select v-model="form.noticeType" placeholder="请选择">
                 <el-option
@@ -130,6 +130,11 @@
                   :value="dict.dictValue"
                 />
               </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="公告副标题" prop="remark">
+              <el-input v-model="form.remark" placeholder="请输入公告副标题(首页显示用)" />
             </el-form-item>
           </el-col>
           <el-col :span="24">

@@ -23,7 +23,9 @@ img {
 input {
     outline: none;
 }
-.blank {
+.clearfix::after {
+	content: "";
+	display: block;
     clear: both;
 }
 .fll {
@@ -35,7 +37,6 @@ input {
 .main-content {
     width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
 }
 .mart-10 {
     margin-top: 10px !important;
@@ -61,7 +62,7 @@ input {
 /* top-bar */
 .top-bar {
     height: 10px;
-    background-color: #3ec8e2;
+    background-color: #00948D;
 }
 /* main-nav */
 .main-nav {
@@ -69,10 +70,10 @@ input {
     height: 76px;
     margin: 10px 0px;
 }
-.logo {
-    width: 270px;
+.logo a{
+	width: 270px;
     height: 76px;
-    background: url(/style/images/logo.png) no-repeat;
+	display: block;
 }
 .nav {
     list-style: none;
@@ -80,11 +81,10 @@ input {
 }
 .nav li {
     float: right;
-    width: 80px;
     text-align: center;
     line-height: 76px;
     font-size: 18px;
-    margin-left: 20px;
+    margin-left: 24px;
 }
 .nav li a {
     color: #000;
@@ -95,7 +95,7 @@ input {
 }
 .nav li.active a,
 .nav li:hover a {
-    color: #3ec8e2;
+    color: #00948D;
 }
 /* homeBanner */
 .homeBanner {
@@ -145,11 +145,11 @@ input {
 }
 .x-callbacks_nav.x-callbacks1_nav.prev {
     left: 10px;
-    background: url(../images/arrow-left.png) no-repeat;
+    background: url(/style/images/arrow-left.png) no-repeat;
 }
 .x-callbacks_nav.x-callbacks1_nav.next {
     right: 10px;
-    background: url(../images/arrow-right.png) no-repeat;
+    background: url(/style/images/arrow-right.png) no-repeat;
 }
 .x-callbacks_tabs.x-callbacks1_tabs {
     position: relative;
@@ -171,7 +171,7 @@ input {
     width: 16px;
     height: 16px;
     border-radius: 10px;
-    background: url(../images/banner-newico.png);
+    background: url(/style/images/banner-newico.png);
     position: absolute;
     left: 0;
     z-index: 1000;
@@ -180,13 +180,13 @@ input {
     zoom: 1;
 }
 .x-callbacks_tabs.x-callbacks1_tabs li.x-callbacks_here a {
-    background: url(../images/banner-ico.png);
+    background: url(/style/images/banner-ico.png);
 }
 
 /* advantage */
 .advantage {
     width: 100%;
-    background-color: #3ec8e2;
+    background-color: #00948D;
 }
 .advantage ul li {
     width: 300px;
@@ -321,11 +321,11 @@ input {
     color: #9fa0a0;
 }
 .recommend-more a:hover {
-    color: #3ec8e2;
+    color: #00948D;
 }
 .newsContainer {
     width: 100%;
-    border: 1px solid #d5d5d5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 275px;
     border-radius: 5px;
     padding-top: 20px;
@@ -345,7 +345,8 @@ input {
     width: 80px;
     height: 60px;
     margin-right: 16px;
-    background-color: #3ec8e2;
+    background-color: #00948D;
+	margin-top: 8px;
 }
 .news-images img {
     width: 100%;
@@ -370,18 +371,24 @@ input {
     width: 450px;
 }
 .news-title {
-    font-size: 18px;
-    line-height: 32px;
+    font-size: 16px;
+    line-height: 30px;
     color: #e94709;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+	width: 356px;
+}
+.news-time{
+	margin-top: 5px;
+	font-size: 12px;
+    line-height: 24px;
+	color:#9fa0a0;
 }
 .news-content {
     font-size: 14px;
     line-height: 24px;
     color: #9fa0a0;
-    margin-top: 12px;
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
@@ -429,7 +436,7 @@ input {
 .siteRelated {
     width: 100%;
     height: 198px;
-    background-color: #e2e4ea;
+    background-color: #1A6F65;
 }
 .downApp {
     width: 97px;
@@ -438,9 +445,8 @@ input {
     margin-right: 41px;
 }
 .downAppIcon {
-    width: 97px;
-    height: 96px;
-    background: url(../images/downAppIcon.png) no-repeat;
+    width: 90px;
+    height:110px;
 }
 .downAppTip {
     font-size: 16px;
@@ -449,22 +455,20 @@ input {
     text-align: center;
 }
 .customer {
-    width: 315px;
-    margin-top: 35px;
+    width: 500px;
+    margin-top: 60px;
 }
-.tel {
-    font-size: 30px;
-    line-height: 42px;
-    color: #e94709;
-}
-.service {
+.customer .service {
     font-size: 16px;
-    line-height: 24px;
-    color: #2c2c2c;
+    line-height: 24px;    
+	color: rgba(255, 255, 255, 0.6);
+}
+.customer .service span{
+	color: #fff;
 }
 .siteMap {
-    width: 440px;
-    margin-top: 77px;
+    width: 300px;
+    margin-top: 60px;
 }
 .siteMap ul {
     width: 100%;
@@ -476,14 +480,14 @@ input {
 .siteMap ul li a {
     font-size: 16px;
     line-height: 24px;
-    color: #2c2c2c;
+    color: rgba(255, 255, 255, 0.6);
     transition: all 0.2s linear;
     -webkit-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
 }
 .siteMap ul li a:hover {
-    color: #e94709;
+    color: #fff;
 }
 .weChat {
     width: 95px;
@@ -497,14 +501,14 @@ input {
 .weChatDetail {
     font-size: 16px;
     line-height: 32px;
-    color: #2c2c2c;
+    color: #fff;
     text-align: center;
 }
 /* copyright */
 .copyright {
     width: 100%;
     height: 60px;
-    background-color: #7b7c81;
+    background-color: #085d52;
 }
 .copyright-info {
     font-size: 14px;
@@ -512,10 +516,14 @@ input {
     color: #fff;
 }
 .certification {
-    width: 130px;
-    height: 40px;
-    border-radius: 3px;
-    background-color: #fff;
-    margin-top: 10px;
-    margin-left: 20px;
+	font-size: 14px;
+    line-height: 60px;
+	color: #c4c4c4;
+}
+.certification a{
+	color: rgba(255, 255, 255, 0.6);
+	display: inline-block;
+}
+.certification a:hover{
+	color: #fff;
 }
