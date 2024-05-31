@@ -4,17 +4,24 @@ const Generic = require('../../dao/Generic');
 const moment = require('moment');
 // 首页
 router.get('/', async (ctx, next) => {
-    let query = {
+    let noticeQuery = {
         pageNum: 1,
         pageSize: 4,
+        noticeType:'2'
     };
-    let roleList = await Generic.getList('Notice', query);
-    console.log('Notice', roleList);
+    let noticeList = await Generic.getList('Notice', noticeQuery);
+    let publicityQuery = {
+        pageNum: 1,
+        pageSize: 4,
+        noticeType:'2'
+    };
+    let publicityList = await Generic.getList('Notice', publicityQuery);
     await ctx.render(
         'index', //渲染用ctx.render,index是页面
         {
             title: '首页',
-            roleList: roleList.rows,
+            noticeList: noticeList.rows,
+            publicityList: publicityList.rows,
             moment:moment
         }
     );

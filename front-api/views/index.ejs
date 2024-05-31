@@ -42,33 +42,54 @@
 <!-- 平台详情 -->
 <div class="platform">
     <!-- 招标公告 -->
-    <div class="news main-content">
+    <div class="notice main-content">
         <div class="recommend-tips clearfix">
             <div class="projectTitle fll">
                 <span class="projectIcon"></span>
                 通知公告
             </div>
-            <div class="recommend-more flr"><a href="/home/notice">更多></a></div>
+            <div class="recommend-more flr"><a href="/home/notice">查看更多></a></div>
         </div>
-        <div class="newsContainer clearfix">
-            <% roleList.forEach(function(item) { %>
-            <div class="newsDetail">
-                <a href="">
-                    <span class="news-images">
-                        <img src="/style/images/bid.png" width="100%" alt="招标公告" />
-                    </span>
-                    <div class="news-summary">
-                        <div class="clearfix">
-                            <div class="news-title fll"><%= item.noticeTitle %></div>
-                            <div class="news-time flr"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
-                        </div>                        
-                        <div class="news-content"><%- item.remark %></div>
-                    </div>
-                </a>
+        <% noticeList.forEach(function(item) { %>
+        <div class="noticeContainer">
+            <a href="" class="clearfix">
+                <span class="notice-images">
+                    <img src="/style/images/bid.png" width="100%" alt="招标公告" />
+                </span>
+                <div class="notice-summary">
+                    <div class="clearfix">
+                        <div class="notice-title fll"><%= item.noticeTitle %></div>
+                        <div class="notice-time flr"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
+                    </div>                        
+                    <div class="notice-content"><%- item.remark %></div>
+                </div>
+            </a>                   
+        </div>
+        <% }) %>       
+    </div>
+     <!-- 院务公开 -->
+    <div class="notice main-content">
+        <div class="recommend-tips clearfix">
+            <div class="projectTitle fll">
+                <span class="projectIcon"></span>
+                院务公开
             </div>
-            <% }) %>
+            <div class="recommend-more flr"><a href="/home/publicity">查看更多></a></div>
         </div>
-        <div class="blank"></div>
+        <% noticeList.forEach(function(item) { %>
+        <div class="publicityContainer">
+            <a href="" class="clearfix">
+                <div class="publicity-time fll">
+                    <div class="publicity-year"><%= moment(item.createdAt).format('YYYY-MM') %></div>
+                    <div class="publicity-day"><%= moment(item.createdAt).format('DD') %></div>
+                </div>
+                <div class="publicity-summary fll">
+                    <div class="publicity-title"><%= item.noticeTitle %></div>
+                    <div class="publicity-content"><%= item.remark %></div>                    
+                </div>
+            </a>
+        </div>
+        <% }) %>       
     </div>
 </div>
 

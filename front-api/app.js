@@ -95,6 +95,6 @@ InitManager.initCore(app);
 //   console.log('https server is running 9999...');
 // });
 
-app.listen(80, () => {
-    console.log('server is running 80...');
+app.listen(3000, () => {
+    console.log('server is running 3000...');
 });
