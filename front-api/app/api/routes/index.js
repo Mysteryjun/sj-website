@@ -13,7 +13,7 @@ router.get('/', async (ctx, next) => {
     let publicityQuery = {
         pageNum: 1,
         pageSize: 4,
-        noticeType:'2'
+        noticeType:'1'
     };
     let publicityList = await Generic.getList('Notice', publicityQuery);
     await ctx.render(
