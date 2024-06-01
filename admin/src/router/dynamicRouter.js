@@ -9,5 +9,6 @@ export default {
   Menu: () => import('@/views/system/menu'),
   Dict: () => import('@/views/system/dict'),
   Dept: () => import('@/views/system/dept'),
+  Info: () => import('@/views/system/info'),
   Test: () => import('@/views/login')
 }

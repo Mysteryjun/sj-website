@@ -281,7 +281,7 @@ export default {
         id: undefined,
         parentId: 0,
         title: undefined,
-        icon: undefined,
+        icon: "",
         menu_type: 'M',
         orderNum: undefined,
         is_frame: '1',
@@ -319,7 +319,7 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
-            updateMenu(this.form).then(res => {
+            updateMenu({...this.form,icon:this.form.icon||""}).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()

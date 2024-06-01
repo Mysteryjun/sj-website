@@ -8,6 +8,7 @@ const User = require('../dao/User')
 const baseUrl = '/api/' + version
 // api 白名单
 const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
+`${baseUrl}/system/notice`,
  `${baseUrl}/wx/*`,"/favicon.ico",
 //  页面路由白名单
  "/","/style/*","/home/*"] 

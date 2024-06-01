@@ -52,7 +52,7 @@
         </div>
         <% noticeList.forEach(function(item) { %>
         <div class="noticeContainer">
-            <a href="" class="clearfix">
+            <a href="/home/notice/<%= item.id %>" class="clearfix">
                 <span class="notice-images">
                     <img src="/style/images/bid.png" width="100%" alt="招标公告" />
                 </span>
@@ -78,7 +78,7 @@
         </div>
         <% publicityList.forEach(function(item) { %>
         <div class="publicityContainer">
-            <a href="" class="clearfix">
+            <a href="/home/publicity/<%= item.id %>" class="clearfix">
                 <div class="publicity-time fll">
                     <div class="publicity-year"><%= moment(item.createdAt).format('YYYY-MM') %></div>
                     <div class="publicity-day"><%= moment(item.createdAt).format('DD') %></div>
