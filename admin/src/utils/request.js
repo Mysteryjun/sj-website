@@ -5,11 +5,10 @@ import { getToken } from '@/utils/auth'
 
 axios.defaults.withCredentials = true // 跨域访问需要发送cookie时一定要加这句
 
-let httpTime = 0
+
 
 // 添加请求拦截器，在发送请求之前做些什么
 axios.interceptors.request.use(function (config) {
-  httpTime++
   return config
 }, function (error) {
   return Promise.reject(error)
@@ -110,13 +109,8 @@ function HttpRequest (url, method = 'GET', params = {}, isLoading = true) {
     }).catch((response) => {
       errorState(response)
       reject(response)
-    }).then(function () {
-      // always executed
-      httpTime--
-      // console.log(httpTime, url)
-      if (!httpTime) {
-        store.state.app.loading = false
-      }
+    }).then(function () {      
+      store.state.app.loading = false
     })
   })
 }

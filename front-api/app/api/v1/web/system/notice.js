@@ -7,6 +7,24 @@ const router = new Router({
   prefix: '/api/' + version // 路由统一前缀 /api/版本号
 })
 
+// 无token获取列表
+router.get('/system/common/notice', async (ctx, next) => {
+  let checkLists = ['pageNum', 'pageSize'] // 要校验的字段
+  let v = new Validator(ctx)
+  v.check(checkLists)
+  let noticeTitle = ctx.query.noticeTitle ? ctx.query.noticeTitle : ''
+  let noticeType = ctx.query.noticeType ? ctx.query.noticeType : ''
+  let pageNum = ctx.query.pageNum ? ctx.query.pageNum : 1
+  let pageSize = ctx.query.pageSize ? ctx.query.pageSize : 10
+  let query = {
+    noticeTitle,
+    noticeType,
+    pageNum,
+    pageSize
+  }
+  let roleList = await Generic.getList('Notice', query)
+  ctx.body = global.success(100010, roleList)
+})
 // 获取列表
 router.get('/system/notice', async (ctx, next) => {
   let checkLists = ['pageNum', 'pageSize'] // 要校验的字段
@@ -60,8 +78,9 @@ router.post('/system/notice', async (ctx, next) => {
 
 // 修改
 router.put('/system/notice', async (ctx, next) => {
+  console.log(2333,ctx.state)
   let checkLists = ['id', 'noticeTitle', 'noticeContent'] // 要校验的字段
-  let v = new Validator(ctx)
+  let v = new Validator(ctx) 
   v.check(checkLists)
   let query = {
     noticeTitle: v.get('noticeTitle'),

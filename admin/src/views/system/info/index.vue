@@ -150,7 +150,22 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="内容">
-              <Editor v-model="form.infoContent" />
+              <div style="border: 1px solid #ccc;">
+                <Toolbar
+                    style="border-bottom: 1px solid #ccc"
+                    :editor="editor"
+                    :defaultConfig="toolbarConfig"
+                    :mode="mode"
+                />
+                <Editor
+                    style="height: 500px; overflow-y: hidden;"
+                    v-model="form.infoContent"
+                    :defaultConfig="editorConfig"
+                    :mode="mode"
+                    @onCreated="onCreated"
+                    v-if="open"
+                />
+              </div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -164,16 +179,37 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/system/info'
-import Editor from '@/components/Editor'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
+import { getToken } from '@/utils/auth'
 
 export default {
   name: 'Notice',
   components: {
+    Toolbar,
     Editor
   },
   data () {
     return {
+      editor: null,
+      toolbarConfig: { },
+      editorConfig: { 
+        placeholder: '请输入内容...',
+        MENU_CONF: {
+          uploadImage: {
+            // 自定义上传图片 方法
+            customUpload: this.uploadImg,
+            // 上传接口设置文件名
+            fieldName: "file",
+            meta: {
+              Authorization: 'Bearer ' + getToken(),
+            },
+          },          
+        }
+      },
+      uploadFileUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址
+      mode: 'default', // or 'simple'
       // 选中数组
       ids: [],
       // 非单个禁用
@@ -200,7 +236,9 @@ export default {
         status: undefined
       },
       // 表单参数
-      form: {},
+      form: {
+        infoContent:''
+      },
       // 表单校验
       rules: {
         infoTitle: [
@@ -221,7 +259,35 @@ export default {
       this.typeOptions = res.data
     })
   },
+  beforeDestroy() {
+      const editor = this.editor
+      if (editor == null) return
+      editor.destroy() // 组件销毁时，及时销毁编辑器
+  },
   methods: {
+    //自定义上传图片
+    uploadImg(file, insertFn) {
+      let imgData = new FormData();
+      imgData.append("file", file);
+      axios({
+        url: this.uploadFileUrl,
+        data: imgData,
+        method: "post",
+        headers: {
+          Authorization: 'Bearer ' + getToken(),
+        },
+      }).then((res) => {
+        console.log(res)
+        insertFn(process.env.VUE_APP_BASE_IMG + res.data.path);
+          this.$message({
+            type: "success",
+            message: "上传成功",
+          });
+      });
+    },
+    onCreated(editor) {
+        this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+    },
     /** 查询列表 */
     getList () {
       listNotice(this.queryParams).then(res => {

@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@riophae/vue-treeselect": "^0.4.0",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-vue": "^1.0.2",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "dayjs": "^1.8.36",
@@ -22,7 +24,6 @@
     "vue": "^2.6.11",
     "vue-cropper": "^0.5.5",
     "vue-i18n": "^8.15.4",
-    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
   },

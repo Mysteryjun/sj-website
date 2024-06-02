@@ -63,6 +63,7 @@ router.put('/system/info', async (ctx, next) => {
   let checkLists = ['id', 'infoTitle', 'infoContent'] // 要校验的字段
   let v = new Validator(ctx)
   v.check(checkLists)
+  console.log(2333,ctx.state)
   let query = {
     infoTitle: v.get('infoTitle'),
     infoType: v.get('infoType'),

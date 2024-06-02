@@ -8,7 +8,7 @@ const User = require('../dao/User')
 const baseUrl = '/api/' + version
 // api 白名单
 const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
-`${baseUrl}/system/notice`,
+`${baseUrl}/system/common/notice`,
  `${baseUrl}/wx/*`,"/favicon.ico",
 //  页面路由白名单
  "/","/style/*","/home/*"] 
@@ -16,7 +16,6 @@ const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`
 // 校验有 /* 的白名单
 const checkWhiteList = function (ctx, list) {
   list = list.map(item => item.substring(0, item.lastIndexOf('/*')))
-  console.log(list, ctx.request.path)
   let flag = false
   list.forEach(item => {
     if (item === ctx.request.path.substring(0, item.length)) {
@@ -29,11 +28,9 @@ const checkWhiteList = function (ctx, list) {
 // 校验token
 const checkToken = () => {
   return async (ctx, next) => {
-    console.log(ctx)
     parentWhiteLists = whiteList.filter(item => item.lastIndexOf('/*') !== -1)
     whiteLists = whiteList.filter(item => item.lastIndexOf('/*') === -1)
     // 不在白名单的路由
-    console.log(!checkWhiteList(ctx, parentWhiteLists), !whiteLists.includes(ctx.request.path))
     if (!checkWhiteList(ctx, parentWhiteLists) && !whiteLists.includes(ctx.request.path)) {
       if (ctx.request.header.cookie) {
         // 第一种，安全性更高

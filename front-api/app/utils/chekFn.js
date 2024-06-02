@@ -9,7 +9,7 @@ const checkTypes = function (data, types) {
     flag = true
   } else if (data && types instanceof Array) {
     types.forEach(item => {
-      console.log(item)
+      // console.log(item)
       if (typeof data === item) {
         flag = true
       }

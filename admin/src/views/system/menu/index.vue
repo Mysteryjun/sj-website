@@ -319,14 +319,20 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
-            updateMenu({...this.form,icon:this.form.icon||""}).then(res => {
+            updateMenu({
+              ...this.form,
+              icon:this.form.icon||""
+            }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()
             })
           } else {
             this.form.roleIds = this.$store.state.user.userInfo.user.roles.map(item => item.id)
-            addMenu(this.form).then(res => {
+            addMenu({
+              ...this.form,
+              icon:this.form.icon||""
+            }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()

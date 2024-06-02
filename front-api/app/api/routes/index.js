@@ -64,7 +64,6 @@ router.get('/home/notice', async (ctx, next) => {
 router.get('/home/notice/:id', async (ctx, next) => {
     let v = new Validator(ctx)
     let detail = await Generic.getById('Notice', v.get('id'))
-    console.log('detail',v.get('id'))
     await ctx.render(
         'home/noticeDetail', //渲染用ctx.render,index是页面
         {
@@ -100,7 +99,6 @@ router.get('/home/publicity', async (ctx, next) => {
 router.get('/home/publicity/:id', async (ctx, next) => {
     let v = new Validator(ctx)
     let detail = await Generic.getById('Notice', v.get('id'))
-    console.log('detail',v.get('id'))
     await ctx.render(
         'home/publicityDetail', //渲染用ctx.render,index是页面
         {
