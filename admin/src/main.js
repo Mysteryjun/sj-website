@@ -19,7 +19,7 @@ import 'nprogress/nprogress.css' // progress bar style
 import './static/styles/element-variables.scss' // 自定义主题色
 import './static/styles/index.scss'
 
-import "@wangeditor/editor/dist/css/style.css"
+import '@wangeditor/editor/dist/css/style.css'
 
 import '@/static/icons'
 

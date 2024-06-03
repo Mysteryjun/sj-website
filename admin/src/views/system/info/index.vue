@@ -194,18 +194,18 @@ export default {
     return {
       editor: null,
       toolbarConfig: { },
-      editorConfig: { 
+      editorConfig: {
         placeholder: '请输入内容...',
         MENU_CONF: {
           uploadImage: {
             // 自定义上传图片 方法
             customUpload: this.uploadImg,
             // 上传接口设置文件名
-            fieldName: "file",
+            fieldName: 'file',
             meta: {
-              Authorization: 'Bearer ' + getToken(),
-            },
-          },          
+              Authorization: 'Bearer ' + getToken()
+            }
+          }
         }
       },
       uploadFileUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址
@@ -237,7 +237,7 @@ export default {
       },
       // 表单参数
       form: {
-        infoContent:''
+        infoContent: ''
       },
       // 表单校验
       rules: {
@@ -259,34 +259,34 @@ export default {
       this.typeOptions = res.data
     })
   },
-  beforeDestroy() {
-      const editor = this.editor
-      if (editor == null) return
-      editor.destroy() // 组件销毁时，及时销毁编辑器
+  beforeDestroy () {
+    const editor = this.editor
+    if (editor == null) return
+    editor.destroy() // 组件销毁时，及时销毁编辑器
   },
   methods: {
-    //自定义上传图片
-    uploadImg(file, insertFn) {
-      let imgData = new FormData();
-      imgData.append("file", file);
+    // 自定义上传图片
+    uploadImg (file, insertFn) {
+      const imgData = new FormData()
+      imgData.append('file', file)
       axios({
         url: this.uploadFileUrl,
         data: imgData,
-        method: "post",
+        method: 'post',
         headers: {
-          Authorization: 'Bearer ' + getToken(),
-        },
+          Authorization: 'Bearer ' + getToken()
+        }
       }).then((res) => {
         console.log(res)
-        insertFn(process.env.VUE_APP_BASE_IMG + res.data.path);
-          this.$message({
-            type: "success",
-            message: "上传成功",
-          });
-      });
+        insertFn(process.env.VUE_APP_BASE_IMG + res.data.path)
+        this.$message({
+          type: 'success',
+          message: '上传成功'
+        })
+      })
     },
-    onCreated(editor) {
-        this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+    onCreated (editor) {
+      this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
     },
     /** 查询列表 */
     getList () {
@@ -356,13 +356,13 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
-            updateNotice({...this.form,remark:''}).then(res => {
+            updateNotice({ ...this.form, remark: '' }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()
             })
           } else {
-            addNotice({...this.form,remark:''}).then(res => {
+            addNotice({ ...this.form, remark: '' }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()

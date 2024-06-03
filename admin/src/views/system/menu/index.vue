@@ -281,7 +281,7 @@ export default {
         id: undefined,
         parentId: 0,
         title: undefined,
-        icon: "",
+        icon: '',
         menu_type: 'M',
         orderNum: undefined,
         is_frame: '1',
@@ -321,7 +321,7 @@ export default {
           if (this.form.id !== undefined) {
             updateMenu({
               ...this.form,
-              icon:this.form.icon||""
+              icon: this.form.icon || ''
             }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
@@ -331,7 +331,7 @@ export default {
             this.form.roleIds = this.$store.state.user.userInfo.user.roles.map(item => item.id)
             addMenu({
               ...this.form,
-              icon:this.form.icon||""
+              icon: this.form.icon || ''
             }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
