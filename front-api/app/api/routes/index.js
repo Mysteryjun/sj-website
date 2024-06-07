@@ -17,12 +17,14 @@ router.get('/', async (ctx, next) => {
         noticeType:'1'
     };
     let publicityList = await Generic.getList('Notice', publicityQuery);
+    let bannerList = await Generic.getAll('Banner', {visible:'0'}, [['orderNum', 'DESC']])
     await ctx.render(
         'index', //渲染用ctx.render,index是页面
         {
             title: '首页',
             noticeList: noticeList.rows,
             publicityList: publicityList.rows,
+            bannerList:bannerList.rows,
             moment:moment
         }
     );

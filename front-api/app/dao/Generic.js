@@ -5,11 +5,20 @@ const Op = Sequelize.Op;
 // 通用增删改查类
 class Generic {
   // 获取所有列表
-  static async getAll (tableName) {
+  static async getAll (tableName, query, order=[['createdAt', 'DESC']]) {
+    let where = {}
+    for (let key in query) {
+      if (key !== 'pageNum' && key !== 'pageSize') {
+        console.log(key)
+        where[key] = {
+          // 模糊查询
+          [Op.like]:'%' + query[key] + '%'
+        }
+      }
+    }
     return await Models[tableName].findAndCountAll({
-      order: [
-        ['createdAt', 'DESC']
-      ]
+      where,
+      order
     })
   }
 

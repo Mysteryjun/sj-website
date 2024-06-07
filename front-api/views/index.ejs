@@ -2,9 +2,9 @@
 <!-- banner -->
 <div class="homeBanner x-callbacks_container">
     <ul id="slider">
-        <li class="banner1" style="background-image: url('/style/images/banner1.jpg')"></li>
-        <li class="banner2" style="background-image: url('/style/images/banner2.jpg')"></li>
-        <li class="banner3" style="background-image: url('/style/images/banner3.jpg')"></li>
+        <% bannerList.forEach(function(item) { %>
+            <li class="banner1" style="background-image: url('<%= item.imgUrl %>')"></li>
+        <% }) %>
     </ul>
 </div>
 <!-- 我们的优势 -->

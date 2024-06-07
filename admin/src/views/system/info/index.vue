@@ -59,7 +59,7 @@
     </el-row>
 
     <el-table v-loading="$store.state.app.loading" :data="noticeList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+      <!-- <el-table-column type="selection" width="55" align="center" /> -->
       <el-table-column
         label="标题"
         align="center"

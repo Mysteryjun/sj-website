@@ -82,16 +82,16 @@ class User {
           obj.userId = user.get('id')
           roleQuery.push(obj)
         }
-        console.log(roleQuery)
+        // console.log(roleQuery)
         return Models.UserRole.bulkCreate(roleQuery, {transaction: t});
       });
     }).then(function (result) {
       // 事务已被提交
       // result 是 promise 链返回到事务回调的结果
-      console.log(result)
+      // console.log(result)
       ctx.body = global.success(100020, null)
     }).catch(function (err) {
-      console.log(err.name)
+      // console.log(err.name)
       ctx.status = 500
       if (err.name === 'SequelizeUniqueConstraintError') {
         ctx.body = global.success(200013, null)
@@ -113,7 +113,7 @@ class User {
         },
         transaction: t
       }).then(async function (user) {
-        console.log(id)
+        // console.log(id)
         await Models.UserRole.destroy({
           where: {
             userId: id
@@ -126,16 +126,16 @@ class User {
           obj.userId = id
           roleQuery.push(obj)
         }
-        console.log(roleQuery)
+        // console.log(roleQuery)
         return await Models.UserRole.bulkCreate(roleQuery, {transaction: t});
       });
     }).then(function (result) {
       // 事务已被提交
       // result 是 promise 链返回到事务回调的结果
-      console.log(result)
+      // console.log(result)
       ctx.body = global.success(100030, null)
     }).catch(function (err) {
-      console.log(err.name)
+      // console.log(err.name)
       ctx.status = 500
       if (err.name === 'SequelizeUniqueConstraintError') {
         ctx.body = global.success(200013, null)
@@ -158,7 +158,7 @@ class User {
           }
         }
       }).then(async function (role) {
-        console.log(ids)
+        // console.log(ids)
         await Models.UserRole.destroy({
           where: {
             userId: {
@@ -170,10 +170,10 @@ class User {
     }).then(function (result) {
       // 事务已被提交
       // result 是 promise 链返回到事务回调的结果
-      console.log(result)
+      // console.log(result)
       ctx.body = global.success(100040, null)
     }).catch(function (err) {
-      console.log(err.name)
+      // console.log(err.name)
       ctx.status = 500
       ctx.body = global.success(100041, null)
       // 事务已被回滚

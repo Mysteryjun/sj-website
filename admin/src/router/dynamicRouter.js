@@ -1,6 +1,7 @@
 export default {
   Layout: () => import('@/views/layout'),
   Home: () => import('@/views/home'),
+  Banner: () => import('@/views/banner'),
 
   // 系统管理
   User: () => import('@/views/system/user'),
