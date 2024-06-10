@@ -85,6 +85,7 @@ export default {
   created () {
     this.getCode()
     this.getCookie()
+    Cookies.set('sidebarStatus', 1)
   },
   methods: {
     getCode () {

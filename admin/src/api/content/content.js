@@ -4,6 +4,10 @@ import HttpRequest from '@/utils/request'
 export function listContent (params = {}) {
   return HttpRequest('/system/content', 'get', params)
 }
+// 获取内容
+export function listCulture (params = {}) {
+  return HttpRequest('/system/culture', 'get', params)
+}
 
 // 获取某个内容
 export function getContent (id) {

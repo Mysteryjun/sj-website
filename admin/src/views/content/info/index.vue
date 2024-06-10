@@ -112,7 +112,7 @@
     />
 
     <!-- 添加或修改对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="24">
@@ -163,7 +163,7 @@
                     :defaultConfig="editorConfig"
                     :mode="mode"
                     @onCreated="onCreated"
-                    
+
                 />
               </div>
             </el-form-item>

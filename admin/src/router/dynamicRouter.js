@@ -7,12 +7,12 @@ export default {
   Notice: () => import('@/views/content/notice'),
   Doctor: () => import('@/views/content/doctor'),
   Culture: () => import('@/views/content/culture'),
-  Dept: () => import('@/views/content/dept'), 
+  Dept: () => import('@/views/content/dept'),
   // 系统管理
   User: () => import('@/views/system/user'),
   Role: () => import('@/views/system/role'),
   Menu: () => import('@/views/system/menu'),
   Dict: () => import('@/views/system/dict'),
- 
+
   Test: () => import('@/views/login')
 }

@@ -10,7 +10,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <!-- <el-form-item label="所属科室" prop="deptId">
+      <el-form-item label="所属科室" prop="deptId">
         <el-select v-model="queryParams.deptId" placeholder="请选择所属科室">
             <el-option
               v-for="dict in depList"
@@ -19,9 +19,8 @@
               :value="dict.deptId"
             />
           </el-select>
-      </el-form-item> -->
+      </el-form-item>
 
-      
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -68,7 +67,7 @@
         prop="title"
         :show-overflow-tooltip="true"
       />
-      
+
       <el-table-column label="照片"  prop="createdBy" width="100" >
           <template slot-scope="scope">
               <div class="banner-img" style="width:72px;height: 100px;">
@@ -110,7 +109,7 @@
     />
 
     <!-- 添加或修改对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="12">
@@ -128,7 +127,7 @@
               <el-input v-model="form.role" placeholder="请输入职称" />
             </el-form-item>
           </el-col>
-          
+
           <el-col :span="12">
             <el-form-item label="所属科室" prop="desc">
               <el-select v-model="form.deptId" placeholder="请选择">
@@ -158,7 +157,7 @@
               <el-input v-model="form.desc" placeholder="请输入擅长领域" />
             </el-form-item>
           </el-col>
-          
+
           <el-col :span="24">
             <el-form-item label="个人简介" prop="content">
               <div style="border: 1px solid #ccc;" v-if="open">
@@ -190,7 +189,7 @@
 <script>
 import axios from 'axios'
 import { listContent, getContent, delContent, addContent, updateContent } from '@/api/content/content'
-import { allDepartment} from '@/api/system/dept'
+import { allDepartment } from '@/api/system/dept'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { getToken } from '@/utils/auth'
 
@@ -218,7 +217,7 @@ export default {
           }
         }
       },
-      imgUrl:'',
+      imgUrl: '',
       uploadFileUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的照片服务器地址
       mode: 'default', // or 'simple'
       // 选中数组
@@ -232,7 +231,7 @@ export default {
       // 表格数据
       doctorList: [],
       // 科室列表
-      depList:[],
+      depList: [],
       // 弹出层姓名
       title: '',
       // 是否显示弹出层
@@ -242,13 +241,14 @@ export default {
         pageNum: 1,
         pageSize: 10,
         title: undefined,
+        deptId: undefined
       },
       // 表单参数
       form: {
-        id:'',
+        id: '',
         content: '',
-        imgUrl:'',
-        title:''
+        imgUrl: '',
+        title: ''
       },
       // 表单校验
       rules: {
@@ -269,21 +269,21 @@ export default {
   },
   methods: {
     uploadImg (option) {
-        console.log(option)
-        const imgData = new FormData()
-        imgData.append('file', option.file)
-        axios({
-            url: this.uploadFileUrl,
-            data: imgData,
-            method: 'post',
-            headers: {
-            Authorization: 'Bearer ' + getToken()
-            }
-        }).then((res) => {
-            console.log(res)
-            this.imgUrl = process.env.VUE_APP_BASE_IMG + res.data.path
-            this.form.imgUrl = this.imgUrl
-        })
+      console.log(option)
+      const imgData = new FormData()
+      imgData.append('file', option.file)
+      axios({
+        url: this.uploadFileUrl,
+        data: imgData,
+        method: 'post',
+        headers: {
+          Authorization: 'Bearer ' + getToken()
+        }
+      }).then((res) => {
+        console.log(res)
+        this.imgUrl = process.env.VUE_APP_BASE_IMG + res.data.path
+        this.form.imgUrl = this.imgUrl
+      })
     },
     // 自定义上传照片
     uploadFile (file, insertFn) {
@@ -309,13 +309,13 @@ export default {
       this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
     },
     getDepList () {
-      allDepartment({depth:3}).then(res => {
+      allDepartment({ depth: 3 }).then(res => {
         this.depList = res.data.rows
       })
     },
     /** 查询列表 */
     getList () {
-      listContent({...this.queryParams,type:"1"}).then(res => {
+      listContent({ ...this.queryParams, type: '1' }).then(res => {
         this.doctorList = res.data.rows
         this.total = res.data.count
       })
@@ -335,9 +335,9 @@ export default {
         id: undefined,
         title: undefined,
         type: undefined,
-        content: undefined,
+        content: undefined
       }
-      this.imgUrl = ""
+      this.imgUrl = ''
       this.resetForm('form')
     },
     /** 搜索按钮操作 */
@@ -373,28 +373,28 @@ export default {
         this.title = '修改'
       })
     },
-    formatDepName(deptId){
-      return this.depList.find(item=>item.deptId==deptId).deptName
+    formatDepName (deptId) {
+      return this.depList.find(item => item.deptId === deptId).deptName
     },
     /** 提交按钮 */
     submitForm: function () {
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
-            updateContent({...this.form,type:"1",deptName:this.formatDepName(this.form.deptId)}).then(res => {
+            updateContent({ ...this.form, type: '1', deptName: this.formatDepName(this.form.deptId) }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()
             })
           } else {
-            addContent({...this.form,type:"1",deptName:this.formatDepName(this.form.deptId)}).then(res => {
+            addContent({ ...this.form, type: '1', deptName: this.formatDepName(this.form.deptId) }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()
             })
           }
-        }else{
-          console.log(1111,valid)
+        } else {
+          console.log(1111, valid)
         }
       })
     },

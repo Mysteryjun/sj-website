@@ -95,7 +95,7 @@
     />
 
     <!-- 添加或修改对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="24">
@@ -145,7 +145,7 @@
 </template>
 <script>
 import axios from 'axios'
-import { listContent, getContent, delContent, addContent, updateContent } from '@/api/content/content'
+import { listCulture, getContent, delContent, addContent, updateContent } from '@/api/content/content'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { getToken } from '@/utils/auth'
 
@@ -173,7 +173,7 @@ export default {
           }
         }
       },
-      imgUrl:'',
+      imgUrl: '',
       uploadFileUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址
       mode: 'default', // or 'simple'
       // 选中数组
@@ -195,14 +195,14 @@ export default {
         pageNum: 1,
         pageSize: 10,
         title: undefined,
-        deptId: undefined,
+        deptId: undefined
       },
       // 表单参数
       form: {
-        id:'',
+        id: '',
         content: '',
-        imgUrl:'',
-        title:''
+        imgUrl: '',
+        title: ''
       },
       // 表单校验
       rules: {
@@ -222,21 +222,21 @@ export default {
   },
   methods: {
     uploadImg (option) {
-        console.log(option)
-        const imgData = new FormData()
-        imgData.append('file', option.file)
-        axios({
-            url: this.uploadFileUrl,
-            data: imgData,
-            method: 'post',
-            headers: {
-            Authorization: 'Bearer ' + getToken()
-            }
-        }).then((res) => {
-            console.log(res)
-            this.imgUrl = process.env.VUE_APP_BASE_IMG + res.data.path
-            this.form.imgUrl = this.imgUrl
-        })
+      console.log(option)
+      const imgData = new FormData()
+      imgData.append('file', option.file)
+      axios({
+        url: this.uploadFileUrl,
+        data: imgData,
+        method: 'post',
+        headers: {
+          Authorization: 'Bearer ' + getToken()
+        }
+      }).then((res) => {
+        console.log(res)
+        this.imgUrl = process.env.VUE_APP_BASE_IMG + res.data.path
+        this.form.imgUrl = this.imgUrl
+      })
     },
     // 自定义上传图片
     uploadFile (file, insertFn) {
@@ -263,7 +263,7 @@ export default {
     },
     /** 查询列表 */
     getList () {
-      listContent({...this.queryParams,type:"2"}).then(res => {
+      listCulture({ ...this.queryParams, type: '2' }).then(res => {
         this.noticeList = res.data.rows
         this.total = res.data.count
       })
@@ -283,9 +283,9 @@ export default {
         id: undefined,
         title: undefined,
         type: undefined,
-        content: undefined,
+        content: undefined
       }
-      this.imgUrl = ""
+      this.imgUrl = ''
       this.resetForm('form')
     },
     /** 搜索按钮操作 */
@@ -326,20 +326,20 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
-            updateContent({...this.form,type:"2"}).then(res => {
+            updateContent({ ...this.form, type: '2' }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()
             })
           } else {
-            addContent({...this.form,type:"2"}).then(res => {
+            addContent({ ...this.form, type: '2' }).then(res => {
               this.$httpResponse(res.msg)
               this.open = false
               this.getList()
             })
           }
-        }else{
-          console.log(1111,valid)
+        } else {
+          console.log(1111, valid)
         }
       })
     },

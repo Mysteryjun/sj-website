@@ -239,7 +239,7 @@
         // 高亮显示获取科室导航
         $('#department-tabs .department').eq(0).addClass("active")
         $('#departments ul').eq(0).show()
-        $('#department-tabs .department').click(function () {
+        $('#department-tabs .department').mouseenter(function () {
             $('#department-tabs').find("*").removeClass("active")
             $(this).addClass("active")
             $('#departments ul').hide()

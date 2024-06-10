@@ -54,7 +54,7 @@
     </el-table>
 
     <!-- 添加或修改部门对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-row>
           <el-col v-if="form.parentId !== 0" :span="24">
@@ -118,6 +118,7 @@ import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { getToken } from '@/utils/auth'
+import axios from 'axios'
 
 export default {
   name: 'Dept',
@@ -144,7 +145,7 @@ export default {
           }
         }
       },
-      imgUrl:'',
+      imgUrl: '',
       uploadFileUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址
       mode: 'default', // or 'simple'
       // 表格树数据
@@ -259,7 +260,7 @@ export default {
       this.reset()
       if (row !== undefined) {
         this.form.parentId = row.deptId
-        this.form.depth = row.depth+1
+        this.form.depth = row.depth + 1
       }
       this.open = true
       this.title = '添加部门'

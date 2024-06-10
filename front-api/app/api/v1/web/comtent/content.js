@@ -22,8 +22,8 @@ router.get('/system/common/culture', async (ctx, next) => {
   let roleList = await Generic.getList('Content', query)
   ctx.body = global.success(100010, roleList)
 })
-// 获取列表
-router.get('/system/content', async (ctx, next) => {
+// 获取党建列表
+router.get('/system/culture', async (ctx, next) => {
   let checkLists = ['pageNum', 'pageSize'] // 要校验的字段
   let v = new Validator(ctx)
   v.check(checkLists)
@@ -34,6 +34,26 @@ router.get('/system/content', async (ctx, next) => {
   let query = {
     title,
     type,
+    pageNum,
+    pageSize
+  }
+  let roleList = await Generic.getList('Content', query)
+  ctx.body = global.success(100010, roleList)
+})
+// 获取列表
+router.get('/system/content', async (ctx, next) => {
+  let checkLists = ['pageNum', 'pageSize'] // 要校验的字段
+  let v = new Validator(ctx)
+  v.check(checkLists)
+  let title = ctx.query.title ? ctx.query.title : ''
+  let type = ctx.query.type ? ctx.query.type : ''
+  let deptId = ctx.query.deptId ? ctx.query.deptId : ''
+  let pageNum = ctx.query.pageNum ? ctx.query.pageNum : 1
+  let pageSize = ctx.query.pageSize ? ctx.query.pageSize : 10
+  let query = {
+    title,
+    type,
+    deptId,
     pageNum,
     pageSize
   }

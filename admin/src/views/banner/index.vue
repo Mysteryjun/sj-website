@@ -15,7 +15,7 @@
           <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
         </el-form-item>
       </el-form>
-  
+
       <el-row :gutter="10" >
         <el-col :span="1.5">
           <el-button
@@ -47,11 +47,11 @@
           >删除</el-button>
         </el-col>
       </el-row>
-  
+
       <el-table v-loading="$store.state.app.loading" :data="bannerList" @selection-change="handleSelectionChange">
         <!-- <el-table-column type="selection" width="55"  /> -->
         <el-table-column
-          label="标题"          
+          label="标题"
           prop="title"
           :show-overflow-tooltip="true"
         />
@@ -86,7 +86,7 @@
           </template>
         </el-table-column>
       </el-table>
-  
+
       <pagination
         v-show="total>0"
         :total="total"
@@ -94,9 +94,9 @@
         :limit.sync="queryParams.pageSize"
         @pagination="getList"
       />
-  
+
       <!-- 添加或修改对话框 -->
-      <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
+      <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body :close-on-click-modal="false">
         <el-form ref="form" :model="form" :rules="rules" label-width="120px">
           <el-row>
             <el-col :span="24">
@@ -141,180 +141,180 @@
       </el-dialog>
     </div>
   </template>
-  
-  <script>
-  import axios from 'axios'
-  import { listBanner, getBanner, delBanner, addBanner, updateBanner } from '@/api/banner'
-  import { getToken } from '@/utils/auth'
-  
-  export default {
-    name: 'Banner',
-    data () {
-      return {
-        // 显示状态数据字典
-        visibleOptions: [],
-        imgUrl:'',
-        uploadImgUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址      
-        // 选中数组
-        ids: [],
-        // 非单个禁用
-        single: true,
-        // 非多个禁用
-        multiple: true,
-        // 总条数
-        total: 0,
-        // 表格数据
-        bannerList: [],
-        // 弹出层标题
+
+<script>
+import axios from 'axios'
+import { listBanner, getBanner, delBanner, addBanner, updateBanner } from '@/api/banner'
+import { getToken } from '@/utils/auth'
+
+export default {
+  name: 'Banner',
+  data () {
+    return {
+      // 显示状态数据字典
+      visibleOptions: [],
+      imgUrl: '',
+      uploadImgUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址
+      // 选中数组
+      ids: [],
+      // 非单个禁用
+      single: true,
+      // 非多个禁用
+      multiple: true,
+      // 总条数
+      total: 0,
+      // 表格数据
+      bannerList: [],
+      // 弹出层标题
+      title: '',
+      // 是否显示弹出层
+      open: false,
+      // 查询参数
+      queryParams: {
+        pageNum: 1,
+        pageSize: 10,
+        title: undefined
+      },
+      // 表单参数
+      form: {
         title: '',
-        // 是否显示弹出层
-        open: false,
-        // 查询参数
-        queryParams: {
-          pageNum: 1,
-          pageSize: 10,
-          title: undefined,
-        },
-        // 表单参数
-        form: {
-            title: '',
-            imgUrl: '',
-            orderNum: '',
-            visible: "0"
-        },
-        // 表单校验
-        rules: {
-          title: [
-            { required: true, message: '标题不能为空', trigger: 'blur' }
-          ],
-          imgUrl: [
-            { required: true, message: '图片不能为空', trigger: 'blur' }
-          ],
-          orderNum: [
-            { required: true, message: '序号不能为空', trigger: 'blur' }
-          ]
-        }
-      }
-    },
-    created () {
-      this.getList()
-      this.getDicts('sys_show_hide').then(res => {
-        this.visibleOptions = res.data
-      })
-    },
-    methods: {
-        // 菜单状态字典翻译
-      statusFormat (row, column) {
-        return this.selectDictLabel(this.visibleOptions, row.visible)
+        imgUrl: '',
+        orderNum: '',
+        visible: '0'
       },
-      uploadImg (option) {
-        console.log(option)
-        const imgData = new FormData()
-        imgData.append('file', option.file)
-        axios({
-            url: this.uploadImgUrl,
-            data: imgData,
-            method: 'post',
-            headers: {
-            Authorization: 'Bearer ' + getToken()
-            }
-        }).then((res) => {
-            console.log(res)
-            this.imgUrl = process.env.VUE_APP_BASE_IMG + res.data.path
-            this.form.imgUrl = this.imgUrl
-        })
-      },
-      /** 查询列表 */
-      getList () {
-        listBanner(this.queryParams).then(res => {
-          this.bannerList = res.data.rows
-          this.total = res.data.count
-        })
-      },
-      // 取消按钮
-      cancel () {
-        this.open = false
-        this.reset()
-      },
-      // 表单重置
-      reset () {
-        this.form = {
-          id: undefined,
-          title: undefined,
-          imgUrl: undefined,
-          orderNum: undefined,
-          visible:1
-        }
-        this.imgUrl = ""
-        this.resetForm('form')
-      },
-      /** 搜索按钮操作 */
-      handleQuery () {
-        this.queryParams.pageNum = 1
-        this.getList()
-      },
-      /** 重置按钮操作 */
-      resetQuery () {
-        this.resetForm('queryForm')
-        this.handleQuery()
-      },
-      // 多选框选中数据
-      handleSelectionChange (selection) {
-        this.ids = selection.map(item => item.id)
-        this.single = selection.length !== 1
-        this.multiple = !selection.length
-      },
-      /** 新增按钮操作 */
-      handleAdd () {
-        this.reset()
-        this.open = true
-        this.title = '添加'
-      },
-      /** 修改按钮操作 */
-      handleUpdate (row) {
-        this.reset()
-        const id = row.id || this.ids
-        getBanner(id).then(res => {
-          this.form = res.data
-          this.imgUrl = this.form.imgUrl
-          this.open = true
-          this.title = '修改'
-        })
-      },
-      /** 提交按钮 */
-      submitForm: function () {
-        this.$refs.form.validate(valid => {
-          if (valid) {
-            if (this.form.id !== undefined) {
-              updateBanner({ ...this.form }).then(res => {
-                this.$httpResponse(res.msg)
-                this.open = false
-                this.getList()
-              })
-            } else {
-              addBanner(this.form).then(res => {
-                this.$httpResponse(res.msg)
-                this.open = false
-                this.getList()
-              })
-            }
-          }
-        })
-      },
-      /** 删除按钮操作 */
-      handleDelete (row) {
-        const noticeIds = row.id || this.ids
-        this.$confirm('是否确认删除编号为"' + noticeIds + '"的数据项?', '警告', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(function () {
-          return delBanner(noticeIds)
-        }).then(() => {
-          this.getList()
-          this.$httpResponse('删除成功')
-        }).catch(function () {})
+      // 表单校验
+      rules: {
+        title: [
+          { required: true, message: '标题不能为空', trigger: 'blur' }
+        ],
+        imgUrl: [
+          { required: true, message: '图片不能为空', trigger: 'blur' }
+        ],
+        orderNum: [
+          { required: true, message: '序号不能为空', trigger: 'blur' }
+        ]
       }
     }
+  },
+  created () {
+    this.getList()
+    this.getDicts('sys_show_hide').then(res => {
+      this.visibleOptions = res.data
+    })
+  },
+  methods: {
+    // 菜单状态字典翻译
+    statusFormat (row, column) {
+      return this.selectDictLabel(this.visibleOptions, row.visible)
+    },
+    uploadImg (option) {
+      console.log(option)
+      const imgData = new FormData()
+      imgData.append('file', option.file)
+      axios({
+        url: this.uploadImgUrl,
+        data: imgData,
+        method: 'post',
+        headers: {
+          Authorization: 'Bearer ' + getToken()
+        }
+      }).then((res) => {
+        console.log(res)
+        this.imgUrl = process.env.VUE_APP_BASE_IMG + res.data.path
+        this.form.imgUrl = this.imgUrl
+      })
+    },
+    /** 查询列表 */
+    getList () {
+      listBanner(this.queryParams).then(res => {
+        this.bannerList = res.data.rows
+        this.total = res.data.count
+      })
+    },
+    // 取消按钮
+    cancel () {
+      this.open = false
+      this.reset()
+    },
+    // 表单重置
+    reset () {
+      this.form = {
+        id: undefined,
+        title: undefined,
+        imgUrl: undefined,
+        orderNum: undefined,
+        visible: 1
+      }
+      this.imgUrl = ''
+      this.resetForm('form')
+    },
+    /** 搜索按钮操作 */
+    handleQuery () {
+      this.queryParams.pageNum = 1
+      this.getList()
+    },
+    /** 重置按钮操作 */
+    resetQuery () {
+      this.resetForm('queryForm')
+      this.handleQuery()
+    },
+    // 多选框选中数据
+    handleSelectionChange (selection) {
+      this.ids = selection.map(item => item.id)
+      this.single = selection.length !== 1
+      this.multiple = !selection.length
+    },
+    /** 新增按钮操作 */
+    handleAdd () {
+      this.reset()
+      this.open = true
+      this.title = '添加'
+    },
+    /** 修改按钮操作 */
+    handleUpdate (row) {
+      this.reset()
+      const id = row.id || this.ids
+      getBanner(id).then(res => {
+        this.form = res.data
+        this.imgUrl = this.form.imgUrl
+        this.open = true
+        this.title = '修改'
+      })
+    },
+    /** 提交按钮 */
+    submitForm: function () {
+      this.$refs.form.validate(valid => {
+        if (valid) {
+          if (this.form.id !== undefined) {
+            updateBanner({ ...this.form }).then(res => {
+              this.$httpResponse(res.msg)
+              this.open = false
+              this.getList()
+            })
+          } else {
+            addBanner(this.form).then(res => {
+              this.$httpResponse(res.msg)
+              this.open = false
+              this.getList()
+            })
+          }
+        }
+      })
+    },
+    /** 删除按钮操作 */
+    handleDelete (row) {
+      const noticeIds = row.id || this.ids
+      this.$confirm('是否确认删除编号为"' + noticeIds + '"的数据项?', '警告', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(function () {
+        return delBanner(noticeIds)
+      }).then(() => {
+        this.getList()
+        this.$httpResponse('删除成功')
+      }).catch(function () {})
+    }
   }
-  </script>
+}
+</script>
