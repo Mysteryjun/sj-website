@@ -195,6 +195,7 @@ export default {
         pageNum: 1,
         pageSize: 10,
         title: undefined,
+        deptId: undefined,
       },
       // 表单参数
       form: {

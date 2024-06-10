@@ -29,13 +29,11 @@ router.get('/system/content', async (ctx, next) => {
   v.check(checkLists)
   let title = ctx.query.title ? ctx.query.title : ''
   let type = ctx.query.type ? ctx.query.type : ''
-  let deptId = ctx.query.deptId ? ctx.query.deptId : ''
   let pageNum = ctx.query.pageNum ? ctx.query.pageNum : 1
   let pageSize = ctx.query.pageSize ? ctx.query.pageSize : 10
   let query = {
     title,
     type,
-    deptId,
     pageNum,
     pageSize
   }

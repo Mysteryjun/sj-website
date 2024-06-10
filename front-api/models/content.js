@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
       comment: '标题'
     },
     type: {
-      allowNull: false,
       type: DataTypes.STRING,
       defaultValue: '1',
       comment: '类型（1 专家介绍 2党建文化）'
@@ -56,7 +55,6 @@ module.exports = (sequelize, DataTypes) => {
       comment: '图片地址'
     },
     content: {
-      allowNull: false,
       type: DataTypes.STRING,
       comment: '内容'
     },

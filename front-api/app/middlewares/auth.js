@@ -10,7 +10,6 @@ const baseUrl = '/api/' + version
 const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`, `${baseUrl}/test/*`,
 `${baseUrl}/system/common/notice`,
 `${baseUrl}/system/common/culture`,
-`${baseUrl}/system/common/department`,
  `${baseUrl}/wx/*`,"/favicon.ico",
 //  页面路由白名单
  "/","/style/*","/home/*"] 

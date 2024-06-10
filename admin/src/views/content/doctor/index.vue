@@ -10,7 +10,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="所属科室" prop="deptId">
+      <!-- <el-form-item label="所属科室" prop="deptId">
         <el-select v-model="queryParams.deptId" placeholder="请选择所属科室">
             <el-option
               v-for="dict in depList"
@@ -19,7 +19,7 @@
               :value="dict.deptId"
             />
           </el-select>
-      </el-form-item>
+      </el-form-item> -->
 
       
       <el-form-item>
@@ -242,7 +242,6 @@ export default {
         pageNum: 1,
         pageSize: 10,
         title: undefined,
-        deptId: undefined,
       },
       // 表单参数
       form: {

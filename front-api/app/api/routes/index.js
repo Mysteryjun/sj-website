@@ -25,12 +25,7 @@ router.get('/', async (ctx, next) => {
     // 科室导航
     let departmentList = await Generic.getAll('Department', {},[['orderNum', 'ASC']])
     // 专家介绍
-    let doctorQuery = {
-        type:'1',
-        pageNum:1,
-        pageSize:1000
-      }
-    let doctorList = await Generic.getList('Content', doctorQuery)
+    let doctorList = await Generic.getAll('Content', {type:'1'})
     // 党建文化
     let cultureQuery = {
         type:'2',
@@ -93,12 +88,7 @@ router.get('/home/department/:deptId', async (ctx, next) => {
 // 专家介绍
 router.get('/home/doctor', async (ctx, next) => {
     // 专家介绍
-    let doctorQuery = {
-        type:'1',
-        pageNum:1,
-        pageSize:1000
-      }
-    let doctorList = await Generic.getList('Content', doctorQuery)
+    let doctorList = await Generic.getAll('Content', {type:'1'})
     await ctx.render(
         'home/doctor', //渲染用ctx.render,index是页面
         {
