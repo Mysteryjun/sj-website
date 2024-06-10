@@ -5,10 +5,17 @@ const { getWhere } = require('../utils/common')
 
 class Department {
   // 获取所有列表
-  static async getAll (ctx) {
+  static async getAll (ctx,query) {
     let where = {}
-    where.deptId = getWhere(ctx).deptId
-
+    for (let key in query) {
+      if (key !== 'pageNum' && key !== 'pageSize') {
+        console.log(key)
+        where[key] = {
+          // 模糊查询
+          [Op.like]:'%' + query[key] + '%'
+        }
+      }
+    }
     return await Models['Department'].findAndCountAll({
       where,
       order: [

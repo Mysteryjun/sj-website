@@ -6,7 +6,9 @@
             <span>您的位置：</span>
             <a href="/">首页</a>
             <span>></span>
-            <span>通知公告</span>
+            <a href="/home/notice">公告通知</a>
+            <span>></span>
+            <span>招标公告</span>
         </div>
         <div class="info-content-container" id="info-content-container">
             <% noticeList.forEach(function(item) { %>
@@ -42,9 +44,9 @@
                 res.data.rows.forEach(el => {
                     html+=`
                     <div class="info-content-table">
-                        <a href="" class="clearfix">
+                        <a href="/home/notice/${el.id}" class="clearfix">
                             <div class="info-content-title fll">${el.noticeTitle}</div>
-                            <div class="info-content-time flr">${new Date(el.createdAt).format('YYYY-MM-DD')}</div>
+                            <div class="info-content-time flr">${new Date(el.createdAt).format('yyyy-MM-dd')}</div>
                         </a>
                     </div>
                     `

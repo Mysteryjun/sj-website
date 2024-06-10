@@ -1,0 +1,34 @@
+<%- include('../components/header', {title:title,active:'department'}); %>
+<div class="sub-banner">专家介绍</div>
+<div class="main-content">
+    <div class="info-content">
+        <div class="info-content-path">
+            <span>您的位置：</span>
+            <a href="/">首页</a>
+            <span>></span>
+            <a href="/home/department">专家介绍</a>
+            <span>></span>
+            <span>详情</span>
+        </div>
+        <div class="detail-content">
+            <div class="doctor-content-item detail-content-doctor">
+                <div class="doctor-content-item-detail clearfix">
+                    <img src="<%= detail.imgUrl %>" alt="doctor" class="doctor-content-item-img">
+                    <div class="doctor-content-item-right fll">
+                        <div class="doctor-content-item-title"><%= detail.title %></div>
+                        <p><%= detail.job %></p>
+                        <p>职称：<span class="cl-555"><%= detail.role %></span></p>
+                        <p>科室：<span class="cl-555"><%= detail.deptName %></span></p>
+                    </div>
+                </div>  
+                <div class="detail-doctor-content-item-goodat">
+                    <span>擅长：</span>
+                    <%= detail.desc %>
+                </div>              
+            </div>
+            <%-detail.content %>
+        </div>
+    </div>
+</div>
+
+<%- include("../components/footer") -%>

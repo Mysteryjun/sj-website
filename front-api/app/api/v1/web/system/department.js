@@ -27,7 +27,12 @@ router.get('/system/department', async (ctx, next) => {
 
 // 查询所有部门
 router.get('/system/allDepartment', async (ctx, next) => {
-  let menuList = await Department.getAll(ctx)
+  let v = new Validator(ctx)
+  let depth = ctx.query.depth ? ctx.query.depth : ''
+  let query = {
+    depth,
+  }
+  let menuList = await Department.getAll(ctx,query)
   ctx.body = global.success(100010, menuList)
 })
 
@@ -48,7 +53,9 @@ router.post('/system/department', async (ctx, next) => {
   let query = {
     parentId: v.get('parentId'),
     deptName: v.get('deptName'),
-    orderNum: v.get('orderNum')
+    depth: v.get('depth'),
+    orderNum: v.get('orderNum'),
+    content: v.get('content')
   }
 
   let res = await Generic.create('Department', query)
@@ -69,7 +76,9 @@ router.put('/system/department', async (ctx, next) => {
   let query = {
     parentId: v.get('parentId'),
     deptName: v.get('deptName'),
+    depth: v.get('depth'),
     orderNum: v.get('orderNum'),
+    content: v.get('content'),
     status: v.get('status'),
     isDelete: v.get('isDelete'),
     createdBy: ctx.state.user.userName,

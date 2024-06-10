@@ -1,23 +1,43 @@
 // PC页面
 const router = require('koa-router')();
 const Generic = require('../../dao/Generic');
+const Department = require('../../dao/Department')
 const Validator = require('../../utils/validator');
 const moment = require('moment');
 // 首页
 router.get('/', async (ctx, next) => {
+    // 招标公告
     let noticeQuery = {
         pageNum: 1,
         pageSize: 6,
         noticeType:'2'
     };
     let noticeList = await Generic.getList('Notice', noticeQuery);
+    // 院务公开
     let publicityQuery = {
         pageNum: 1,
         pageSize: 6,
         noticeType:'1'
     };
     let publicityList = await Generic.getList('Notice', publicityQuery);
+    // 轮播图
     let bannerList = await Generic.getAll('Banner', {visible:'0'}, [['orderNum', 'DESC']])
+    // 科室导航
+    let departmentList = await Generic.getAll('Department', {},[['orderNum', 'ASC']])
+    // 专家介绍
+    let doctorQuery = {
+        type:'1',
+        pageNum:1,
+        pageSize:1000
+      }
+    let doctorList = await Generic.getList('Content', doctorQuery)
+    // 党建文化
+    let cultureQuery = {
+        type:'2',
+        pageNum:1,
+        pageSize:5
+      }
+    let cultureList = await Generic.getList('Content', cultureQuery)
     await ctx.render(
         'index', //渲染用ctx.render,index是页面
         {
@@ -25,6 +45,10 @@ router.get('/', async (ctx, next) => {
             noticeList: noticeList.rows,
             publicityList: publicityList.rows,
             bannerList:bannerList.rows,
+            depList:departmentList.rows.filter(item=>item.depth==2),
+            departmentList:departmentList.rows.filter(item=>item.depth==3),
+            doctorList:doctorList.rows,
+            cultureList:cultureList.rows,
             moment:moment
         }
     );
@@ -40,6 +64,63 @@ router.get('/home/intro', async (ctx, next) => {
         } 
     );
 });
+// 科室导航
+router.get('/home/department', async (ctx, next) => {
+    // 科室导航
+    let departmentList = await Generic.getAll('Department', {},[['orderNum', 'ASC']])
+    await ctx.render(
+        'home/department', //渲染用ctx.render,index是页面
+        {
+            title: '科室导航',
+            list:departmentList.rows.filter(item=>item.depth==2),
+            departmentList:departmentList.rows.filter(item=>item.depth==3)
+        } 
+    );
+});
+// 科室介绍
+router.get('/home/department/:deptId', async (ctx, next) => {
+    let v = new Validator(ctx)
+    let detail = await Department.getById(v.get('deptId'))
+    await ctx.render(
+        'home/depDetail', //渲染用ctx.render,index是页面
+        {
+            title: '科室介绍',
+            detail:detail,
+            moment:moment
+        } 
+    );
+});
+// 专家介绍
+router.get('/home/doctor', async (ctx, next) => {
+    // 专家介绍
+    let doctorQuery = {
+        type:'1',
+        pageNum:1,
+        pageSize:1000
+      }
+    let doctorList = await Generic.getList('Content', doctorQuery)
+    await ctx.render(
+        'home/doctor', //渲染用ctx.render,index是页面
+        {
+            title: '专家介绍',
+            doctorList:doctorList.rows
+        } 
+    );
+});
+// 专家介绍
+router.get('/home/doctor/:id', async (ctx, next) => {
+    let v = new Validator(ctx)
+    let detail = await Generic.getById('Content', v.get('id'))
+    await ctx.render(
+        'home/docDetail', //渲染用ctx.render,index是页面
+        {
+            title: '专家介绍',
+            detail:detail,
+            moment:moment
+        } 
+    );
+});
+
 // 通知公告
 router.get('/home/notice', async (ctx, next) => {
     let noticeQuery = {
@@ -121,5 +202,39 @@ router.get('/home/about', async (ctx, next) => {
         } 
     );
 });
-
+// 党建文化
+router.get('/home/culture', async (ctx, next) => {
+    let query = {
+        pageNum: 1,
+        pageSize: 10,
+        type:'2'
+    };
+    let list = await Generic.getList('Content', query);
+    await ctx.render(
+        'home/culture', //渲染用ctx.render,index是页面
+        {
+            title: '党建文化',
+            list:list.rows,
+            pagination:{
+                pageNum: query.pageNum,
+                pageSize: query.pageSize,
+                total:list.count
+            },
+            moment:moment
+        } 
+    );
+});
+// 党建文化详情
+router.get('/home/culture/:id', async (ctx, next) => {
+    let v = new Validator(ctx)
+    let detail = await Generic.getById('Content', v.get('id'))
+    await ctx.render(
+        'home/cultureDetail', //渲染用ctx.render,index是页面
+        {
+            title: '党建文化详情',
+            detail:detail,
+            moment:moment
+        } 
+    );
+});
 module.exports = router;

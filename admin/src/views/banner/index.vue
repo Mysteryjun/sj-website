@@ -96,7 +96,7 @@
       />
   
       <!-- 添加或修改对话框 -->
-      <el-dialog :title="title" :visible.sync="open" width="780px" append-to-body>
+      <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
         <el-form ref="form" :model="form" :rules="rules" label-width="120px">
           <el-row>
             <el-col :span="24">
@@ -245,6 +245,7 @@
           orderNum: undefined,
           visible:1
         }
+        this.imgUrl = ""
         this.resetForm('form')
       },
       /** 搜索按钮操作 */
@@ -317,28 +318,3 @@
     }
   }
   </script>
-  <style>
-.banner-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .banner-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
-  .banner-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 300px;
-    height: 130px;
-    line-height: 130px;
-    text-align: center;
-  }
-  .banner {
-    width: 300px;
-    height: 130px;
-    display: block;
-  }
-</style>

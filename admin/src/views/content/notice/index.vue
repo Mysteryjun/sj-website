@@ -112,7 +112,7 @@
     />
 
     <!-- 添加或修改公告对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="780px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="24">
@@ -150,7 +150,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="内容">
-              <div style="border: 1px solid #ccc;">
+              <div style="border: 1px solid #ccc;" v-if="open">
                 <Toolbar
                     style="border-bottom: 1px solid #ccc"
                     :editor="editor"
@@ -163,7 +163,6 @@
                     :defaultConfig="editorConfig"
                     :mode="mode"
                     @onCreated="onCreated"
-                    v-if="open"
                 />
               </div>
             </el-form-item>
@@ -179,7 +178,7 @@
 </template>
 <script>
 import axios from 'axios'
-import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/system/notice'
+import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/content/notice'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { getToken } from '@/utils/auth'
 

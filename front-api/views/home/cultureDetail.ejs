@@ -1,0 +1,21 @@
+<%- include('../components/header', {title:title,active:'culture'}); %>
+<div class="sub-banner culture-banner">党建文化</div>
+<div class="main-content">
+    <div class="info-content">
+        <div class="info-content-path">
+            <span>您的位置：</span>
+            <a href="/">首页</a>
+            <span>></span>
+            <a href="/home/culture">党建文化</a>
+            <span>></span>
+            <span>详情</span>
+        </div>
+        <div class="detail-content">
+            <div class="detail-content-title"><%-detail.title %></div>
+            <div class="detail-content-updatetime">发布时间：<%= moment(detail.createdAt).format('YYYY-MM-DD HH:mm:ss') %></div>
+            <%-detail.content %>
+        </div>
+    </div>
+</div>
+
+<%- include("../components/footer") -%>

@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-row :gutter="10">
-      <el-col :span="1.5">
+      <!-- <el-col :span="1.5">
         <el-button
           type="primary"
           icon="el-icon-plus"
@@ -9,7 +9,7 @@
           @click="handleAdd"
           v-has-permi="['system:dept:add']"
         >新增</el-button>
-      </el-col>
+      </el-col> -->
     </el-row>
 
     <el-table
@@ -31,6 +31,7 @@
             icon="el-icon-plus"
             @click="handleAdd(scope.row)"
             v-has-permi="['system:dept:add']"
+            v-if="scope.row.depth!=3"
           >新增</el-button>
           <el-button
             size="mini"
@@ -53,7 +54,7 @@
     </el-table>
 
     <!-- 添加或修改部门对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-row>
           <el-col v-if="form.parentId !== 0" :span="24">
@@ -71,7 +72,7 @@
               <el-input-number v-model="form.orderNum" controls-position="right" :min="0" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="部门状态">
               <el-radio-group v-model="form.status">
                 <el-radio
@@ -80,6 +81,25 @@
                   :label="dict.dictValue"
                 >{{ dict.dictLabel }}</el-radio>
               </el-radio-group>
+            </el-form-item>
+          </el-col>
+          <el-col :span="24" v-if="form.depth==3">
+            <el-form-item label="内容" prop="content">
+              <div style="border: 1px solid #ccc;" v-if="open">
+                <Toolbar
+                    style="border-bottom: 1px solid #ccc"
+                    :editor="editor"
+                    :defaultConfig="toolbarConfig"
+                    :mode="mode"
+                />
+                <Editor
+                    style="height: 500px; overflow-y: hidden;"
+                    v-model="form.content"
+                    :defaultConfig="editorConfig"
+                    :mode="mode"
+                    @onCreated="onCreated"
+                />
+              </div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -96,12 +116,37 @@
 import { allDepartment, getDept, delDept, addDept, updateDept } from '@/api/system/dept'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
+import { getToken } from '@/utils/auth'
 
 export default {
   name: 'Dept',
-  components: { Treeselect },
+  components: {
+    Toolbar,
+    Editor,
+    Treeselect
+  },
   data () {
     return {
+      editor: null,
+      toolbarConfig: { },
+      editorConfig: {
+        placeholder: '请输入内容...',
+        MENU_CONF: {
+          uploadImage: {
+            // 自定义上传图片 方法
+            customUpload: this.uploadFile,
+            // 上传接口设置文件名
+            fieldName: 'file',
+            meta: {
+              Authorization: 'Bearer ' + getToken()
+            }
+          }
+        }
+      },
+      imgUrl:'',
+      uploadFileUrl: process.env.VUE_APP_BASE_API + '/upload', // 上传的图片服务器地址
+      mode: 'default', // or 'simple'
       // 表格树数据
       deptList: [],
       // 部门树选项
@@ -134,7 +179,35 @@ export default {
       this.statusOptions = res.data
     })
   },
+  beforeDestroy () {
+    const editor = this.editor
+    if (editor == null) return
+    editor.destroy() // 组件销毁时，及时销毁编辑器
+  },
   methods: {
+    // 自定义上传图片
+    uploadFile (file, insertFn) {
+      const imgData = new FormData()
+      imgData.append('file', file)
+      axios({
+        url: this.uploadFileUrl,
+        data: imgData,
+        method: 'post',
+        headers: {
+          Authorization: 'Bearer ' + getToken()
+        }
+      }).then((res) => {
+        console.log(res)
+        insertFn(process.env.VUE_APP_BASE_IMG + res.data.path)
+        this.$message({
+          type: 'success',
+          message: '上传成功'
+        })
+      })
+    },
+    onCreated (editor) {
+      this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+    },
     /** 查询部门列表 */
     getList () {
       allDepartment().then(res => {
@@ -172,6 +245,7 @@ export default {
         parentId: undefined,
         deptName: undefined,
         orderNum: undefined,
+        depth: undefined,
         status: '0'
       }
       this.resetForm('form')
@@ -185,6 +259,7 @@ export default {
       this.reset()
       if (row !== undefined) {
         this.form.parentId = row.deptId
+        this.form.depth = row.depth+1
       }
       this.open = true
       this.title = '添加部门'

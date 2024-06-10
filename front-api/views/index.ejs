@@ -1,12 +1,20 @@
 <%- include('components/header', {title:title,active:'index'}); %>
+<link rel="stylesheet" href="/style/css/swiper.min.css">
 <!-- banner -->
-<div class="homeBanner x-callbacks_container">
-    <ul id="slider">
+<div class="swiper-container homeBanner">
+    <div class="swiper-wrapper">
         <% bannerList.forEach(function(item) { %>
-            <li class="banner1" style="background-image: url('<%= item.imgUrl %>')"></li>
-        <% }) %>
-    </ul>
+            <div class="swiper-slide banner-slide" style="background-image: url('<%= item.imgUrl %>')"></div>
+        <% }) %>            
+    </div>
+     <!-- 如果需要分页器 -->
+     <div class="banner-swiper-pagination swiper-pagination"></div>
+    
+     <!-- 如果需要导航按钮 -->
+     <div class="swiper-button-handle swiper-button-prev swiper-button-white"></div>
+     <div class="swiper-button-handle swiper-button-next swiper-button-white"></div>
 </div>
+
 <!-- 我们的优势 -->
 <div class="advantage">
     <div class="main-content clearfix">
@@ -40,111 +48,211 @@
     </div>
 </div>
 <!-- 平台详情 -->
-<div class="platform">
-    <!-- 招标公告 -->
+<div class="platform">    
     <div class="notice main-content">
-        <div class="recommend-tips clearfix">
-            <div class="projectTitle fll">
-                <span class="projectIcon"></span>
-                通知公告
+        <!-- 招标公告 -->
+        <div class="part-notice">
+            <div class="recommend-tips clearfix">
+                <div class="projectTitle fll">
+                    <span class="projectIcon"></span>
+                    招标公告
+                </div>
+                <div class="recommend-more flr"><a href="/home/notice">查看更多></a></div>
             </div>
-            <div class="recommend-more flr"><a href="/home/notice">查看更多></a></div>
-        </div>
-        <% noticeList.forEach(function(item) { %>
-        <div class="noticeContainer">
-            <a href="/home/notice/<%= item.id %>" class="clearfix">
-                <span class="notice-images">
-                    <img src="/style/images/bid.png" width="100%" alt="招标公告" />
-                </span>
-                <div class="notice-summary">
-                    <div class="clearfix">
-                        <div class="notice-title fll"><%= item.noticeTitle %></div>
-                        <div class="notice-time flr"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
-                    </div>                        
-                    <div class="notice-content"><%- item.remark %></div>
+            <div class="clearfix">
+                <% noticeList.forEach(function(item) { %>
+                <div class="noticeContainer">
+                    <a href="/home/notice/<%= item.id %>" class="clearfix">
+                        <span class="notice-images">
+                            <img src="/style/images/bid.png" width="100%" alt="招标公告" />
+                        </span>
+                        <div class="notice-summary">
+                            <div class="clearfix">
+                                <div class="notice-title fll"><%= item.noticeTitle %></div>
+                                <div class="notice-time flr"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
+                            </div>                        
+                            <div class="notice-content"><%- item.remark %></div>
+                        </div>
+                    </a>                   
                 </div>
-            </a>                   
+                <% }) %>   
+            </div>     
         </div>
-        <% }) %>       
-    </div>
-     <!-- 院务公开 -->
-    <div class="notice main-content">
-        <div class="recommend-tips clearfix">
-            <div class="projectTitle fll">
-                <span class="projectIcon"></span>
-                院务公开
+            <!-- 院务公开 -->
+        <div class="part-notice">
+            <div class="recommend-tips clearfix">
+                <div class="projectTitle fll">
+                    <span class="projectIcon"></span>
+                    院务公开
+                </div>
+                <div class="recommend-more flr"><a href="/home/publicity">查看更多></a></div>
             </div>
-            <div class="recommend-more flr"><a href="/home/publicity">查看更多></a></div>
-        </div>
-        <% publicityList.forEach(function(item) { %>
-        <div class="publicityContainer">
-            <a href="/home/publicity/<%= item.id %>" class="clearfix">
-                <div class="publicity-time fll">
-                    <div class="publicity-year"><%= moment(item.createdAt).format('YYYY-MM') %></div>
-                    <div class="publicity-day"><%= moment(item.createdAt).format('DD') %></div>
+            <div class="clearfix">
+                <% publicityList.forEach(function(item) { %>
+                <div class="publicityContainer">
+                    <a href="/home/publicity/<%= item.id %>" class="clearfix">
+                        <div class="publicity-time fll">
+                            <div class="publicity-year"><%= moment(item.createdAt).format('YYYY-MM') %></div>
+                            <div class="publicity-day"><%= moment(item.createdAt).format('DD') %></div>
+                        </div>
+                        <div class="publicity-summary fll">
+                            <div class="publicity-title"><%= item.noticeTitle %></div>
+                            <div class="publicity-content"><%= item.remark %></div>                    
+                        </div>
+                    </a>
                 </div>
-                <div class="publicity-summary fll">
-                    <div class="publicity-title"><%= item.noticeTitle %></div>
-                    <div class="publicity-content"><%= item.remark %></div>                    
-                </div>
-            </a>
+                <% }) %>  
+            </div>     
         </div>
-        <% }) %>       
+        <!-- 科室导航 -->
+        <div class="part-notice">
+            <div class="recommend-tips clearfix">
+                <div class="projectTitle fll">
+                    <span class="projectIcon"></span>
+                    科室导航
+                </div>
+                <div class="recommend-more flr"><a href="/home/department">查看更多></a></div>
+            </div>
+            <div class="department-tabs clearfix" id="department-tabs">
+                <% depList.forEach(function(item) { %>
+                    <div class="department"><%= item.deptName %></div>
+                <% }) %>  
+            </div>
+            <div class="department-list" id="departments">
+                <% depList.forEach(function(item) { %>
+                <ul style="display: none;">
+                    <% departmentList.filter(department=>{return department.parentId==item.deptId}).forEach(function(el) { %>
+                        <li>
+                            <div class="left-bg-bar">
+                                <img src="/style/images/dep_icon.svg" alt="left-bar">
+                            </div>
+                            <a href="/home/department/<%= el.deptId %>"><%= el.deptName %></a>
+                            <div class="left-bg-bar right-bg-bar">
+                                <img src="/style/images/dep_icon.svg" alt="left-bar">
+                            </div>
+                        </li>
+                    <% }) %> 
+                </ul>
+                <% }) %>  
+            </div>
+        </div>
+        <!-- 专家介绍 -->
+        <div class="part-notice doctor-wrapper">
+            <div class="recommend-tips clearfix">
+                <div class="projectTitle fll">
+                    <span class="projectIcon"></span>
+                    专家介绍
+                </div>
+                <div class="recommend-more flr"><a href="/home/doctor">查看更多></a></div>
+            </div>
+            <div class="swiper-container doctor-container">
+                <div class="swiper-wrapper">                    
+                    <% doctorList.forEach(function(item) { %>
+                    <div class="swiper-slide doctor-item">
+                        <a href="/home/doctor/<%= item.id %>">
+                            <img src="<%= item.imgUrl %>" alt="doctor" class="doctor-img">
+                            <div class="doctor-name"><%= item.title %></div>
+                            <div class="doctor-title"><%= item.role %></div>
+                            <div class="doctor-department"><%= item.desc %></div>
+                        </a>
+                    </div>
+                    <% }) %> 
+                </div>                
+            </div> 
+            <div class="doctor-handle doctor-button-prev"></div>
+            <div class="doctor-handle doctor-button-next"></div>           
+        </div>
+        <!-- 党建文化 -->
+        <div class="part-notice culture-container">
+            <div class="recommend-tips clearfix">
+                <div class="projectTitle fll">
+                    <span class="projectIcon"></span>
+                    党建文化
+                </div>
+                <div class="recommend-more flr"><a href="/home/culture">查看更多></a></div>
+            </div>
+            <div class="clearfix">
+                <div class="culture-swiper-container swiper-container fll">
+                    <div class="swiper-wrapper">
+                        <% cultureList.forEach(function(item) { %>
+                        <div class="swiper-slide">
+                            <a href="/home/culture/<%= item.id %>" class="culture-swiper-item">
+                                <img src="<%= item.imgUrl %>" alt="culture">
+                                <div class="culture-title"><%= item.title %></div>
+                            </a>
+                        </div>
+                        <% }) %>   
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="culture-swiper-pagination swiper-pagination"></div>
+                </div>
+                <div class="culture-content flr">
+                    <% cultureList.forEach(function(item) { %>
+                    <a href="/home/culture/<%= item.id %>" class="culture-content-item">
+                        <div class="culture-content-item-title"><%= item.title %></div>
+                        <div class="culture-content-item-time"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
+                    </a>
+                    <% }) %>   
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" src="/style/js/responsiveslides.js"></script>
+<script type="text/javascript" src="/style/js/swiper.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        // Slideshow
-        $('#slider').responsiveSlides({
-            auto: true,
-            pager: false,
-            nav: true,
-            speed: 500,
-            timeout: 4000,
-            pager: true,
-            pause: true, //鼠标悬停
-            pauseControls: true,
-            prevText: '',
-            nextText: '',
-            namespace: 'x-callbacks',
+        // banner 轮播
+        var bannerSwiper = new Swiper('.homeBanner',{
+            loop: true,     
+            autoplay:5000,  
+            effect:'fade',     
+            paginationClickable:true,
+            // 如果需要分页器
+            pagination: '.banner-swiper-pagination',
+            
+            // 如果需要前进后退按钮
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
         });
-        $('.x-callbacks_container').on('mouseenter', function () {
-            $('.x-callbacks_nav').show();
+        $('.homeBanner').on('mouseenter', function () {
+            bannerSwiper.stopAutoplay()
+            $('.swiper-button-handle').show();
         });
-        $('.x-callbacks_container').on('mouseleave', function () {
-            $('.x-callbacks_nav').hide();
+        $('.homeBanner').on('mouseleave', function () {
+            bannerSwiper.startAutoplay()
+            $('.swiper-button-handle').hide();
         });
         // 公告轮播
-        var option = {
-            interval: 2000, //轮换时间
-            animatetime: 600, //过渡时间
-            movestep: -40, //高度
-        };
-        var carousel = $('.carousel');
-        var ul = $('.carousel ul');
-        $('.carousel ul').children().eq(0).clone().appendTo('.carousel ul');
-        var lengthall = $('.carousel ul li').length;
-        var timer = setInterval(noticeAnimate, option.interval);
-        var idx = 0;
-        //鼠标进入停止定时器
-        carousel.mouseenter(function () {
-            clearInterval(timer);
+        var doctorSwiper = new Swiper('.doctor-container', {
+            loop: true,     
+            autoplay:3000,  
+            slidesPerView: 5,
+            spaceBetween: 24
         });
-        //鼠标离开重新启动定时器
-        carousel.mouseleave(function () {
-            timer = setInterval(noticeAnimate, option.interval);
+        $('.doctor-button-prev').click(function () {
+            doctorSwiper.slidePrev();
+        })
+        $('.doctor-button-next').click(function () {
+            doctorSwiper.slideNext();
+        })
+        // 高亮显示获取科室导航
+        $('#department-tabs .department').eq(0).addClass("active")
+        $('#departments ul').eq(0).show()
+        $('#department-tabs .department').click(function () {
+            $('#department-tabs').find("*").removeClass("active")
+            $(this).addClass("active")
+            $('#departments ul').hide()
+            $('#departments ul').eq($(this).index()).show()
+        })
+        // 党建文化轮播
+        new Swiper('.culture-swiper-container', {
+            pagination: '.culture-swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 30,
+            loop: true,     
+            autoplay:3000
         });
-        function noticeAnimate() {
-            idx++;
-            ul.animate({ top: idx * option.movestep }, option.animatetime, function () {
-                if (idx > lengthall - 2) {
-                    idx = 0;
-                    $(this).css('top', 0);
-                }
-            });
-        }
     });
 </script>
 <%- include("components/footer") -%>

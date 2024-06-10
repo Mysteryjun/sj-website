@@ -25,10 +25,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       comment: '父Id'
     },
+    depth: {
+      type: DataTypes.INTEGER,
+      comment: '深度'
+    },
     deptName: {
       allowNull: false,
       type: DataTypes.STRING,
       comment: '部门名称'
+    },
+    content: {
+      type: DataTypes.STRING,
+      comment: '内容'
     },
     orderNum: {
       allowNull: false,

@@ -1,0 +1,26 @@
+<%- include('../components/header', {title:title,active:'department'}); %>
+<div class="sub-banner">科室导航</div>
+<div class="main-content">
+    <div class="info-content">
+        <div class="info-content-path">
+            <span>您的位置：</span>
+            <a href="/">首页</a>
+            <span>></span>
+            <span>科室导航</span>
+        </div>
+        <div class="department-pannel">
+            <% list.forEach(function(item) { %>
+            <div class="department-item">
+                <div class="department-item-title"><%= item.deptName %></div>
+                <div class="department-item-list">
+                    <% departmentList.filter(department=>{return department.parentId==item.deptId}).forEach(function(el) { %>
+                        <a href="/home/department/<%= el.deptId %>"><%= el.deptName %></a>
+                    <% }) %> 
+                </div>
+            </div>
+            <% }) %> 
+        </div>
+    </div>
+</div>
+
+<%- include("../components/footer") -%>
