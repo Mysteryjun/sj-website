@@ -29,7 +29,8 @@
 <script type="text/javascript" src="/style/js/common.js"></script>
 <script type="text/javascript" src="/style/js/pagination.js"></script>
 <script type="text/javascript">
-    var page = <%- JSON.stringify(pagination) %>
+    var pagination = '<%- JSON.stringify(pagination) %>'
+    var page = JSON.parse(pagination)
     function jump(pageNum){
         $.ajax({
             url: `/api/v1/system/common/culture?pageNum=${pageNum}&pageSize=${page.pageSize}&type=2`,

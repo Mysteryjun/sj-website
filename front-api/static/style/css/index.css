@@ -608,13 +608,13 @@ input {
 }
 .siteMap {
     width: 300px;
-    margin-top: 60px;
+    margin-top: 56px;
 }
 .siteMap ul {
     width: 100%;
 }
 .siteMap ul li {
-    width: 110px;
+    width: 100px;
     float: left;
 }
 .siteMap ul li a {
