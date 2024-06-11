@@ -111,7 +111,7 @@ router.get('/home/doctor/:id', async (ctx, next) => {
     );
 });
 
-// 通知公告
+// 公告通知
 router.get('/home/notice', async (ctx, next) => {
     let noticeQuery = {
         pageNum: 1,
@@ -122,7 +122,7 @@ router.get('/home/notice', async (ctx, next) => {
     await ctx.render(
         'home/notice', //渲染用ctx.render,index是页面
         {
-            title: '通知公告',
+            title: '公告通知',
             noticeList:noticeList.rows,
             pagination:{
                 pageNum: noticeQuery.pageNum,
@@ -140,7 +140,7 @@ router.get('/home/notice/:id', async (ctx, next) => {
     await ctx.render(
         'home/noticeDetail', //渲染用ctx.render,index是页面
         {
-            title: '通知公告详情',
+            title: '公告通知详情',
             detail:detail,
             moment:moment
         } 
