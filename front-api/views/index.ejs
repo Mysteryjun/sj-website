@@ -16,7 +16,7 @@
 </div>
 
 <!-- 我们的优势 -->
-<div class="advantage">
+<div class="advantage wow fadeInUp" data-wow-delay="0.3s">
     <div class="main-content clearfix">
         <ul>
             <li>
@@ -51,7 +51,7 @@
 <div class="platform">    
     <div class="notice main-content">
         <!-- 招标公告 -->
-        <div class="part-notice">
+        <div class="part-notice wow fadeInLeft" data-wow-delay="0.3s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -79,7 +79,7 @@
             </div>     
         </div>
             <!-- 院务公开 -->
-        <div class="part-notice">
+        <div class="part-notice wow fadeInRight" data-wow-delay="0.2s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -105,7 +105,7 @@
             </div>     
         </div>
         <!-- 科室导航 -->
-        <div class="part-notice">
+        <div class="part-notice wow fadeInUp"  data-wow-delay="0.2s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -137,7 +137,7 @@
             </div>
         </div>
         <!-- 专家介绍 -->
-        <div class="part-notice doctor-wrapper">
+        <div class="part-notice doctor-wrapper wow fadeInUp"  data-wow-delay="0.2s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -147,8 +147,8 @@
             </div>
             <div class="swiper-container doctor-container">
                 <div class="swiper-wrapper">                    
-                    <% doctorList.forEach(function(item) { %>
-                    <div class="swiper-slide doctor-item">
+                    <% doctorList.forEach(function(item,index) { %>
+                    <div class="swiper-slide doctor-item wow fadeInUp"  data-wow-delay="<%= 0.2*index +'s' %>">
                         <a href="/home/doctor/<%= item.id %>">
                             <img src="<%= item.imgUrl %>" alt="doctor" class="doctor-img">
                             <div class="doctor-name"><%= item.title %></div>
@@ -163,7 +163,7 @@
             <div class="doctor-handle doctor-button-next"></div>           
         </div>
         <!-- 党建文化 -->
-        <div class="part-notice culture-container">
+        <div class="part-notice culture-container wow fadeInUp"  data-wow-delay="0.3s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -171,7 +171,7 @@
                 </div>
                 <div class="recommend-more flr"><a href="/home/culture">查看更多></a></div>
             </div>
-            <div class="clearfix">
+            <div class="clearfix wow fadeInUp"  data-wow-delay="0.3s">
                 <div class="culture-swiper-container swiper-container fll">
                     <div class="swiper-wrapper">
                         <% cultureList.forEach(function(item) { %>
@@ -199,9 +199,18 @@
     </div>
 </div>
 
+
+<script type="text/javascript" src="/style/js/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="/style/js/wow.min.js"></script>
 <script type="text/javascript" src="/style/js/swiper.min.js"></script>
 <script type="text/javascript">
+    new WOW().init();//WOW要大写
+    
     $(document).ready(function () {
+        $("img").lazyload({
+            skip_invisible : false,
+            effect: "fadeIn",
+        });
         // banner 轮播
         var bannerSwiper = new Swiper('.homeBanner',{
             loop: true,     
