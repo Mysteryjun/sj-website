@@ -130,8 +130,9 @@
             <div class="department-list" id="departments">
                 <% depList.forEach(function(item) { %>
                 <ul style="display: none">
-                    <% departmentList.filter(department=>{return
-                    department.parentId==item.deptId}).forEach(function(el) { %>
+                    <%
+                    departmentList.filter(department=>department.parentId==item.deptId).forEach(function(el)
+                    { %>
                     <li>
                         <div class="left-bg-bar">
                             <img src="/style/images/dep_icon.svg" alt="left-bar" />
@@ -219,7 +220,6 @@
 <script type="text/javascript" src="/style/js/swiper.min.js"></script>
 <script type="text/javascript">
     new WOW().init(); //WOW要大写
-
     $(document).ready(function () {
         $('.lazy').lazyload({
             effect: 'fadeIn',
