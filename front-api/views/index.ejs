@@ -1,18 +1,21 @@
 <%- include('components/header', {title:title,active:'index'}); %>
-<link rel="stylesheet" href="/style/css/swiper.min.css">
+<link rel="stylesheet" href="/style/css/swiper.min.css" />
 <!-- banner -->
 <div class="swiper-container homeBanner">
     <div class="swiper-wrapper">
         <% bannerList.forEach(function(item) { %>
-            <div class="swiper-slide banner-slide" style="background-image: url('<%= item.imgUrl %>')"></div>
-        <% }) %>            
+        <div
+            class="swiper-slide banner-slide"
+            style="background-image: url('<%= item.imgUrl %>')"
+        ></div>
+        <% }) %>
     </div>
-     <!-- 如果需要分页器 -->
-     <div class="banner-swiper-pagination swiper-pagination"></div>
-    
-     <!-- 如果需要导航按钮 -->
-     <div class="swiper-button-handle swiper-button-prev swiper-button-white"></div>
-     <div class="swiper-button-handle swiper-button-next swiper-button-white"></div>
+    <!-- 如果需要分页器 -->
+    <div class="banner-swiper-pagination swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-handle swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-handle swiper-button-next swiper-button-white"></div>
 </div>
 
 <!-- 我们的优势 -->
@@ -48,7 +51,7 @@
     </div>
 </div>
 <!-- 平台详情 -->
-<div class="platform">    
+<div class="platform" id="platform">
     <div class="notice main-content">
         <!-- 招标公告 -->
         <div class="part-notice wow fadeInLeft" data-wow-delay="0.3s">
@@ -69,16 +72,18 @@
                         <div class="notice-summary">
                             <div class="clearfix">
                                 <div class="notice-title fll"><%= item.noticeTitle %></div>
-                                <div class="notice-time flr"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
-                            </div>                        
+                                <div class="notice-time flr">
+                                    <%= moment(item.createdAt).format('YYYY-MM-DD') %>
+                                </div>
+                            </div>
                             <div class="notice-content"><%- item.remark %></div>
                         </div>
-                    </a>                   
+                    </a>
                 </div>
-                <% }) %>   
-            </div>     
+                <% }) %>
+            </div>
         </div>
-            <!-- 院务公开 -->
+        <!-- 院务公开 -->
         <div class="part-notice wow fadeInRight" data-wow-delay="0.2s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
@@ -92,20 +97,24 @@
                 <div class="publicityContainer">
                     <a href="/home/publicity/<%= item.id %>" class="clearfix">
                         <div class="publicity-time fll">
-                            <div class="publicity-year"><%= moment(item.createdAt).format('YYYY-MM') %></div>
-                            <div class="publicity-day"><%= moment(item.createdAt).format('DD') %></div>
+                            <div class="publicity-year">
+                                <%= moment(item.createdAt).format('YYYY-MM') %>
+                            </div>
+                            <div class="publicity-day">
+                                <%= moment(item.createdAt).format('DD') %>
+                            </div>
                         </div>
                         <div class="publicity-summary fll">
                             <div class="publicity-title"><%= item.noticeTitle %></div>
-                            <div class="publicity-content"><%= item.remark %></div>                    
+                            <div class="publicity-content"><%= item.remark %></div>
                         </div>
                     </a>
                 </div>
-                <% }) %>  
-            </div>     
+                <% }) %>
+            </div>
         </div>
         <!-- 科室导航 -->
-        <div class="part-notice wow fadeInUp"  data-wow-delay="0.2s">
+        <div class="part-notice wow fadeInUp" data-wow-delay="0.2s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -115,29 +124,30 @@
             </div>
             <div class="department-tabs clearfix" id="department-tabs">
                 <% depList.forEach(function(item) { %>
-                    <div class="department"><%= item.deptName %></div>
-                <% }) %>  
+                <div class="department"><%= item.deptName %></div>
+                <% }) %>
             </div>
             <div class="department-list" id="departments">
                 <% depList.forEach(function(item) { %>
-                <ul style="display: none;">
-                    <% departmentList.filter(department=>{return department.parentId==item.deptId}).forEach(function(el) { %>
-                        <li>
-                            <div class="left-bg-bar">
-                                <img src="/style/images/dep_icon.svg" alt="left-bar">
-                            </div>
-                            <a href="/home/department/<%= el.deptId %>"><%= el.deptName %></a>
-                            <div class="left-bg-bar right-bg-bar">
-                                <img src="/style/images/dep_icon.svg" alt="left-bar">
-                            </div>
-                        </li>
-                    <% }) %> 
+                <ul style="display: none">
+                    <% departmentList.filter(department=>{return
+                    department.parentId==item.deptId}).forEach(function(el) { %>
+                    <li>
+                        <div class="left-bg-bar">
+                            <img src="/style/images/dep_icon.svg" alt="left-bar" />
+                        </div>
+                        <a href="/home/department/<%= el.deptId %>"><%= el.deptName %></a>
+                        <div class="left-bg-bar right-bg-bar">
+                            <img src="/style/images/dep_icon.svg" alt="left-bar" />
+                        </div>
+                    </li>
+                    <% }) %>
                 </ul>
-                <% }) %>  
+                <% }) %>
             </div>
         </div>
         <!-- 专家介绍 -->
-        <div class="part-notice doctor-wrapper wow fadeInUp"  data-wow-delay="0.2s">
+        <div class="part-notice doctor-wrapper wow fadeInUp" data-wow-delay="0.2s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -146,24 +156,27 @@
                 <div class="recommend-more flr"><a href="/home/doctor">查看更多></a></div>
             </div>
             <div class="swiper-container doctor-container">
-                <div class="swiper-wrapper">                    
+                <div class="swiper-wrapper">
                     <% doctorList.forEach(function(item,index) { %>
-                    <div class="swiper-slide doctor-item wow fadeInUp"  data-wow-delay="<%= 0.2*index +'s' %>">
+                    <div
+                        class="swiper-slide doctor-item wow fadeInUp"
+                        data-wow-delay="<%= 0.2*index +'s' %>"
+                    >
                         <a href="/home/doctor/<%= item.id %>">
-                            <img src="<%= item.imgUrl %>" alt="doctor" class="doctor-img">
+                            <img src="<%= item.imgUrl %>" alt="doctor" class="doctor-img lazy" />
                             <div class="doctor-name"><%= item.title %></div>
                             <div class="doctor-title"><%= item.role %></div>
                             <div class="doctor-department"><%= item.desc %></div>
                         </a>
                     </div>
-                    <% }) %> 
-                </div>                
-            </div> 
+                    <% }) %>
+                </div>
+            </div>
             <div class="doctor-handle doctor-button-prev"></div>
-            <div class="doctor-handle doctor-button-next"></div>           
+            <div class="doctor-handle doctor-button-next"></div>
         </div>
         <!-- 党建文化 -->
-        <div class="part-notice culture-container wow fadeInUp"  data-wow-delay="0.3s">
+        <div class="part-notice culture-container wow fadeInUp" data-wow-delay="0.3s">
             <div class="recommend-tips clearfix">
                 <div class="projectTitle fll">
                     <span class="projectIcon"></span>
@@ -171,17 +184,17 @@
                 </div>
                 <div class="recommend-more flr"><a href="/home/culture">查看更多></a></div>
             </div>
-            <div class="clearfix wow fadeInUp"  data-wow-delay="0.3s">
+            <div class="clearfix wow fadeInUp" data-wow-delay="0.3s">
                 <div class="culture-swiper-container swiper-container fll">
                     <div class="swiper-wrapper">
                         <% cultureList.forEach(function(item) { %>
                         <div class="swiper-slide">
                             <a href="/home/culture/<%= item.id %>" class="culture-swiper-item">
-                                <img src="<%= item.imgUrl %>" alt="culture">
+                                <img src="<%= item.imgUrl %>" alt="culture" class="lazy" />
                                 <div class="culture-title"><%= item.title %></div>
                             </a>
                         </div>
-                        <% }) %>   
+                        <% }) %>
                     </div>
                     <!-- Add Pagination -->
                     <div class="culture-swiper-pagination swiper-pagination"></div>
@@ -190,77 +203,78 @@
                     <% cultureList.forEach(function(item) { %>
                     <a href="/home/culture/<%= item.id %>" class="culture-content-item">
                         <div class="culture-content-item-title"><%= item.title %></div>
-                        <div class="culture-content-item-time"><%= moment(item.createdAt).format('YYYY-MM-DD') %></div>
+                        <div class="culture-content-item-time">
+                            <%= moment(item.createdAt).format('YYYY-MM-DD') %>
+                        </div>
                     </a>
-                    <% }) %>   
+                    <% }) %>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <script type="text/javascript" src="/style/js/jquery.lazyload.min.js"></script>
 <script type="text/javascript" src="/style/js/wow.min.js"></script>
 <script type="text/javascript" src="/style/js/swiper.min.js"></script>
 <script type="text/javascript">
-    new WOW().init();//WOW要大写
-    
+    new WOW().init(); //WOW要大写
+
     $(document).ready(function () {
-        $("img").lazyload({
-            skip_invisible : false,
-            effect: "fadeIn",
+        $('.lazy').lazyload({
+            effect: 'fadeIn',
+            container: '#platform',
         });
         // banner 轮播
-        var bannerSwiper = new Swiper('.homeBanner',{
-            loop: true,     
-            autoplay:5000,  
-            effect:'fade',     
-            paginationClickable:true,
+        var bannerSwiper = new Swiper('.homeBanner', {
+            loop: true,
+            autoplay: 5000,
+            effect: 'fade',
+            paginationClickable: true,
             // 如果需要分页器
             pagination: '.banner-swiper-pagination',
-            
+
             // 如果需要前进后退按钮
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
         });
         $('.homeBanner').on('mouseenter', function () {
-            bannerSwiper.stopAutoplay()
+            bannerSwiper.stopAutoplay();
             $('.swiper-button-handle').show();
         });
         $('.homeBanner').on('mouseleave', function () {
-            bannerSwiper.startAutoplay()
+            bannerSwiper.startAutoplay();
             $('.swiper-button-handle').hide();
         });
         // 公告轮播
         var doctorSwiper = new Swiper('.doctor-container', {
-            loop: true,     
-            autoplay:3000,  
+            loop: true,
+            autoplay: 3000,
             slidesPerView: 5,
-            spaceBetween: 24
+            spaceBetween: 24,
         });
         $('.doctor-button-prev').click(function () {
             doctorSwiper.slidePrev();
-        })
+        });
         $('.doctor-button-next').click(function () {
             doctorSwiper.slideNext();
-        })
+        });
         // 高亮显示获取科室导航
-        $('#department-tabs .department').eq(0).addClass("active")
-        $('#departments ul').eq(0).show()
+        $('#department-tabs .department').eq(0).addClass('active');
+        $('#departments ul').eq(0).show();
         $('#department-tabs .department').mouseenter(function () {
-            $('#department-tabs').find("*").removeClass("active")
-            $(this).addClass("active")
-            $('#departments ul').hide()
-            $('#departments ul').eq($(this).index()).show()
-        })
+            $('#department-tabs').find('*').removeClass('active');
+            $(this).addClass('active');
+            $('#departments ul').hide();
+            $('#departments ul').eq($(this).index()).show();
+        });
         // 党建文化轮播
         new Swiper('.culture-swiper-container', {
             pagination: '.culture-swiper-pagination',
             paginationClickable: true,
             spaceBetween: 30,
-            loop: true,     
-            autoplay:3000
+            loop: true,
+            autoplay: 3000,
         });
     });
 </script>

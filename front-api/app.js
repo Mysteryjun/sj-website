@@ -15,7 +15,11 @@ const { getUploadFileExt, checkDirExist, getUploadFileName } = require('./app/ut
 const app = new koa();
 
 // 静态资源.
-app.use(Static(path.join(__dirname, './static')));
+// app.use(Static(path.join(__dirname, './static')));
+let opts = {
+    maxage: 2592000000, //静态资源30天缓存 实际上 = 2592000秒
+};
+app.use(Static(path.join(__dirname, './static'), opts));
 
 app.use(
     koaBody({
