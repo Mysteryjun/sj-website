@@ -6,22 +6,31 @@
             <span>您的位置：</span>
             <a href="/">首页</a>
             <span>></span>
-            <a href="/home/department">专家介绍</a>
+            <a href="/home/doctor">专家介绍</a>
             <span>></span>
             <span>详情</span>
         </div>
         <div class="detail-content">
             <div class="doctor-content-item detail-content-doctor">
                 <div class="doctor-content-item-detail clearfix">
-                    <img src="<%= detail.imgUrl %>" alt="doctor" class="doctor-content-item-img">
+                    <img src="<%= detail.imgUrl %>" alt="doctor" class="doctor-content-item-img" />
                     <div class="doctor-content-item-right fll">
                         <div class="doctor-content-item-title"><%= detail.title %></div>
                         <p><%= detail.job %></p>
-                        <p>职称：<span class="cl-555"><%= detail.role %></span></p>
-                        <p>科室：<span class="cl-555"><%= detail.deptName %></span></p>
-                        <p>擅长：<span class="cl-555"><%= detail.desc %></span></p>
+                        <p>
+                            职称：
+                            <span class="cl-555"><%= detail.role %></span>
+                        </p>
+                        <p>
+                            科室：
+                            <span class="cl-555"><%= detail.deptName %></span>
+                        </p>
+                        <p>
+                            擅长：
+                            <span class="cl-555"><%= detail.desc %></span>
+                        </p>
                     </div>
-                </div>           
+                </div>
             </div>
             <%-detail.content %>
         </div>
