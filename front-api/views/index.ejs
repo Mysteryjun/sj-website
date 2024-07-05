@@ -275,6 +275,12 @@
             spaceBetween: 30,
             loop: true,
             autoplay: 3000,
+            onSlideChangeEnd: function (swiper) {
+                console.log(swiper.activeIndex);
+                let index = swiper.activeIndex == 6 ? 0 : swiper.activeIndex - 1;
+                $('.culture-content-item').removeClass('active');
+                $('.culture-content-item').eq(index).addClass('active');
+            },
         });
     });
 </script>
