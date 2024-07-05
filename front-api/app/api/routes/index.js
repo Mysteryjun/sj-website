@@ -25,7 +25,7 @@ router.get('/', async (ctx, next) => {
     // 轮播图
     let bannerList = await Generic.getAll('Banner', { visible: '0' }, [['orderNum', 'DESC']]);
     // 科室导航
-    let departmentList = await Department.getAll({}, [['orderNum', 'ASC']]);
+    let departmentList = await Department.getAll({ status: '0' }, [['orderNum', 'ASC']]);
     // 专家介绍
     let doctorList = await Generic.getAll('Content', { type: '1' });
     // 党建文化
@@ -66,7 +66,7 @@ router.get('/home/intro', async (ctx, next) => {
 // 科室导航
 router.get('/home/department', async (ctx, next) => {
     // 科室导航
-    let departmentList = await Department.getAll({}, [['orderNum', 'ASC']]);
+    let departmentList = await Department.getAll({ status: '0' }, [['orderNum', 'ASC']]);
     await ctx.render(
         'home/department', //渲染用ctx.render,index是页面
         {
