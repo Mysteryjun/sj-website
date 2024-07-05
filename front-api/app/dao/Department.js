@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const Models = require('../../models/index');
 const Op = Sequelize.Op;
-const { getWhere } = require('../utils/common');
 
 class Department {
     // 获取所有列表
