@@ -1,4 +1,4 @@
-<%- include('../components/header', {title:title,active:'department'}); %>
+<%- include('../components/header', {title:title,active:'department',version: version}); %>
 <div class="sub-banner"><%-detail.deptName %></div>
 <div class="main-content">
     <div class="info-content">
@@ -10,9 +10,7 @@
             <span>></span>
             <span><%-detail.deptName %></span>
         </div>
-        <div class="detail-content">
-            <%-detail.content %>
-        </div>
+        <div class="detail-content"><%-detail.content %></div>
     </div>
 </div>
 

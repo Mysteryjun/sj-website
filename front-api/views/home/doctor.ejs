@@ -1,4 +1,4 @@
-<%- include('../components/header', {title:title,active:'doctor'}); %>
+<%- include('../components/header', {title:title,active:'doctor',version: version}); %>
 <div class="sub-banner">专家介绍</div>
 <div class="main-content">
     <div class="info-content">
@@ -12,20 +12,26 @@
             <% doctorList.forEach(function(item) { %>
             <a href="/home/doctor/<%= item.id %>" class="doctor-content-item fll">
                 <div class="doctor-content-item-detail clearfix">
-                    <img src="<%= item.imgUrl %>" alt="doctor" class="doctor-content-item-img">
+                    <img src="<%= item.imgUrl %>" alt="doctor" class="doctor-content-item-img" />
                     <div class="doctor-content-item-right flr">
                         <div class="doctor-content-item-title"><%= item.title %></div>
                         <p><%= item.job %></p>
-                        <p>职称：<span class="cl-555"><%= item.role %></span></p>
-                        <p>科室：<span class="cl-555"><%= item.deptName %></span></p>
+                        <p>
+                            职称：
+                            <span class="cl-555"><%= item.role %></span>
+                        </p>
+                        <p>
+                            科室：
+                            <span class="cl-555"><%= item.deptName %></span>
+                        </p>
                     </div>
-                </div>  
+                </div>
                 <div class="doctor-content-item-goodat">
                     <span>擅长：</span>
                     <%= item.desc %>
-                </div>              
+                </div>
             </a>
-            <% }) %> 
+            <% }) %>
         </div>
     </div>
 </div>

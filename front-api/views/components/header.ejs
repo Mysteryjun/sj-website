@@ -1,48 +1,70 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title><%= title %>—三江人民医院官网</title>
-	<link rel="stylesheet" type="text/css" href="/style/css/animate.css">	
-	<link rel="stylesheet" type="text/css" href="/style/css/index.css">	
-    <script type="text/javascript" src="/style/js/jquery.min.js"></script>	
-</head>
-<body>
-	<div class="top-bar"></div>
-	<!-- 导航 -->
-	<div class="main-nav">
-		<div class="main-content clearfix">
-			<div class="logo fll">
-				<a href="/">
-					<img src="/style/images/logo.png" alt="logo">
-				</a>
-			</div>
-			<ul class="nav flr clearfix">
-				<li class="<%= active=='about'?'active':'' %>"><a href="/home/about" class="nav-link">联系我们</a></li>
-				<li class="<%= active=='culture'?'active':'' %>"><a href="/home/culture" class="nav-link">党建文化</a></li>
-				<li class="<%= active=='notice'||active=='publicity'?'active':'' %>">
-					<a href="/home/notice" class="nav-link">
-						公告通知
-					</a>	
-					<div class="sub-menu">
-						<a href="/home/notice" class="sub-menu-item <%= active=='notice'?'active':'' %>" >招标公告</a>
-						<a href="/home/publicity" class="sub-menu-item <%= active=='publicity'?'active':'' %>">院务公开</a>
-					</div>				
-				</li>
-				<li class="<%= active=='doctor'?'active':'' %>"><a href="/home/doctor" class="nav-link">专家介绍</a></li>
-				<li class="<%= active=='department'?'active':'' %>"><a href="/home/department" class="nav-link">科室导航</a></li>
-				<li class="<%= active=='intro'?'active':'' %>"><a href="/home/intro" class="nav-link">医院概况</a></li>
-				<li class="<%= active=='index'?'active':'' %>"><a href="/" class="nav-link">首页</a></li>
-			</ul>
-		</div>
-	</div>
-	<script>
-		$(document).ready(function () {
-			$('.nav li').on('mouseenter', function () {
-				$(this).children('.sub-menu').show()
-			});
-			$('.nav li').on('mouseleave', function () {
-				$(this).children('.sub-menu').hide()
-			});
-		});
-	</script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title><%= title %>—三江人民医院官网</title>
+        <link rel="stylesheet" type="text/css" href="/style/css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="/style/css/index.css?t=<%= version %>" />
+        <script type="text/javascript" src="/style/js/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="top-bar"></div>
+        <!-- 导航 -->
+        <div class="main-nav">
+            <div class="main-content clearfix">
+                <div class="logo fll">
+                    <a href="/">
+                        <img src="/style/images/logo.png" alt="logo" />
+                    </a>
+                </div>
+                <ul class="nav flr clearfix">
+                    <li class="<%= active=='about'?'active':'' %>">
+                        <a href="/home/about" class="nav-link">联系我们</a>
+                    </li>
+                    <li class="<%= active=='culture'?'active':'' %>">
+                        <a href="/home/culture" class="nav-link">党建文化</a>
+                    </li>
+                    <li class="<%= active=='notice'||active=='publicity'?'active':'' %>">
+                        <a href="/home/notice" class="nav-link">公告通知</a>
+                        <div class="sub-menu">
+                            <a
+                                href="/home/notice"
+                                class="sub-menu-item <%= active=='notice'?'active':'' %>"
+                            >
+                                招标公告
+                            </a>
+                            <a
+                                href="/home/publicity"
+                                class="sub-menu-item <%= active=='publicity'?'active':'' %>"
+                            >
+                                院务公开
+                            </a>
+                        </div>
+                    </li>
+                    <li class="<%= active=='doctor'?'active':'' %>">
+                        <a href="/home/doctor" class="nav-link">专家介绍</a>
+                    </li>
+                    <li class="<%= active=='department'?'active':'' %>">
+                        <a href="/home/department" class="nav-link">科室导航</a>
+                    </li>
+                    <li class="<%= active=='intro'?'active':'' %>">
+                        <a href="/home/intro" class="nav-link">医院概况</a>
+                    </li>
+                    <li class="<%= active=='index'?'active':'' %>">
+                        <a href="/" class="nav-link">首页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('.nav li').on('mouseenter', function () {
+                    $(this).children('.sub-menu').show();
+                });
+                $('.nav li').on('mouseleave', function () {
+                    $(this).children('.sub-menu').hide();
+                });
+            });
+        </script>
+    </body>
+</html>

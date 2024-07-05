@@ -1,8 +1,8 @@
-<%- include('../components/header', {title:title,active:'publicity'}); %>
+<%- include('../components/header', {title:title,active:'publicity',version: version}); %>
 <div class="sub-banner">公告通知</div>
 <div class="detail-menu-tabs">
     <div class="detail-menu clearfix">
-        <a class="detail-menu-item " href="/home/notice">招标公告</a>
+        <a class="detail-menu-item" href="/home/notice">招标公告</a>
         <a class="detail-menu-item active" href="javascript:void(0);">院务公开</a>
     </div>
 </div>
@@ -20,7 +20,9 @@
         </div>
         <div class="detail-content">
             <div class="detail-content-title"><%-detail.noticeTitle %></div>
-            <div class="detail-content-updatetime">发布时间：<%= moment(detail.createdAt).format('YYYY-MM-DD HH:mm:ss') %></div>
+            <div class="detail-content-updatetime">
+                发布时间：<%= moment(detail.createdAt).format('YYYY-MM-DD HH:mm:ss') %>
+            </div>
             <%-detail.noticeContent %>
         </div>
     </div>

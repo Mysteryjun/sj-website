@@ -1,4 +1,4 @@
-<%- include('../components/header', {title:title,active:'culture'}); %>
+<%- include('../components/header', {title:title,active:'culture',version: version}); %>
 <div class="sub-banner culture-banner">党建文化</div>
 <div class="main-content">
     <div class="info-content">
@@ -12,7 +12,9 @@
         </div>
         <div class="detail-content">
             <div class="detail-content-title"><%-detail.title %></div>
-            <div class="detail-content-updatetime">发布时间：<%= moment(detail.createdAt).format('YYYY-MM-DD HH:mm:ss') %></div>
+            <div class="detail-content-updatetime">
+                发布时间：<%= moment(detail.createdAt).format('YYYY-MM-DD HH:mm:ss') %>
+            </div>
             <%-detail.content %>
         </div>
     </div>

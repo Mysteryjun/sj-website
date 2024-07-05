@@ -19,7 +19,17 @@ const app = new koa();
 let opts = {
     maxage: 2592000000, //静态资源30天缓存 实际上 = 2592000秒
 };
-app.use(Static(path.join(__dirname, './static'), opts));
+// app.use(Static(path.join(__dirname, './static'), opts));
+// 仅缓存图片
+app.use(
+    Static(path.join(__dirname, './static'), {
+        setHeaders(res, path) {
+            if (/\.(jpg|jpeg|png|gif|svg)$/.test(path)) {
+                res.setHeader('Cache-Control', opts.maxage);
+            }
+        },
+    })
+);
 
 app.use(
     koaBody({

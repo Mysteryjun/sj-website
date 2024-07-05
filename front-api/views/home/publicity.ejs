@@ -1,8 +1,8 @@
-<%- include('../components/header', {title:title,active:'publicity'}); %>
+<%- include('../components/header', {title:title,active:'publicity',version: version}); %>
 <div class="sub-banner">公告通知</div>
 <div class="detail-menu-tabs">
     <div class="detail-menu clearfix">
-        <a class="detail-menu-item " href="/home/notice">招标公告</a>
+        <a class="detail-menu-item" href="/home/notice">招标公告</a>
         <a class="detail-menu-item active" href="javascript:void(0);">院务公开</a>
     </div>
 </div>
@@ -21,60 +21,61 @@
             <div class="info-content-table">
                 <a href="/home/publicity/<%= item.id %>" class="clearfix">
                     <div class="info-content-title fll"><%= item.noticeTitle %></div>
-                    <div class="info-content-time flr"><%= moment(item.createdAt).format('yyyy-MM-dd') %></div>
+                    <div class="info-content-time flr">
+                        <%= moment(item.createdAt).format('yyyy-MM-dd') %>
+                    </div>
                 </a>
             </div>
-            <% }) %>   
+            <% }) %>
         </div>
         <div class="pagination pagination-centered">
             <ul id="pagination"></ul>
-        </div>  
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="/style/js/common.js"></script>
 <script type="text/javascript" src="/style/js/pagination.js"></script>
 <script type="text/javascript">
-    var pagination = '<%- JSON.stringify(pagination) %>'
-    var page = JSON.parse(pagination)
-    function jump(pageNum){
+    var pagination = '<%- JSON.stringify(pagination) %>';
+    var page = JSON.parse(pagination);
+    function jump(pageNum) {
         $.ajax({
             url: `/api/v1/system/common/notice?pageNum=${pageNum}&pageSize=${page.pageSize}&noticeType=1`,
             type: 'GET',
-            headers:{
-
-            },
-            success: function(res) {
+            headers: {},
+            success: function (res) {
                 // 处理响应数据
-                console.log(res)
+                console.log(res);
                 var data = res.data;
-                var html = "";
+                var html = '';
                 res.data.rows.forEach(el => {
-                    html+=`
+                    html += `
                     <div class="info-content-table">
                         <a href="/home/publicity/${el.id}" class="clearfix">
                             <div class="info-content-title fll">${el.noticeTitle}</div>
-                            <div class="info-content-time flr">${new Date(el.createdAt).format('YYYY-MM-DD')}</div>
+                            <div class="info-content-time flr">${new Date(el.createdAt).format(
+                                'YYYY-MM-DD'
+                            )}</div>
                         </a>
                     </div>
-                    `
+                    `;
                 });
-                $("#info-content-container").html(html)
+                $('#info-content-container').html(html);
                 $('#pagination').jqPaginator('option', {
                     currentPage: pageNum,
-                    totalPages:parseInt(data.count/page.pageSize)+1,
+                    totalPages: parseInt(data.count / page.pageSize) + 1,
                 });
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 // 处理错误
-                console.log(xhr, status, error)
-            }
+                console.log(xhr, status, error);
+            },
         });
-
     }
-    $(document).ready(function() {		
+    $(document).ready(function () {
         $('#pagination').jqPaginator({
-            totalPages: parseInt(page.total/page.pageSize)+1,
-            pageSize:page.pageSize,
+            totalPages: parseInt(page.total / page.pageSize) + 1,
+            pageSize: page.pageSize,
             visiblePages: 5,
             currentPage: page.pageNum,
             first: '<li class="first"><a href="javascript:void(0);"><i class="first-arrow-ico"></i><\/a><\/li>',
@@ -85,13 +86,12 @@
             onPageChange: function (n) {
                 // console.log("当前第" + n + "页");
             },
-            itemClickHandler:function(n){
+            itemClickHandler: function (n) {
                 // console.log(n)
-                page.pageNum = n
-                jump(n)
-            }
+                page.pageNum = n;
+                jump(n);
+            },
         });
     });
 </script>
 <%- include("../components/footer") -%>
-
