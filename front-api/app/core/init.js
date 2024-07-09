@@ -1,6 +1,12 @@
 const Router = require('koa-router');
 const requireDirectory = require('require-directory');
 
+
+const { koaSwagger } = require("koa2-swagger-ui");
+const swagger = require("../../swagger");//存放swagger.js的地方
+
+
+
 class InitManager {
     static initCore (app) {
         // 入口方法
@@ -22,6 +28,15 @@ class InitManager {
         function whenLoadModule (obj) {
             if (obj instanceof Router) {
                 InitManager.app.use(obj.routes())
+                InitManager.app.use(swagger.routes(), swagger.allowedMethods());
+                InitManager.app.use(
+                    koaSwagger({
+                        routePrefix: "/swagger", // 接口文档访问地址
+                        swaggerOptions: {
+                            url: "/swagger.json",//生成json的访问路径
+                        },
+                    })
+                );
             }
         }
     }

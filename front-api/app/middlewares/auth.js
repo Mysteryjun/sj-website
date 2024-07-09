@@ -11,6 +11,8 @@ const whiteList = [`${baseUrl}/login`, `${baseUrl}/captcha`, `${baseUrl}/logout`
 `${baseUrl}/system/common/notice`,
 `${baseUrl}/system/common/culture`,
  `${baseUrl}/wx/*`,"/favicon.ico",
+ "/swagger",
+ "/swagger.json",
 //  页面路由白名单
  "/","/style/*","/home/*"] 
 

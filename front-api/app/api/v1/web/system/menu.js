@@ -9,7 +9,35 @@ const router = new Router({
 })
 
 
-// 查询路由信息
+/**
+ * @swagger
+ * /api/v1/system/menu:
+ *   get:
+ *     summary: 获取菜单
+ *     description: 获取菜单
+ *     tags:
+ *       - 用户模块
+ *     consumes:
+ *      - application/json
+ *      - application/xml
+ *     produces:
+ *      - application/json
+ *      - application/xml
+ *     responses:
+ *       200:
+ *         description: 查询成功
+ *         schema: # 返回体说明
+ *           type: 'object'
+ *           properties:
+ *             code:
+ *               type: 'number'
+ *             data:
+ *               type: 'object'
+ *             msg:
+ *               type: 'string'
+ *     security:
+ *     - Authorization:
+ */
 router.get('/system/menu', async (ctx, next) => {
   let res = await Menu.getAll(ctx)
   ctx.body = global.success(100010, res)

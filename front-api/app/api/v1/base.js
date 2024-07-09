@@ -11,7 +11,51 @@ const router = new Router({
   prefix: '/api/' + version // 路由统一前缀 /api/版本号
 })
 
-// 登陆接口
+/**
+ * @swagger
+ * /api/v1/login:
+ *   post:
+ *     summary: 登录
+ *     description: 登录
+ *     tags:
+ *       - 用户模块
+ *     consumes:
+ *      - application/json
+ *      - application/xml
+ *     produces:
+ *      - application/json
+ *      - application/xml
+ *     parameters: # 请求参数
+ *       - name: userName
+ *         description: 用户名
+ *         in: query # 参数的位置，可能的值有 "query", "header", "path" 或 "cookie" 没有formData，但是我加了不报错
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: 用户密码
+ *         in: query
+ *         required: true
+ *         type: string # 可能的值有string、number、file（文件）等
+ *       - name: captcha
+ *         description: 验证码
+ *         in: query
+ *         required: true
+ *         type: string # 可能的值有string、number、file（文件）等
+ *     responses:
+ *       200:
+ *         description: 登录成功
+ *         schema: # 返回体说明
+ *           type: 'object'
+ *           properties:
+ *             code:
+ *               type: 'number'
+ *               example: 100010
+ *             token:
+ *               type: 'string'
+ *             msg:
+ *               type: 'string'
+ *               example: '查询成功'
+ */
 router.post('/login', async (ctx, next) => {
   let checkLists = ['userName', 'password', 'captcha'] // 要校验的字段
   let v = new Validator(ctx);
@@ -46,7 +90,7 @@ router.post('/login', async (ctx, next) => {
     { expiresIn: '7d' }
   )
   ctx.session.token = token
-  ctx.body = global.success(0, {token})
+  ctx.body = global.success(100010, {token})
 });
 
 
@@ -58,7 +102,20 @@ router.post('/logout', async (ctx, next) => {
   ctx.body = global.success(0, null)
 })
 
-// 验证码
+/**
+ * @swagger
+ * /api/v1/captcha:
+ *   get:
+ *     summary: 验证码
+ *     description: 验证码
+ *     tags:
+ *       - 用户模块
+ *     consumes:
+ *      - image/svg+xml
+ *     produces:
+ *      - image/svg+xml
+ *     responses:
+ */
 router.get('/captcha', async (ctx, next) => {
   const cap = svgCaptcha.create({
     size: 4, // 验证码长度
