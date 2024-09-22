@@ -20,10 +20,10 @@
 
 <!-- 我们的优势 -->
 <div class="advantage wow fadeInUp" data-wow-delay="0.3s">
-    <div class="main-content clearfix">
-        <ul>
+    <div class="main-content ">
+        <ul class="clearfix">
             <% serviceList.forEach(function(item,index) { %>
-            <li>
+            <li onclick="jumpIntro('<%- item.id %>')" style="width: <%= 1200/serviceList.length +'px' %>">
                 <span class="advantage-icon" style="background: url('<%- item.imgUrl %>');"></span>
                 <div class="advantage-tips">
                     <div class="advantage-title"><%- item.title %></div>
@@ -268,5 +268,8 @@
             },
         });
     });
+    function jumpIntro(id){
+        window.location.href = '/home/intro/'+id
+    }
 </script>
 <%- include("components/footer") -%>

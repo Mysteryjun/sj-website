@@ -168,6 +168,7 @@ input {
     float: left;
     margin: 24px 0px;
     text-align: center;
+    cursor: pointer;
 }
 .advantage-icon {
     width: 48px;

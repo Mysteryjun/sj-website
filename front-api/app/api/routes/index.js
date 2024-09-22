@@ -66,6 +66,19 @@ router.get('/home/intro', async (ctx, next) => {
         }
     );
 });
+// 患者服务
+router.get('/home/intro/:id', async (ctx, next) => {
+    let v = new Validator(ctx);
+    let detail = await Generic.getById('Content', v.get('id'));
+    await ctx.render(
+        'home/introDetail', //渲染用ctx.render,index是页面
+        {
+            title: detail.title,
+            version: version,
+            content: detail.content,
+        }
+    );
+});
 // 科室导航
 router.get('/home/department', async (ctx, next) => {
     // 科室导航

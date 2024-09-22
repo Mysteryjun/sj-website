@@ -1,0 +1,17 @@
+<%- include('../components/header', {title:title,active:'intro',version: version}); %>
+<div class="sub-banner"><%-title %></div>
+<div class="main-content">
+    <div class="info-content">
+        <div class="info-content-path">
+            <span>您的位置：</span>
+            <a href="/">首页</a>
+            <span>></span>
+            <a href="/home/intro">医院概况</a>
+            <span>></span>
+            <span><%-title %></span>
+        </div>
+        <div class="detail-content"><%-content %></div>
+    </div>
+</div>
+
+<%- include("../components/footer") -%>
