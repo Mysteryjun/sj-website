@@ -8,7 +8,23 @@
             <span>></span>
             <span>联系我们</span>
         </div>
-        <div class="detail-content"><%-content %></div>
+        <div class="detail-content clearfix">
+            <div class="detail-map-content fll"><%-content %></div>
+            <div class="detail-map-content flr" id="map-container"></div>            
+        </div>
     </div>
 </div>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=SKYnC2hQmUGn1GF7VOULKNke23C0otzX"></script>
+<script type="text/javascript">
+    var map = new BMapGL.Map("map-container");          // 创建地图实例 
+    var point = new BMapGL.Point(109.62105,25.798002);  // 创建点坐标 
+    map.centerAndZoom(point, 18);                 // 初始化地图，设置中心点坐标和地图级别
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    // map.setHeading(64.5);   //设置地图旋转角度
+    // map.setTilt(73);       //设置地图的倾斜角度
+    var marker = new BMapGL.Marker(point); // 创建标注   
+    map.addOverlay(marker);
+    map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+    
+</script>
 <%- include("../components/footer") -%>

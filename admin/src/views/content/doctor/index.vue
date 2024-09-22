@@ -77,6 +77,7 @@
       </el-table-column>
       <el-table-column label="职称" align="center" prop="role" width="100" />
       <el-table-column label="所属科室" align="center" prop="deptName" width="100" />
+      <el-table-column label="显示排序"  prop="orderNum" width="100" />
       <el-table-column label="创建者" align="center" prop="createdBy" width="100" />
       <el-table-column label="创建时间" align="center" prop="createdAt" :formatter="dateFormatter" width="200"> </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -157,7 +158,11 @@
               <el-input v-model="form.desc" placeholder="请输入擅长领域" />
             </el-form-item>
           </el-col>
-
+          <el-col :span="24">
+              <el-form-item label="显示排序" prop="orderNum">
+                <el-input v-model="form.orderNum" placeholder="请输入显示排序(数字越大越靠前)" />
+              </el-form-item>
+            </el-col>
           <el-col :span="24">
             <el-form-item label="个人简介" prop="content">
               <div style="border: 1px solid #ccc;" v-if="open">
@@ -248,7 +253,8 @@ export default {
         id: '',
         content: '',
         imgUrl: '',
-        title: ''
+        title: '',
+        orderNum:0
       },
       // 表单校验
       rules: {
@@ -335,7 +341,8 @@ export default {
         id: undefined,
         title: undefined,
         type: undefined,
-        content: undefined
+        content: undefined,
+        orderNum: undefined,
       }
       this.imgUrl = ''
       this.resetForm('form')
@@ -401,7 +408,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete (row) {
       const noticeIds = row.id || this.ids
-      this.$confirm('是否确认删除编号为"' + noticeIds + '"的数据项?', '警告', {
+      this.$confirm('是否确认删除标题为"' + row.title + '"的数据项?', '警告', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

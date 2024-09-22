@@ -372,7 +372,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete (row) {
       const noticeIds = row.id || this.ids
-      this.$confirm('是否确认删除公告编号为"' + noticeIds + '"的数据项?', '警告', {
+      this.$confirm('是否确认删除标题为"' + row.title + '"的数据项?', '警告', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

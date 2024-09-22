@@ -40,22 +40,41 @@ router.get('/system/culture', async (ctx, next) => {
   let roleList = await Generic.getList('Content', query)
   ctx.body = global.success(100010, roleList)
 })
-// 获取列表
+// 获取党建列表
+router.get('/system/service', async (ctx, next) => {
+  let checkLists = ['pageNum', 'pageSize'] // 要校验的字段
+  let v = new Validator(ctx)
+  v.check(checkLists)
+  let title = ctx.query.title ? ctx.query.title : ''
+  let pageNum = ctx.query.pageNum ? ctx.query.pageNum : 1
+  let pageSize = ctx.query.pageSize ? ctx.query.pageSize : 10
+  let query = {
+    title,
+    type:'3',
+    pageNum,
+    pageSize
+  }
+  let roleList = await Generic.getList('Content', query,[['orderNum', 'ASC']])
+  ctx.body = global.success(100010, roleList)
+})
+// 获取专家列表
 router.get('/system/content', async (ctx, next) => {
   let checkLists = ['pageNum', 'pageSize'] // 要校验的字段
   let v = new Validator(ctx)
   v.check(checkLists)
   let title = ctx.query.title ? ctx.query.title : ''
   let type = ctx.query.type ? ctx.query.type : ''
-  let deptId = ctx.query.deptId ? ctx.query.deptId : ''
+  let deptId = ctx.query.deptId ? ctx.query.deptId : ''  
   let pageNum = ctx.query.pageNum ? ctx.query.pageNum : 1
   let pageSize = ctx.query.pageSize ? ctx.query.pageSize : 10
+  let orderNum = ctx.query.orderNum ? ctx.query.orderNum : ''
   let query = {
     title,
     type,
     deptId,
     pageNum,
-    pageSize
+    pageSize,
+    orderNum
   }
   let roleList = await Generic.getList('Content', query)
   ctx.body = global.success(100010, roleList)
@@ -85,6 +104,7 @@ router.post('/system/content', async (ctx, next) => {
     status: v.get('status'),
     remark: v.get('remark'),
     deptId: v.get('deptId'),
+    orderNum: v.get('orderNum'),
     deptName: v.get('deptName'),
     job: v.get('job'),
     createdBy: ctx.state.user.userName
@@ -116,6 +136,7 @@ router.put('/system/content', async (ctx, next) => {
     remark: v.get('remark'),
     deptId: v.get('deptId'),
     deptName: v.get('deptName'),
+    orderNum: v.get('orderNum'),
     job: v.get('job'),
     updatedBy: ctx.state.user.userName
   }

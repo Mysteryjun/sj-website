@@ -24,10 +24,12 @@ router.get('/', async (ctx, next) => {
     let publicityList = await Generic.getList('Notice', publicityQuery);
     // 轮播图
     let bannerList = await Generic.getAll('Banner', { visible: '0' }, [['orderNum', 'DESC']]);
+    // 患者服务
+    let serviceList = await Generic.getAll('Content', { type: '3' },[['orderNum', 'ASC']]);
     // 科室导航
     let departmentList = await Department.getAll({ status: '0' }, [['orderNum', 'ASC']]);
     // 专家介绍
-    let doctorList = await Generic.getAll('Content', { type: '1' });
+    let doctorList = await Generic.getAll('Content', { type: '1' },[['orderNum', 'ASC']]);
     // 党建文化
     let cultureQuery = {
         type: '2',
@@ -47,6 +49,7 @@ router.get('/', async (ctx, next) => {
             departmentList: departmentList.rows.filter(item => item.depth == 3),
             doctorList: doctorList.rows,
             cultureList: cultureList.rows,
+            serviceList: serviceList.rows,
             moment: moment,
         }
     );

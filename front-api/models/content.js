@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: '1',
       comment: '类型（1 专家介绍 2党建文化）'
     },
+    orderNum: {
+      type: DataTypes.INTEGER,
+      comment: '序号'
+    },
     job: {
       type: DataTypes.STRING,
       comment: '职位'

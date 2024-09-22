@@ -22,30 +22,15 @@
 <div class="advantage wow fadeInUp" data-wow-delay="0.3s">
     <div class="main-content clearfix">
         <ul>
+            <% serviceList.forEach(function(item,index) { %>
             <li>
-                <span class="advantage-icon advance2-icon"></span>
+                <span class="advantage-icon" style="background: url('<%- item.imgUrl %>');"></span>
                 <div class="advantage-tips">
-                    <div class="advantage-title">预约服务</div>
+                    <div class="advantage-title"><%- item.title %></div>
                 </div>
             </li>
-            <li>
-                <span class="advantage-icon advance1-icon"></span>
-                <div class="advantage-tips">
-                    <div class="advantage-title">门诊就医</div>
-                </div>
-            </li>
-            <li>
-                <span class="advantage-icon advance3-icon"></span>
-                <div class="advantage-tips">
-                    <div class="advantage-title">医保信息</div>
-                </div>
-            </li>
-            <li>
-                <span class="advantage-icon advance4-icon"></span>
-                <div class="advantage-tips">
-                    <div class="advantage-title">健康体检</div>
-                </div>
-            </li>
+            <% }) %>
+            
             <div class="blank"></div>
         </ul>
     </div>

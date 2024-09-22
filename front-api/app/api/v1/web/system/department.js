@@ -32,7 +32,7 @@ router.get('/system/allDepartment', async (ctx, next) => {
     let query = {
         depth,
     };
-    let menuList = await Department.getAll(query);
+    let menuList = await Department.getAll(query,[['orderNum', 'ASC']]);
     ctx.body = global.success(100010, menuList);
 });
 

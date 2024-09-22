@@ -8,7 +8,10 @@ export function listContent (params = {}) {
 export function listCulture (params = {}) {
   return HttpRequest('/system/culture', 'get', params)
 }
-
+// 获取内容
+export function listService (params = {}) {
+  return HttpRequest('/system/service', 'get', params)
+}
 // 获取某个内容
 export function getContent (id) {
   return HttpRequest('/system/content/' + id, 'get', {}, false)

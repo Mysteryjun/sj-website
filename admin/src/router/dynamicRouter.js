@@ -2,6 +2,7 @@ export default {
   Layout: () => import('@/views/layout'),
   Home: () => import('@/views/home'),
   Banner: () => import('@/views/banner'),
+  Service: () => import('@/views/service'),
   // 内容管理
   Info: () => import('@/views/content/info'),
   Notice: () => import('@/views/content/notice'),
