@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "Yangjun2506!",
+    "password": "Sjxrmyy@123",
     "database": "database_development",
-    "host": "118.25.83.243",
+    "host": "47.119.183.197",
     "dialect": "mysql",
     "timezone": "+08:00"
   },
@@ -17,9 +17,9 @@
   },
   "production": {
     "username": "root",
-    "password": "Yangjun2506!",
+    "password": "123456",
     "database": "database_production",
-    "host": "118.25.83.243",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00"
   }

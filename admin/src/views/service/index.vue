@@ -176,6 +176,15 @@ export default {
             meta: {
               Authorization: 'Bearer ' + getToken()
             }
+          },
+          uploadVideo: {
+            // 自定义上传图片 方法
+            customUpload: this.uploadFile,
+            // 上传接口设置文件名
+            fieldName: 'file',
+            meta: {
+              Authorization: 'Bearer ' + getToken()
+            }
           }
         }
       },

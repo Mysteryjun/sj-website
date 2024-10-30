@@ -17,7 +17,7 @@ const app = new koa();
 // 静态资源.
 // app.use(Static(path.join(__dirname, './static')));
 let opts = {
-    maxage: 2592000000, //静态资源30天缓存 实际上 = 2592000秒
+    maxage: 172800, //静态资源2天缓存 实际上 = 172800秒
 };
 // app.use(Static(path.join(__dirname, './static'), opts));
 // 仅缓存图片

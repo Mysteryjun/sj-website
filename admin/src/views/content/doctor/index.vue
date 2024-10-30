@@ -219,6 +219,15 @@ export default {
             meta: {
               Authorization: 'Bearer ' + getToken()
             }
+          },
+          uploadVideo: {
+            // 自定义上传图片 方法
+            customUpload: this.uploadFile,
+            // 上传接口设置文件名
+            fieldName: 'file',
+            meta: {
+              Authorization: 'Bearer ' + getToken()
+            }
           }
         }
       },
@@ -254,7 +263,7 @@ export default {
         content: '',
         imgUrl: '',
         title: '',
-        orderNum:0
+        orderNum: 0
       },
       // 表单校验
       rules: {
@@ -342,7 +351,7 @@ export default {
         title: undefined,
         type: undefined,
         content: undefined,
-        orderNum: undefined,
+        orderNum: undefined
       }
       this.imgUrl = ''
       this.resetForm('form')

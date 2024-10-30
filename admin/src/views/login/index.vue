@@ -63,8 +63,8 @@ export default {
       codeHtml: '',
       cookiePassword: '',
       loginForm: {
-        userName: 'admin',
-        password: '123456',
+        userName: '',
+        password: '',
         rememberMe: false,
         captcha: '',
         uuid: ''
