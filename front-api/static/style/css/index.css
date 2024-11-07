@@ -668,6 +668,29 @@ input {
 .certification a:hover {
     color: #fff;
 }
+.gov {
+    display: flex;
+    align-items: center;
+}
+.gov a {
+    color: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 14px;
+    line-height: 60px;
+}
+.gov a div img {
+    width: 18px;
+    height: 20px;
+    margin-right: 8px;
+}
+.gov a div {
+    display: flex;
+    align-items: center;
+}
+.gov a:hover {
+    color: #fff;
+}
 
 /* 子页面 */
 .sub-banner {
