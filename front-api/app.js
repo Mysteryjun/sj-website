@@ -27,6 +27,9 @@ app.use(
             if (/\.(jpg|jpeg|png|gif|svg)$/.test(path)) {
                 res.setHeader('Cache-Control', opts.maxage);
             }
+            if (/\.(pdf|txt|doc)$/.test(path)) {
+                res.setHeader('Content-Disposition', 'attachment');
+            }
         },
     })
 );

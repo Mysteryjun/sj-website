@@ -112,7 +112,7 @@
     />
 
     <!-- 添加或修改公告对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body :close-on-click-modal="false">
+    <el-dialog :title="title" :visible.sync="open" width="1200px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-row>
           <el-col :span="24">
@@ -121,6 +121,11 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
+            <el-form-item label="公告副标题" prop="remark">
+              <el-input v-model="form.remark" placeholder="请输入公告副标题(首页显示用)" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
             <el-form-item label="公告类型" prop="noticeType">
               <el-select v-model="form.noticeType" placeholder="请选择">
                 <el-option
@@ -131,13 +136,8 @@
                 />
               </el-select>
             </el-form-item>
-          </el-col>
-          <el-col :span="24">
-            <el-form-item label="公告副标题" prop="remark">
-              <el-input v-model="form.remark" placeholder="请输入公告副标题(首页显示用)" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="24">
+          </el-col>          
+          <el-col :span="12">
             <el-form-item label="状态">
               <el-radio-group v-model="form.status">
                 <el-radio
@@ -167,6 +167,24 @@
               </div>
             </el-form-item>
           </el-col>
+          <el-col :span="24">
+            <el-form-item label="附件名称" prop="fileName">
+              <el-input v-model="form.fileName" placeholder="请输入附件名称" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="附件">
+              <el-upload
+                class="upload-demo"
+                action=""
+                :http-request="uploadFile"
+                :show-file-list="false"
+                >
+                <el-button size="small" type="primary">上传</el-button>
+                <el-button size="small"  @click="previewFile" :disabled="!form.fileUrl">预览</el-button>
+              </el-upload>
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer" style="padding-top:20px">
@@ -190,6 +208,7 @@ export default {
   },
   data () {
     return {
+      fileList:[],
       editor: null,
       toolbarConfig: { },
       editorConfig: {
@@ -244,6 +263,8 @@ export default {
       },
       // 表单参数
       form: {
+        fileName:'',
+        fileUrl:'',
         noticeContent: ''
       },
       // 表单校验
@@ -253,6 +274,9 @@ export default {
         ],
         noticeType: [
           { required: true, message: '公告类型不能为空', trigger: 'blur' }
+        ],
+        fileName: [
+          { required: true, message: '附件名称不能为空', trigger: 'blur' }
         ]
       }
     }
@@ -272,6 +296,25 @@ export default {
     editor.destroy() // 组件销毁时，及时销毁编辑器
   },
   methods: {
+    previewFile(){
+      window.open(this.form.fileUrl)
+    },
+    uploadFile (option) {
+      console.log(option)
+      const imgData = new FormData()
+      imgData.append('file', option.file)
+      axios({
+        url: this.uploadFileUrl,
+        data: imgData,
+        method: 'post',
+        headers: {
+          Authorization: 'Bearer ' + getToken()
+        }
+      }).then((res) => {
+        console.log(res)
+        this.form.fileUrl = process.env.VUE_APP_BASE_IMG + res.data.path        
+      })
+    },
     // 自定义上传图片
     uploadImg (file, insertFn) {
       const imgData = new FormData()
@@ -321,7 +364,8 @@ export default {
         id: undefined,
         noticeTitle: undefined,
         noticeType: undefined,
-        noticeContent: undefined,
+        noticeContent: "",
+        fileUrl: "",
         status: '0'
       }
       this.resetForm('form')

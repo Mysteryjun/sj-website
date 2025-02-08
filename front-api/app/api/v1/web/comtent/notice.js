@@ -64,6 +64,8 @@ router.post('/system/notice', async (ctx, next) => {
     noticeContent: v.get('noticeContent'),
     status: v.get('status'),
     remark: v.get('remark'),
+    fileName: v.get('fileName'),
+    fileUrl: v.get('fileUrl'),
     createdBy: ctx.state.user.userName
   }
 
@@ -88,6 +90,8 @@ router.put('/system/notice', async (ctx, next) => {
     noticeContent: v.get('noticeContent'),
     status: v.get('status'),
     remark: v.get('remark'),
+    fileName: v.get('fileName'),
+    fileUrl: v.get('fileUrl'),
     updatedBy: ctx.state.user.userName
   }
 

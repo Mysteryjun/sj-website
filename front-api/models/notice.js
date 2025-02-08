@@ -45,6 +45,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       comment: '备注'
     },
+    fileName: {
+      type: DataTypes.STRING,
+      comment: '附件名称'
+    },
+    fileUrl: {
+      type: DataTypes.STRING,
+      comment: '附件路径'
+    },
     createdAt: {
       allowNull: true,
       type: DataTypes.DATE,

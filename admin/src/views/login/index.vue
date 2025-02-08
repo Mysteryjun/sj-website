@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">登录</h3>
+      <h3 class="login-title">登录</h3>
       <el-form-item prop="userName">
         <el-input v-model="loginForm.userName" type="text" auto-complete="off" placeholder="账号">
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
@@ -146,7 +146,7 @@ export default {
     justify-content: flex-end;
     background-image: url("../../static/images/login-bg.jpg");
   }
-  .title {
+  .login-title {
     margin: 0px auto 30px auto;
     text-align: center;
     color: #707070;

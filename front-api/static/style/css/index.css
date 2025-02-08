@@ -723,6 +723,22 @@ input {
     width: 50%;
     height: 360px;
 }
+.detail-file{
+    margin-top: 32px;
+    border-top:1px solid #d5d5d5;
+    line-height: 56px;
+    font-size: 16px;
+    color:#0052d9;
+}
+.detail-file a{
+    display: inline-block;
+    text-decoration: none;
+    color:#0052d9;
+    
+}
+.detail-file a:hover{
+    color: #0052d9;
+}
 .info-content-path {
     color: #999;
     line-height: 28px;
