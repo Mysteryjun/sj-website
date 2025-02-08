@@ -1,8 +1,8 @@
-# admin-api
+# front-api
 
 #### 介绍
 
-koa 项目模板
+koa 项目
 
 #### 软件架构
 
@@ -10,26 +10,20 @@ koa 项目模板
 
 #### 安装教程
 
-> cd admin-api/
+> cd front-api/
 >
 > npm install
 
 修改 /config/config.json 文件数据库账号密码
 
-创建数据库
+npm run dev
 
-> npx sequelize-cli db:create
+生产环境用 pm2 管理项目
 
-创建表
+pm2 start app
 
-> npx sequelize-cli db:migrate
+pm2 restart app
 
-运行种子文件
+pm2 stop app
 
-> npx sequelize-cli db:seed:all
 
-运行项目
-
-> npm run dev
-
-访问： http://127.0.0.1:9999/

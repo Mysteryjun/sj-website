@@ -133,7 +133,7 @@ input {
 .homeBanner .banner-slide {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
 }
 .homeBanner .swiper-pagination-bullet {
     background: #fff;
@@ -668,6 +668,29 @@ input {
 .certification a:hover {
     color: #fff;
 }
+.gov {
+    display: flex;
+    align-items: center;
+}
+.gov a {
+    color: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 14px;
+    line-height: 60px;
+}
+.gov a div img {
+    width: 18px;
+    height: 20px;
+    margin-right: 8px;
+}
+.gov a div {
+    display: flex;
+    align-items: center;
+}
+.gov a:hover {
+    color: #fff;
+}
 
 /* 子页面 */
 .sub-banner {
@@ -690,8 +713,8 @@ input {
     width: 100%;
     margin: 10px auto;
 }
-#map-container img{
-    margin:0px;
+#map-container img {
+    margin: 0px;
 }
 .info-content-table {
     width: 100%;
@@ -719,7 +742,7 @@ input {
     padding: 36px 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.detail-map-content{
+.detail-map-content {
     width: 50%;
     height: 360px;
 }

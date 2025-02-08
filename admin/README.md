@@ -1,15 +1,13 @@
-# vue-template
+# admin
 
 使用教程
 
 前提先运行node项目服务
  
-地址：https://gitee.com/caiheping/koa-template
+npm install yarn -g
 
-git clone https://gitee.com/caiheping/vue-template.git
+cd admin/
 
-cd vue-template/
+yarn install
 
-npm install
-
-npm run serve
+yarn serve
