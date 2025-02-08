@@ -13,6 +13,7 @@ router.get('/', async (ctx, next) => {
         pageNum: 1,
         pageSize: 6,
         noticeType: '2',
+        status: '0' 
     };
     let noticeList = await Generic.getList('Notice', noticeQuery);
     // 院务公开
@@ -20,6 +21,7 @@ router.get('/', async (ctx, next) => {
         pageNum: 1,
         pageSize: 6,
         noticeType: '1',
+        status: '0' 
     };
     let publicityList = await Generic.getList('Notice', publicityQuery);
     // 轮播图
@@ -141,6 +143,7 @@ router.get('/home/notice', async (ctx, next) => {
         pageNum: 1,
         pageSize: 10,
         noticeType: '2',
+        status: '0' 
     };
     let noticeList = await Generic.getList('Notice', noticeQuery);
     await ctx.render(
@@ -178,6 +181,7 @@ router.get('/home/publicity', async (ctx, next) => {
         pageNum: 1,
         pageSize: 10,
         noticeType: '1',
+        status: '0' 
     };
     let publicityList = await Generic.getList('Notice', publicityQuery);
     await ctx.render(

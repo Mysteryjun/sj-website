@@ -20,6 +20,7 @@ router.get('/system/common/notice', async (ctx, next) => {
     noticeTitle,
     noticeType,
     pageNum,
+    status:"0",
     pageSize
   }
   let roleList = await Generic.getList('Notice', query)
