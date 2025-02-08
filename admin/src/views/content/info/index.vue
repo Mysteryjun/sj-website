@@ -33,7 +33,7 @@
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
-          v-has-permi="['system:notice:add']"
+          v-has-permi="['system:info:add']"
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -43,7 +43,7 @@
           size="mini"
           :disabled="single"
           @click="handleUpdate"
-          v-has-permi="['system:notice:update']"
+          v-has-permi="['system:info:update']"
         >修改</el-button>
       </el-col>
       <!-- <el-col :span="1.5">
@@ -53,7 +53,7 @@
           size="mini"
           :disabled="multiple"
           @click="handleDelete"
-          v-has-permi="['system:notice:delete']"
+          v-has-permi="['system:info:delete']"
         >删除</el-button>
       </el-col> -->
     </el-row>

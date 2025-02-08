@@ -23,7 +23,7 @@
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
-          v-has-permi="['system:notice:add']"
+          v-has-permi="['system:culture:add']"
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -33,7 +33,7 @@
           size="mini"
           :disabled="single"
           @click="handleUpdate"
-          v-has-permi="['system:notice:update']"
+          v-has-permi="['system:culture:update']"
         >修改</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -43,7 +43,7 @@
           size="mini"
           :disabled="multiple"
           @click="handleDelete"
-          v-has-permi="['system:notice:delete']"
+          v-has-permi="['system:culture:delete']"
         >删除</el-button>
       </el-col>
     </el-row>
@@ -72,7 +72,7 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-            v-has-permi="['system:notice:update']"
+            v-has-permi="['system:culture:update']"
           >修改</el-button>
           <el-button
             class="delete"
@@ -80,7 +80,7 @@
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
-            v-has-permi="['system:notice:delete']"
+            v-has-permi="['system:culture:delete']"
           >删除</el-button>
         </template>
       </el-table-column>

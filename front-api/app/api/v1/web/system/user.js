@@ -4,6 +4,7 @@ const Validator = require('../../../../utils/validator');
 const { version } = require('../../../../config/config');
 const Generic = require('../../../../dao/Generic')
 const User = require('../../../../dao/User')
+const Menu = require('../../../../dao/Menu')
 
 
 const router = new Router({
@@ -12,6 +13,7 @@ const router = new Router({
 
 // 登录获取用户信息
 router.get('/system/getInfo', async (ctx, next) => {
+ 
   if (ctx.state.user.id === 1) {
     ctx.body = global.success(0, {
       permissions:[
@@ -20,10 +22,10 @@ router.get('/system/getInfo', async (ctx, next) => {
       user: ctx.state.user
     })
   } else {
+    let lists = await Menu.getAll(ctx)
+    let permissions = lists.rows.map(item=>item.perms) 
     ctx.body = global.success(0, {
-      permissions:[
-        "system:dept:list"
-      ],
+      permissions,
       user: ctx.state.user
     })
   }

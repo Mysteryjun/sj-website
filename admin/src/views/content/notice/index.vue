@@ -274,9 +274,6 @@ export default {
         ],
         noticeType: [
           { required: true, message: '公告类型不能为空', trigger: 'blur' }
-        ],
-        fileName: [
-          { required: true, message: '附件名称不能为空', trigger: 'blur' }
         ]
       }
     }
