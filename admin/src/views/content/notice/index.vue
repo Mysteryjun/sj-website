@@ -136,7 +136,7 @@
                 />
               </el-select>
             </el-form-item>
-          </el-col>          
+          </el-col>
           <el-col :span="12">
             <el-form-item label="状态">
               <el-radio-group v-model="form.status">
@@ -208,7 +208,7 @@ export default {
   },
   data () {
     return {
-      fileList:[],
+      fileList: [],
       editor: null,
       toolbarConfig: { },
       editorConfig: {
@@ -263,8 +263,8 @@ export default {
       },
       // 表单参数
       form: {
-        fileName:'',
-        fileUrl:'',
+        fileName: '',
+        fileUrl: '',
         noticeContent: ''
       },
       // 表单校验
@@ -296,7 +296,7 @@ export default {
     editor.destroy() // 组件销毁时，及时销毁编辑器
   },
   methods: {
-    previewFile(){
+    previewFile () {
       window.open(this.form.fileUrl)
     },
     uploadFile (option) {
@@ -312,7 +312,7 @@ export default {
         }
       }).then((res) => {
         console.log(res)
-        this.form.fileUrl = process.env.VUE_APP_BASE_IMG + res.data.path        
+        this.form.fileUrl = process.env.VUE_APP_BASE_IMG + res.data.path
       })
     },
     // 自定义上传图片
@@ -364,8 +364,8 @@ export default {
         id: undefined,
         noticeTitle: undefined,
         noticeType: undefined,
-        noticeContent: "",
-        fileUrl: "",
+        noticeContent: '',
+        fileUrl: '',
         status: '0'
       }
       this.resetForm('form')
