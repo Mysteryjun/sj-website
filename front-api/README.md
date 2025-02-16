@@ -14,9 +14,11 @@ koa 项目
 >
 > npm install
 
-修改 /config/config.json 文件数据库账号密码
+
 
 npm run dev
+
+npm run build
 
 生产环境用 pm2 管理项目
 
